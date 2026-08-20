@@ -1,0 +1,26 @@
+---
+description: Project-wide rules for implementing Jiaying Li's Figma portfolio
+alwaysApply: true
+---
+
+- Read `CURSOR_START_HERE.md`, `AGENTS.md`, `docs/project-status.md`, and the
+  relevant files in `docs/` before editing code.
+- Treat the Figma file recorded in `docs/figma-links.md` as the source of truth.
+- Figma read/extraction is enabled for file `Yxh4ZBgzy7N7KdV4PDxVGA` and the
+  nodes listed in `docs/figma-links.md`.
+- The authenticated Figma account is `jiayingli0128@gmail.com` (verified
+  2026-08-20). Keep Figma access read-only unless the user separately
+  authorizes a write.
+- Never recreate a complete page from a small screenshot when the Figma source
+  is unavailable; state what access or export is missing.
+- Read `docs/asset-manifest.md` before using Figma imagery. Reuse completed local
+  exports and do not guess entries marked `Pending`.
+- Read `docs/figma-reference/README.md` before implementing route layouts. Full
+  page PNGs are comparison references only, never production backgrounds.
+- Work on one task from `docs/cursor-tasks.md` at a time.
+- Keep components reusable, content structured, and routes based on the Next.js
+  App Router.
+- Preserve accessibility, responsive behavior, and reduced-motion support.
+- Never deploy, apply remote migrations, or change cloud resources without
+  explicit user authorization.
+- End implementation tasks by running `npm run check`.
