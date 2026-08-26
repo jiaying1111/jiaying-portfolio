@@ -1,21 +1,23 @@
 import Link from "next/link";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { projects } from "@/data/projects";
+import { homepageCopy } from "@/data/site";
 
 export function ProjectGridSection() {
   return (
-    <section className="home-section" id="experience" aria-labelledby="experience-heading">
-      <div className="home-section__header">
-        <h2 id="experience-heading">Experience Design</h2>
+    <section className="home-experience measure" aria-labelledby="home-experience-title">
+      <div className="home-section__head">
+        <h2 className="home-section__title" id="home-experience-title">
+          {homepageCopy.experienceLabel}
+        </h2>
         <Link href="/experience-design" className="home-section__more">
-          More
+          {homepageCopy.moreLabel}
+          <span className="visually-hidden"> Experience Design projects</span>
         </Link>
       </div>
       <ul className="project-grid">
         {projects.map((project) => (
-          <li key={project.slug}>
-            <ProjectCard project={project} />
-          </li>
+          <ProjectCard key={project.slug} project={project} />
         ))}
       </ul>
     </section>

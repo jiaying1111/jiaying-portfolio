@@ -1,27 +1,40 @@
-# Figma Full-Page References
+# Figma Reference Status
 
-These PNGs are desktop layout references exported from Figma at 1×. They are
-for measurement and screenshot comparison only. Do not ship them as webpage
-backgrounds or substitute them for semantic HTML and real media.
+## Current — use these
 
-| Local file | Original export | Figma source | Meaning | Pixels |
-| --- | --- | --- | --- | --- |
-| `homepage-desktop.png` | `Frame 8.png` | Node `78:61`, Frame 8 | Homepage default hero state | 1440 × 2922 |
-| `homepage-digital-nomad-hero-desktop.png` | `Frame 11.png` | Frame 11 | Homepage hero showing Digital No More Mad | 1440 × 2953 |
-| `experience-projects-desktop.png` | `Frame 12.png` | Node `97:66`, Frame 12 | Experience Design listing, Projects tab | 1440 × 2112 |
-| `experience-practice-desktop.png` | `Frame 20.png` | Node `152:448`, Frame 20 | Experience Design listing, Practice tab | 1440 × 2112 |
-| `artwork-installation-desktop.png` | `Frame 17.png` | Node `134:87`, Frame 17 | Artwork listing, Installation tab | 1440 × 2112 |
-| `artwork-illustration-desktop.png` | `Frame 21.png` | Node `157:679`, Frame 21 | Artwork listing, Illustration tab | 1440 × 4646 |
+Use only `docs/figma-reference/export-2026-08-26/`.
 
-## Implementation rules
+These 11 files are byte-for-byte identical to the newest files supplied in
+`home_figma.zip`, `experience__figma.zip`, `artwork_figma.zip`, and
+`about_figma.zip` on 2026-08-26 at 06:02–06:04.
 
-1. Match desktop structure, scale, spacing, type hierarchy, tabs, grid, header,
-   and footer against these references.
-2. Pending media may remain as neutral placeholders, but must occupy the same
-   position and aspect ratio as the source media.
-3. Never embed an entire reference PNG in the production page.
-4. Compare browser screenshots at a 1440px viewport against the matching PNG.
-5. No mobile Figma frames have been supplied. Any mobile layout remains a
-   provisional accessible adaptation.
-6. Frame 12 and Frame 20 are listing-page tab states, not individual project
-   detail pages.
+| New ZIP file | Current repository reference |
+| --- | --- |
+| Home `Frame 8.png` | `export-2026-08-26/home-intro.png` |
+| Home `Frame 11.png` | `export-2026-08-26/home-digital-no-more-mad.png` |
+| Home `Frame 22.png` | `export-2026-08-26/home-dreamwhorl.png` |
+| Home `Frame 23.png` | `export-2026-08-26/home-little-red-riding-hood.png` |
+| Home `Frame 24.png` | `export-2026-08-26/home-nushu.png` |
+| Experience `Frame 12.png` | `export-2026-08-26/experience-projects.png` |
+| Experience `Frame 20.png` | `export-2026-08-26/experience-practice.png` |
+| Artwork `Frame 17.png` | `export-2026-08-26/artwork-installation.png` |
+| Artwork `Frame 21.png` | `export-2026-08-26/artwork-illustration.png` |
+| About `layout.jpg` | `export-2026-08-26/about-layout.jpg` |
+| About `reference.png` | `export-2026-08-26/about-content-reference.png` |
+
+## Legacy — ignore these
+
+Older files are isolated inside `docs/figma-reference/legacy/`, including
+`homepage-desktop.png`, `experience-projects-desktop.png`,
+`experience-practice-desktop.png`, `artwork-installation-desktop.png`, and
+`artwork-illustration-desktop.png`. They are retained only for provenance. Cursor
+must not compare implementation against them.
+
+Supporting current documents:
+
+- Type, colors, leading, spacing: `docs/design-system.md`
+- Exact wording: `docs/content.md`
+- Media paths and motion: `docs/media-library.md`
+
+Never render a full-page reference as production UI or crop project media from
+it. Build semantic React/HTML with the individual assets in `public/`.

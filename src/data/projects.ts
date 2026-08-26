@@ -1,144 +1,78 @@
 import {
-  experienceCardSequenceAssets,
-  experiencePracticeDetailAssets,
-  experienceProjectDetailAssets,
-  projectCardAssets,
-  type MediaAsset,
-  type ProjectCardAssets,
+  experienceListingMedia,
+  homepageCardAssets,
+  type CardStatePair,
+  type HoverLoopSet,
 } from "@/data/assets";
-import type { CopyStatus } from "@/data/site";
 
 export type ProjectListingGroup = "projects" | "practice";
 
 export type Project = {
   slug: string;
+  /** Public title exactly as written in docs/content.md. */
   title: string;
-  listingTitle: string;
   category: string;
   year: string;
   summary: string;
-  summaryStatus: CopyStatus;
   type: string;
   tools: string;
   listingGroup: ProjectListingGroup;
-  listingMedia: MediaAsset;
-  role: string | null;
-  duration: string | null;
-  collaborators: string | null;
-  context: string | null;
-  research: string | null;
-  process: string | null;
-  outcome: string | null;
-  credits: string | null;
-  externalLinks: string | null;
-  card: ProjectCardAssets;
-  detailMedia: MediaAsset[];
+  listingMedia: HoverLoopSet;
+  card: CardStatePair;
 };
-
-const LISTING_SUMMARY =
-  "This project etc is a uiux design. This project etc is a uiux. This project etc is a uiux design. This project etc is a uiux design. This project etc is a uiux. This project etc is a uiux design";
-
-const [digitalNomadListingMedia] = experienceCardSequenceAssets;
-const [dreamWhorlListingMedia] = experienceProjectDetailAssets;
-const [littleRedListingMedia, nushuListingMedia] =
-  experiencePracticeDetailAssets;
 
 export const projects: Project[] = [
   {
     slug: "digital-nomad",
-    title: "Digital Nomad",
-    listingTitle: "Digital No More Mad",
+    title: "Digital No More Mad",
     category: "UIUX",
     year: "2025",
-    summary: LISTING_SUMMARY,
-    summaryStatus: "placeholder",
+    summary:
+      "This project focuses on digital nomadism, building a platform that helps digital nomads expand cooperation channels, grow sustainably, and work and live efficiently.",
     type: "Independent Project",
     tools: "Figma",
     listingGroup: "projects",
-    listingMedia: digitalNomadListingMedia,
-    role: null,
-    duration: null,
-    collaborators: null,
-    context: null,
-    research: null,
-    process: null,
-    outcome: null,
-    credits: null,
-    externalLinks: null,
-    card: projectCardAssets.digitalNomad,
-    detailMedia: experienceCardSequenceAssets,
+    listingMedia: experienceListingMedia["digital-nomad"],
+    card: homepageCardAssets["digital-nomad"],
   },
   {
     slug: "dreamwhorl",
     title: "DreamWhorl",
-    listingTitle: "DreamScope",
-    category: "UIUX",
-    year: "2025",
-    summary: LISTING_SUMMARY,
-    summaryStatus: "placeholder",
+    category: "Product Design",
+    year: "2026",
+    summary:
+      "DreamWhorl lets children speak their dreams into a magical shell. Each dream becomes an ever-changing world to explore, reshape, and keep.",
     type: "Collaboration Project",
-    tools: "Figma, Vibe Coding, Arduino, ESP-32",
+    tools: "Figma, Vibe Coding, Rhino, 3D Printing, Arduino",
     listingGroup: "projects",
-    listingMedia: dreamWhorlListingMedia,
-    role: null,
-    duration: null,
-    collaborators: null,
-    context: null,
-    research: null,
-    process: null,
-    outcome: null,
-    credits: null,
-    externalLinks: null,
-    card: projectCardAssets.dreamWhorl,
-    detailMedia: experienceProjectDetailAssets,
+    listingMedia: experienceListingMedia.dreamwhorl,
+    card: homepageCardAssets.dreamwhorl,
   },
   {
     slug: "little-red-riding-hood",
     title: "Little Red Riding Hood",
-    listingTitle: "Little Red Riding Hood",
-    category: "UIUX",
+    category: "Interactive Installation",
     year: "2025",
-    summary: LISTING_SUMMARY,
-    summaryStatus: "placeholder",
+    summary:
+      "This project reimagines Little Red Riding Hood as an open, non-linear story that challenges inherited ideas of morality, gender, and control over nature through a generative website and physical interactive installation.",
     type: "Independent Project",
-    tools: "Figma",
+    tools: "Vibe Coding, 3D Printing, Laser Cut",
     listingGroup: "practice",
-    listingMedia: littleRedListingMedia,
-    role: null,
-    duration: null,
-    collaborators: null,
-    context: null,
-    research: null,
-    process: null,
-    outcome: null,
-    credits: null,
-    externalLinks: null,
-    card: projectCardAssets.littleRedRidingHood,
-    detailMedia: experiencePracticeDetailAssets,
+    listingMedia: experienceListingMedia["little-red-riding-hood"],
+    card: homepageCardAssets["little-red-riding-hood"],
   },
   {
     slug: "nushu",
     title: "Nushu",
-    listingTitle: "Nushu",
-    category: "UIUX",
-    year: "2025",
-    summary: LISTING_SUMMARY,
-    summaryStatus: "placeholder",
+    category: "VR Experience",
+    year: "2024",
+    summary:
+      "Inspired by Nushu—the world’s only known script created and used exclusively by women—this VR experience builds an immersive, ink-wash world where “women’s language” is reimagined as fluid and generative.",
     type: "Independent Project",
-    tools: "Figma",
+    tools: "Unreal Engine, Blender",
     listingGroup: "practice",
-    listingMedia: nushuListingMedia,
-    role: null,
-    duration: null,
-    collaborators: null,
-    context: null,
-    research: null,
-    process: null,
-    outcome: null,
-    credits: null,
-    externalLinks: null,
-    card: projectCardAssets.nushu,
-    detailMedia: [],
+    listingMedia: experienceListingMedia.nushu,
+    card: homepageCardAssets.nushu,
   },
 ];
 

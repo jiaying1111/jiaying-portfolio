@@ -1,84 +1,67 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { PageTabs } from "@/components/ui/PageTabs";
 import { WorkListingItem } from "@/components/ui/WorkListingItem";
-import { homepageCopy } from "@/data/site";
-import type { ArtworkSectionId } from "@/data/artworks";
-import { artworkSections } from "@/data/artworks";
+import { artworkSections, type ArtworkSectionId } from "@/data/artworks";
+import { artworkPageCopy } from "@/data/site";
 
-const TABS: { id: ArtworkSectionId; label: string }[] = [
-  { id: "installation", label: "Installation" },
-  { id: "illustration", label: "Illustration" },
-];
-
-type ArtworkViewProps = {
-  activeTab: ArtworkSectionId;
-};
-
-export function ArtworkView({ activeTab }: ArtworkViewProps) {
+export function ArtworkView({ activeTab }: { activeTab: ArtworkSectionId }) {
   const router = useRouter();
-  const pathname = usePathname();
-  const section = artworkSections.find((item) => item.id === activeTab);
+  const section =
+    artworkSections.find((entry) => entry.id === activeTab) ??
+    artworkSections[0];
 
-  const selectTab = useCallback(
-    (id: ArtworkSectionId) => {
-      const href =
-        id === "illustration" ? `${pathname}?tab=illustration` : pathname;
-      router.replace(href, { scroll: false });
-    },
-    [pathname, router],
-  );
-
-  if (!section) {
-    return null;
-  }
+  const onSelect = (id: ArtworkSectionId) => {
+    router.replace(id === "installation" ? "/artwork" : `/artwork?tab=${id}`, {
+      scroll: false,
+    });
+  };
 
   return (
-    <main className="page-shell" data-figma-frame={section.frameId}>
-      <Link href="/" className="page-back">
-        {"< Back to Home"}
+    <main className="listing measure">
+      <Link href="/" className="listing__back">
+        {artworkPageCopy.back}
       </Link>
-      <h1 className="page-title">Artwork</h1>
-      <p className="page-intro" data-copy-status={homepageCopy.pageIntro.status}>
-        I design interactive experiences that connect
-        <br />
-        people, space, and stories.
+      <h1 className="listing__title">{artworkPageCopy.title}</h1>
+      <p className="listing__intro listing__intro--artwork">
+        {artworkPageCopy.intro}
       </p>
+
       <PageTabs
-        tabs={TABS}
-        activeId={activeTab}
+        tabs={artworkSections.map((entry) => ({
+          id: entry.id,
+          label: entry.label,
+        }))}
+        activeId={section.id}
         ariaLabel="Artwork categories"
-        onSelect={selectTab}
+        onSelect={onSelect}
       />
-      <div className="page-rule" aria-hidden="true" />
-      <div
-        role="tabpanel"
-        id={`panel-${activeTab}`}
-        aria-labelledby={`tab-${activeTab}`}
+      <div className="listing__rule" />
+
+      <ul
         className="work-list"
+        id={`panel-${section.id}`}
+        role="tabpanel"
+        aria-labelledby={`tab-${section.id}`}
       >
-        {section.items.map((item) => (
+        {section.items.map((item, index) => (
           <WorkListingItem
             key={item.id}
-            item={{
-              id: item.id,
-              title: item.title,
-              category: item.category,
-              year: item.year,
-              summary: item.summary,
-              summaryStatus: item.summaryStatus,
-              type: item.type,
-              tools: item.tools,
-              media: item.media,
-              href: null,
-            }}
+            title={item.title}
+            category={item.category}
+            year={item.year}
+            summary={item.summary}
+            type={item.type}
+            tools={item.tools}
+            media={item.listingMedia}
+            priority={index === 0}
           />
         ))}
-      </div>
-      <p className="page-more">{homepageCopy.moreInProgress}</p>
+      </ul>
+
+      <p className="listing__more">{artworkPageCopy.moreInProgress}</p>
     </main>
   );
 }

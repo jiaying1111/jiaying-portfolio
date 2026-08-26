@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { AboutSection } from "@/components/sections/AboutSection";
 
 export const metadata: Metadata = {
@@ -7,12 +6,5 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  return (
-    <main className="page-shell">
-      <Link href="/" className="page-back">
-        {"< Back to Home"}
-      </Link>
-      <AboutSection />
-    </main>
-  );
+  return <AboutSection />;
 }

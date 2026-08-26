@@ -4,9 +4,9 @@ import { footerColumns } from "@/data/site";
 export function Footer() {
   return (
     <footer className="site-footer">
-      <div className="site-footer__inner">
+      <div className="site-footer__inner measure">
         {footerColumns.map((column) => (
-          <div key={column.title} className="site-footer__col">
+          <div key={column.title}>
             <Link href={column.href} className="site-footer__heading">
               {column.title}
             </Link>

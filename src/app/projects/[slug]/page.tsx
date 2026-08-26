@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CaseStudyView } from "@/components/case-study/CaseStudyView";
 import { ProjectDetailSection } from "@/components/sections/ProjectDetailSection";
+import { getCaseStudyBySlug } from "@/data/case-studies/digital-no-more-mad";
 import { getProjectBySlug, projects } from "@/data/projects";
 
 type ProjectPageProps = {
@@ -18,9 +20,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) {
-    return { title: "Project" };
+    return { title: "Project — Jiaying Li" };
   }
-  return { title: `${project.listingTitle} — Jiaying Li` };
+  return {
+    title: `${project.title} — Jiaying Li`,
+    description: getCaseStudyBySlug(slug)?.summary ?? project.summary,
+  };
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
@@ -31,9 +36,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const caseStudy = getCaseStudyBySlug(slug);
+
+  if (caseStudy) {
+    const index = projects.findIndex((entry) => entry.slug === slug);
+    return (
+      <CaseStudyView
+        project={project}
+        caseStudy={caseStudy}
+        previous={projects[index - 1]}
+        next={projects[index + 1]}
+      />
+    );
+  }
+
   return (
-    <main className="page-shell">
-      <Link href="/experience-design" className="page-back">
+    <main className="listing measure">
+      <Link href="/experience-design" className="listing__back">
         {"< Back to Experience Design"}
       </Link>
       <ProjectDetailSection project={project} />

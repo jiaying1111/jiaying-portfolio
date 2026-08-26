@@ -1,132 +1,133 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
-import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
-import { homepageHeroAsset, homepageSocialIconAssets } from "@/data/assets";
-import { homepageCopy } from "@/data/site";
-
-type HeroSlide = "intro" | "featured";
-
-function CircleArrow() {
-  return (
-    <svg width="18" height="10" viewBox="0 0 18 10" aria-hidden="true">
-      <path
-        d="M0 5h16.5M13 1.2 17.3 5 13 8.8"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-      />
-    </svg>
-  );
-}
+import { useCallback, useEffect, useState } from "react";
+import { heroSlides, socialControls } from "@/data/site";
+import { socialIcons } from "@/data/assets";
+import { HERO_AUTOPLAY_MS, HERO_CROSSFADE_MS } from "@/lib/motion";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 export function HeroSection() {
-  const [slide, setSlide] = useState<HeroSlide>("intro");
-  const featured = slide === "featured";
+  const [index, setIndex] = useState(0);
+  const [interacting, setInteracting] = useState(false);
+  const [documentHidden, setDocumentHidden] = useState(false);
+  const reducedMotion = usePrefersReducedMotion();
+
+  const slide = heroSlides[index];
+  const isIntro = index === 0;
+
+  const goNext = useCallback(() => {
+    setIndex((current) => (current + 1) % heroSlides.length);
+  }, []);
+
+  useEffect(() => {
+    const onVisibilityChange = () => setDocumentHidden(document.hidden);
+    onVisibilityChange();
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+  }, []);
+
+  const autoplayPaused = reducedMotion || interacting || documentHidden;
+
+  useEffect(() => {
+    if (autoplayPaused) return;
+    const timer = window.setTimeout(goNext, HERO_AUTOPLAY_MS);
+    return () => window.clearTimeout(timer);
+  }, [autoplayPaused, goNext, index]);
 
   return (
     <section
-      className={featured ? "hero hero--featured" : "hero"}
-      aria-label="Introduction"
+      className="hero"
+      aria-roledescription="carousel"
+      aria-label="Featured work"
+      style={
+        { "--hero-crossfade": `${HERO_CROSSFADE_MS}ms` } as React.CSSProperties
+      }
+      onMouseEnter={() => setInteracting(true)}
+      onMouseLeave={() => setInteracting(false)}
+      onFocusCapture={() => setInteracting(true)}
+      onBlurCapture={() => setInteracting(false)}
     >
-      <div className="hero__copy">
-        {featured ? (
-          <>
-            <p
-              className="hero__category"
-              data-copy-status={homepageCopy.featuredCategory.status}
-            >
-              {homepageCopy.featuredCategory.text}
-            </p>
-            <h1
-              className="hero__title"
-              data-copy-status={homepageCopy.featuredTitle.status}
-            >
-              {homepageCopy.featuredTitle.text}
-            </h1>
-            <p
-              className="hero__summary"
-              data-copy-status={homepageCopy.featuredSummary.status}
-            >
-              {homepageCopy.featuredSummary.text}
-            </p>
-            <div className="hero__actions">
-              <Link
-                href="/projects/digital-nomad"
-                className="hero-circle"
-                aria-label="View Digital No More Mad"
-              >
-                <CircleArrow />
-              </Link>
-            </div>
-          </>
+      <div className="hero__stage" aria-hidden="true">
+        {heroSlides.map((item, slideIndex) => (
+          <div
+            key={item.id}
+            className={`hero__slide${slideIndex === index ? " is-active" : ""}`}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={item.image.src}
+              alt=""
+              width={item.image.width}
+              height={item.image.height}
+              loading={slideIndex === 0 ? "eager" : "lazy"}
+              fetchPriority={slideIndex === 0 ? "high" : "auto"}
+              decoding="async"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="hero__content measure">
+        <p className="hero__eyebrow">{slide.eyebrow}</p>
+        {isIntro ? (
+          <h1 className="hero__display">{slide.display}</h1>
         ) : (
-          <>
-            <p
-              className="hero__eyebrow"
-              data-copy-status={homepageCopy.introEyebrow.status}
-            >
-              {homepageCopy.introEyebrow.text}
-            </p>
-            <h1
-              className="hero__name"
-              data-copy-status={homepageCopy.introName.status}
-            >
-              {homepageCopy.introName.text}
-            </h1>
-            <p
-              className="hero__tagline"
-              data-copy-status={homepageCopy.introTagline.status}
-            >
-              {homepageCopy.introTagline.text}
-            </p>
-            <div className="hero__actions">
-              {homepageSocialIconAssets.map((icon) => (
-                <span
-                  key={icon.id}
-                  className="hero-circle"
-                  data-figma-node={icon.nodeId}
-                  aria-hidden="true"
-                />
-              ))}
-              <button
-                type="button"
-                className="hero-circle"
-                aria-label="Show featured project"
-                onClick={() => setSlide("featured")}
-              >
-                <CircleArrow />
-              </button>
-            </div>
-          </>
+          <h2 className="hero__display">{slide.display}</h2>
         )}
+        <p className="hero__summary">{slide.summary}</p>
+
+        <div className="hero__controls">
+          {isIntro
+            ? socialControls.map((control) =>
+                control.href ? (
+                  <a
+                    key={control.id}
+                    className="hero-circle"
+                    href={control.href}
+                    aria-label={control.label}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={control.icon.src} alt="" width={19} height={19} />
+                  </a>
+                ) : (
+                  /*
+                   * docs/content.md records that the Instagram and LinkedIn
+                   * URLs are still unverified, so these keep the Figma
+                   * composition without pretending to be working controls.
+                   */
+                  <span
+                    key={control.id}
+                    className="hero-circle hero-circle--static"
+                    aria-hidden="true"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={control.icon.src} alt="" width={19} height={19} />
+                  </span>
+                ),
+              )
+            : null}
+          <button
+            type="button"
+            className="hero-circle"
+            onClick={goNext}
+            aria-label={`Next slide (${index + 1} of ${heroSlides.length})`}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="hero-circle__arrow"
+              src={socialIcons.nextArrow.src}
+              alt=""
+              width={14}
+              height={18}
+            />
+          </button>
+        </div>
       </div>
-      <div className="hero__media">
-        <MediaPlaceholder
-          nodeId={homepageHeroAsset.nodeId}
-          width={homepageHeroAsset.width}
-          height={homepageHeroAsset.height}
-          alt="Homepage hero image not yet provided"
-          decorative
-        />
-      </div>
-      <div className="hero-dots" role="tablist" aria-label="Hero slides">
-        <button
-          type="button"
-          role="tab"
-          aria-selected={!featured}
-          aria-label="Introduction"
-          onClick={() => setSlide("intro")}
-        />
-        <button
-          type="button"
-          role="tab"
-          aria-selected={featured}
-          aria-label="Featured project"
-          onClick={() => setSlide("featured")}
-        />
-      </div>
+
+      <p className="visually-hidden" aria-live="polite">
+        {`Slide ${index + 1} of ${heroSlides.length}: ${slide.display}`}
+      </p>
     </section>
   );
 }

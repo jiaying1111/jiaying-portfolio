@@ -1,82 +1,71 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { PageTabs } from "@/components/ui/PageTabs";
 import { WorkListingItem } from "@/components/ui/WorkListingItem";
-import {
-  getProjectsByGroup,
-  type ProjectListingGroup,
-} from "@/data/projects";
-import { homepageCopy } from "@/data/site";
+import { getProjectsByGroup, type ProjectListingGroup } from "@/data/projects";
+import { experiencePageCopy } from "@/data/site";
 
-const TABS: { id: ProjectListingGroup; label: string }[] = [
-  { id: "projects", label: "Projects" },
-  { id: "practice", label: "Practice" },
-];
-
-type ExperienceViewProps = {
+export function ExperienceView({
+  activeTab,
+}: {
   activeTab: ProjectListingGroup;
-};
-
-export function ExperienceView({ activeTab }: ExperienceViewProps) {
+}) {
   const router = useRouter();
-  const pathname = usePathname();
   const items = getProjectsByGroup(activeTab);
-  const frameId = activeTab === "practice" ? "152:448" : "97:66";
 
-  const selectTab = useCallback(
-    (id: ProjectListingGroup) => {
-      const href = id === "practice" ? `${pathname}?tab=practice` : pathname;
-      router.replace(href, { scroll: false });
-    },
-    [pathname, router],
-  );
+  const onSelect = (id: ProjectListingGroup) => {
+    router.replace(
+      id === "projects" ? "/experience-design" : `/experience-design?tab=${id}`,
+      { scroll: false },
+    );
+  };
 
   return (
-    <main className="page-shell" data-figma-frame={frameId}>
-      <Link href="/" className="page-back">
-        {"< Back to Home"}
+    <main className="listing measure">
+      <Link href="/" className="listing__back">
+        {experiencePageCopy.back}
       </Link>
-      <h1 className="page-title">Experience Design</h1>
-      <p className="page-intro" data-copy-status={homepageCopy.pageIntro.status}>
-        I design interactive experiences that connect
-        <br />
-        people, space, and stories.
+      <h1 className="listing__title">{experiencePageCopy.title}</h1>
+      <p className="listing__intro listing__intro--experience">
+        {experiencePageCopy.intro}
       </p>
+
       <PageTabs
-        tabs={TABS}
+        tabs={experiencePageCopy.tabs.map((tab) => ({
+          id: tab.id as ProjectListingGroup,
+          label: tab.label,
+        }))}
         activeId={activeTab}
         ariaLabel="Experience Design categories"
-        onSelect={selectTab}
+        onSelect={onSelect}
       />
-      <div className="page-rule" aria-hidden="true" />
-      <div
-        role="tabpanel"
-        id={`panel-${activeTab}`}
-        aria-labelledby={`tab-${activeTab}`}
+      <div className="listing__rule" />
+
+      <ul
         className="work-list"
+        id={`panel-${activeTab}`}
+        role="tabpanel"
+        aria-labelledby={`tab-${activeTab}`}
       >
-        {items.map((project) => (
+        {items.map((project, index) => (
           <WorkListingItem
             key={project.slug}
-            item={{
-              id: project.slug,
-              title: project.listingTitle,
-              category: project.category,
-              year: project.year,
-              summary: project.summary,
-              summaryStatus: project.summaryStatus,
-              type: project.type,
-              tools: project.tools,
-              media: project.listingMedia,
-              href: `/projects/${project.slug}`,
-            }}
+            title={project.title}
+            category={project.category}
+            year={project.year}
+            summary={project.summary}
+            type={project.type}
+            tools={project.tools}
+            media={project.listingMedia}
+            href={`/projects/${project.slug}`}
+            priority={index === 0}
           />
         ))}
-      </div>
-      <p className="page-more">{homepageCopy.moreInProgress}</p>
+      </ul>
+
+      <p className="listing__more">{experiencePageCopy.moreInProgress}</p>
     </main>
   );
 }

@@ -1,103 +1,149 @@
-import {
-  artworkIllustrationAssets,
-  artworkInstallationAssets,
-  type MediaAsset,
-} from "@/data/assets";
+import { artworkListingMedia, type HoverLoopSet } from "@/data/assets";
 
 export type ArtworkSectionId = "installation" | "illustration";
-export type CopyStatus = "source" | "placeholder";
 
 export type Artwork = {
   id: string;
   section: ArtworkSectionId;
+  /** Public title exactly as written in docs/content.md. */
   title: string;
   category: string;
   year: string;
   summary: string;
-  summaryStatus: CopyStatus;
   type: string;
   tools: string;
-  alt: string;
-  media: MediaAsset;
+  listingMedia: HoverLoopSet;
+  /**
+   * The 2026-08-26 reference repeats Animal City's summary here. docs/content.md
+   * requires keeping it until the author supplies replacement copy.
+   */
+  summaryNeedsAuthorReview?: boolean;
 };
 
 export type ArtworkSection = {
   id: ArtworkSectionId;
-  title: string;
-  frameId: string;
+  label: string;
   items: Artwork[];
 };
 
-const PLACEHOLDER_SUMMARY =
-  "This project etc is a uiux design. This project etc is a uiux. This project etc is a uiux design. This project etc is a uiux design. This project etc is a uiux. This project etc is a uiux design";
-
-function listingItem(
-  section: ArtworkSectionId,
-  media: MediaAsset,
-  title: string,
-): Artwork {
-  return {
-    id: media.id,
-    section,
-    title,
-    category: "UIUX",
+const installation: Artwork[] = [
+  {
+    id: "resounding-nature",
+    section: "installation",
+    title: "Re:Sounding Nature",
+    category: "Responsive Installation",
     year: "2025",
-    summary: PLACEHOLDER_SUMMARY,
-    summaryStatus: "placeholder",
+    summary:
+      "This responsive installation translates human movement into the lost sounds of leaves, imagining people as nature’s vocal cords. It asks whether technology can help us reconnect with an environment it has helped silence.",
     type: "Independent Project",
-    tools: "Figma",
-    alt: "Artwork image not yet provided",
-    media,
-  };
-}
-
-const [installationMediaA, installationMediaB] = artworkInstallationAssets;
-const [
-  illustrationMediaA,
-  illustrationMediaB,
-  illustrationMediaC,
-  illustrationMediaD,
-  illustrationMediaE,
-  illustrationMediaF,
-  illustrationMediaG,
-] = artworkIllustrationAssets;
-
-export const artworkPageCopy = {
-  intro: {
-    text: "I design interactive experiences that connect people, space, and stories.",
-    status: "source" as CopyStatus,
+    tools: "Rhino, 3D Printing, Laser Cut, Arduino",
+    listingMedia: artworkListingMedia["resounding-nature"],
   },
-  moreInProgress: "More In Progress...",
-};
+  {
+    id: "present-and-absent",
+    section: "installation",
+    title: "Present & Absent",
+    category: "Motion Capture",
+    year: "2024",
+    summary:
+      "Using motion capture and performance, this project explores how gender shapes whose lives are valued, remembered, and allowed to exist.",
+    type: "Independent Project",
+    tools: "Blender, Motion Capture, Performance",
+    listingMedia: artworkListingMedia["present-and-absent"],
+  },
+];
+
+const illustration: Artwork[] = [
+  {
+    id: "circular-ruins",
+    section: "illustration",
+    title: "The Circular Ruins",
+    category: "Interactive Game",
+    year: "2025",
+    summary:
+      "Inspired by Jorge Luis Borges’s The Circular Ruins, this project transforms the story’s recursive dream-world into a modular visual narrative system.",
+    type: "Independent Project",
+    tools: "Collage",
+    listingMedia: artworkListingMedia["circular-ruins"],
+  },
+  {
+    id: "invisible-man",
+    section: "illustration",
+    title: "The Invisible Man",
+    category: "UI Design",
+    year: "2024",
+    summary:
+      "A conceptual game adaptation of The Invisible Man (H. G. Wells), exploring narrative through UI and level design.",
+    type: "Independent Project",
+    tools: "Adobe Illustrator",
+    listingMedia: artworkListingMedia["invisible-man"],
+  },
+  {
+    id: "dreamgaze",
+    section: "illustration",
+    title: "DreamGaze",
+    category: "Branding Design",
+    year: "2024",
+    summary:
+      "DreamGaze is a creative studio that explores the space between dream and reality. It designs visual experiences that feel poetic, immersive, and thoughtful, aiming to awaken imagination and create moments of quiet wonder.",
+    type: "Independent Project",
+    tools: "Adobe Illustrator",
+    listingMedia: artworkListingMedia.dreamgaze,
+  },
+  {
+    id: "your-destination",
+    section: "illustration",
+    title: "Your Destination",
+    category: "Animation",
+    year: "2023",
+    summary:
+      "I reimagined the concept of Google Maps in a novel way to explore the overwhelming impact of digital technology on our lives.",
+    type: "Independent Project",
+    tools: "Blender, Nomad",
+    listingMedia: artworkListingMedia["your-destination"],
+  },
+  {
+    id: "animal-city",
+    section: "illustration",
+    title: "Animal City",
+    category: "Installation",
+    year: "2024",
+    summary:
+      "This work explores the complex and fluid relationship between humans and animals through a series of interactive box installations that can be disassembled, reassembled, folded, and unfolded.",
+    type: "Independent Project",
+    tools: "Collage",
+    listingMedia: artworkListingMedia["animal-city"],
+  },
+  {
+    id: "imaginary-beings",
+    section: "illustration",
+    title: "Imaginary Beings",
+    category: "Animation",
+    year: "2025",
+    summary:
+      "This work explores the complex and fluid relationship between humans and animals through a series of interactive box installations that can be disassembled, reassembled, folded, and unfolded.",
+    type: "Independent Project",
+    tools: "Collage",
+    listingMedia: artworkListingMedia["imaginary-beings"],
+    summaryNeedsAuthorReview: true,
+  },
+  {
+    id: "hypnagogia",
+    section: "illustration",
+    title: "Hypnagogia",
+    category: "Interactive Installation",
+    year: "2024",
+    summary:
+      "Hypnagogia explores the space where waking and dreaming meet. In this blurry state, time feels unstable, memories mix, and reality shifts.",
+    type: "Independent Project",
+    tools: "Collage",
+    listingMedia: artworkListingMedia.hypnagogia,
+  },
+];
 
 export const artworkSections: ArtworkSection[] = [
-  {
-    id: "installation",
-    title: "Installation",
-    frameId: "134:87",
-    items: [
-      listingItem("installation", installationMediaA, "Re:Sounding Nature"),
-      listingItem("installation", installationMediaB, "Present & Absent"),
-    ],
-  },
-  {
-    id: "illustration",
-    title: "Illustration",
-    frameId: "157:679",
-    items: [
-      listingItem("illustration", illustrationMediaA, "The Circular Ruins"),
-      listingItem("illustration", illustrationMediaB, "Present & Absent"),
-      listingItem(
-        "illustration",
-        illustrationMediaC,
-        "DreamGaze Branding Design",
-      ),
-      listingItem("illustration", illustrationMediaD, "Present & Absent"),
-      listingItem("illustration", illustrationMediaE, "Present & Absent"),
-      listingItem("illustration", illustrationMediaF, "Present & Absent"),
-      listingItem("illustration", illustrationMediaG, "Present & Absent"),
-    ],
-  },
+  { id: "installation", label: "Installation", items: installation },
+  { id: "illustration", label: "Illustration", items: illustration },
 ];
 
 export const artworks: Artwork[] = artworkSections.flatMap(

@@ -15,6 +15,15 @@ alwaysApply: true
   is unavailable; state what access or export is missing.
 - Read `docs/asset-manifest.md` before using Figma imagery. Reuse completed local
   exports and do not guess entries marked `Pending`.
+- Before changing Homepage layout or styling, read `docs/design-system.md` in
+  full. Its verified geometry, typography, colors, crop instructions, and
+  component measurements override scaffold CSS and placeholder styling.
+- Use `docs/figma-reference/homepage-desktop.png` only for visual comparison,
+  never as a full-page background or a substitute for semantic layout.
+- Missing photos may remain neutral media placeholders, but placeholders must
+  occupy the exact documented Figma size, position, aspect ratio, and crop.
+- Values labeled “implementation recommendation” in `docs/design-system.md`
+  are adaptable guidance; do not present them as extracted Figma facts.
 - Read `docs/figma-reference/README.md` before implementing route layouts. Full
   page PNGs are comparison references only, never production backgrounds.
 - Work on one task from `docs/cursor-tasks.md` at a time.

@@ -3,26 +3,33 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { caseStudiesBySlug } from "@/data/case-studies/digital-no-more-mad";
 import { navigation, siteIdentity } from "@/data/site";
 import { joinClassNames } from "@/lib/utils";
 
+/** Pages that open on a full-bleed image carry the header on top of it. */
+function hasFullBleedHero(pathname: string) {
+  if (pathname === "/") {
+    return true;
+  }
+  const slug = pathname.match(/^\/projects\/([^/]+)\/?$/)?.[1];
+  return slug !== undefined && slug in caseStudiesBySlug;
+}
+
 function isCurrent(pathname: string, href: string) {
   if (href === "/experience-design") {
-    return pathname.startsWith("/experience-design") || pathname.startsWith("/projects/");
+    return (
+      pathname.startsWith("/experience-design") ||
+      pathname.startsWith("/projects/")
+    );
   }
-  if (href === "/artwork") {
-    return pathname.startsWith("/artwork");
-  }
-  if (href === "/about") {
-    return pathname.startsWith("/about");
-  }
-  return pathname === href;
+  return pathname.startsWith(href);
 }
 
 export function Header() {
   const pathname = usePathname();
-  const overlay = pathname === "/";
   const [open, setOpen] = useState(false);
+  const overlay = hasFullBleedHero(pathname);
 
   return (
     <header
@@ -31,9 +38,9 @@ export function Header() {
         overlay && "site-header--overlay",
       )}
     >
-      <div className="site-header__inner">
+      <div className="site-header__inner measure">
         <Link href="/" className="site-logo">
-          {siteIdentity.displayName}
+          {siteIdentity.logo}
         </Link>
         <button
           type="button"
@@ -42,11 +49,11 @@ export function Header() {
           aria-controls="site-primary-nav"
           onClick={() => setOpen((value) => !value)}
         >
-          {open ? "Close" : "Menu"}
+          {open ? "Close menu" : "Menu"}
         </button>
         <nav
           id="site-primary-nav"
-          aria-label="Primary navigation"
+          aria-label="Primary"
           className={joinClassNames("site-nav", open && "is-open")}
         >
           {navigation.map((item) => {

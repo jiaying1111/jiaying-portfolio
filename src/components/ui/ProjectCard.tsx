@@ -1,34 +1,44 @@
 import Link from "next/link";
-import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import type { Project } from "@/data/projects";
-import { joinClassNames } from "@/lib/utils";
 
-type ProjectCardProps = {
-  project: Project;
-  className?: string;
-};
-
-export function ProjectCard({ project, className }: ProjectCardProps) {
-  const { regular, componentSetId } = project.card;
+/**
+ * Regular and hover artwork stay layered inside one stable wrapper so the hit
+ * target never changes and the crossfade cannot flicker.
+ */
+export function ProjectCard({ project }: { project: Project }) {
+  const { regular, hover } = project.card;
 
   return (
-    <Link
-      href={`/projects/${project.slug}`}
-      className={joinClassNames("project-card", className)}
-      data-figma-node={componentSetId}
-    >
-      <div className="project-card__media">
-        <MediaPlaceholder
-          nodeId={regular.nodeId}
-          width={regular.width}
-          height={regular.height}
-          decorative
-        />
-        <span className="project-card__overlay-title" aria-hidden="true">
-          {project.listingTitle}
+    <li>
+      <Link
+        href={`/projects/${project.slug}`}
+        className="project-card"
+        aria-label={project.title}
+      >
+        <span className="project-card__media">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="project-card__layer"
+            src={regular.src}
+            alt=""
+            width={regular.width}
+            height={regular.height}
+            loading="lazy"
+            decoding="async"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="project-card__layer project-card__layer--hover"
+            src={hover.src}
+            alt=""
+            width={hover.width}
+            height={hover.height}
+            loading="lazy"
+            decoding="async"
+          />
         </span>
-      </div>
-      <h3 className="project-card__title">{project.listingTitle}</h3>
-    </Link>
+        <span className="visually-hidden">{project.title}</span>
+      </Link>
+    </li>
   );
 }

@@ -11,6 +11,13 @@
 
 ## Design source of truth
 
+- For the 2026-08-26 final implementation pass, read
+  `docs/media-library.md` and
+  `docs/figma-reference/export-2026-08-26/README.md`. These local exports
+  supersede older Pending asset notes for Homepage, Experience Design, Artwork,
+  and About. Do not call Figma for assets already covered by the final media
+  library.
+
 - The linked Figma file is the visual and interaction source of truth.
 - Figma read/extraction work is enabled for file
   `Yxh4ZBgzy7N7KdV4PDxVGA` and the nodes recorded in `docs/figma-links.md`.
@@ -21,12 +28,16 @@
 - Do not invent layouts, colors, typography, assets, breakpoints, or motion when
   the Figma source has not been inspected.
 - Record extracted values in `docs/design-spec.md` before implementing a page.
+- For Homepage `78:61`, `docs/design-system.md` is the completed implementation
+  specification. Read it in full before changing Homepage code or CSS.
 - Read `docs/asset-manifest.md` before using or re-exporting Figma imagery.
   Reuse completed local assets and do not substitute entries marked `Pending`.
 - Use `docs/figma-reference/` for route-level desktop visual comparison. Never
   ship a full-page reference PNG as a webpage background.
 - Preserve the intent of the Figma design while making responsive and accessible
   adaptations explicit.
+- A missing image may be represented by a neutral placeholder, but this does not
+  authorize changing the documented layout, spacing, ratio, crop, or hierarchy.
 
 ## Implementation rules
 
