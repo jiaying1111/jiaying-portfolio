@@ -6,57 +6,21 @@
  * Media comes from the approved export in
  * public/images/projects/digital-no-more-mad/ (README-media-map.md order).
  * Layout and type belong to Frame 13-2, not to the source HTML.
+ *
+ * Overview title, category, year, and summary follow Frame 13-2 / docs/content.md
+ * so the case-study header matches the rest of the site. Chapter copy follows
+ * the HTML.
  */
 
-export type CaseStudyMedia = {
-  src: string;
-  alt: string;
-  caption?: string;
-  /** Intrinsic pixel size of the export; also caps the rendered width. */
-  width: number;
-  height: number;
-  /** Rendered width when Frame 13-2 places the image below its intrinsic size. */
-  displayWidth?: number;
-};
+import type { CaseStudy } from "@/data/case-studies/types";
 
-/** A titled text + image pair inside a module, e.g. one research finding. */
-export type CaseStudyEntry = {
-  id: string;
-  title: string;
-  copy: string;
-  media?: CaseStudyMedia;
-};
-
-export type CaseStudyModule = {
-  id: string;
-  title: string;
-  copy?: string;
-  /** Set apart from `copy` at display size — the HTML "how might we" question. */
-  statement?: string;
-  points?: { term: string; detail: string }[];
-  steps?: string[];
-  entries?: CaseStudyEntry[];
-  media?: CaseStudyMedia[];
-};
-
-export type CaseStudyChapter = {
-  id: string;
-  number: string;
-  label: string;
-  title: string;
-  lead: string;
-  modules: CaseStudyModule[];
-};
-
-export type CaseStudy = {
-  slug: string;
-  category: string;
-  year: string;
-  summary: string;
-  hero: CaseStudyMedia;
-  metadata: { label: string; value: string }[];
-  chapters: CaseStudyChapter[];
-};
+export type {
+  CaseStudy,
+  CaseStudyChapter,
+  CaseStudyEntry,
+  CaseStudyMedia,
+  CaseStudyModule,
+} from "@/data/case-studies/types";
 
 const media = "/images/projects/digital-no-more-mad";
 
@@ -158,7 +122,7 @@ export const digitalNoMoreMadCaseStudy: CaseStudy = {
         {
           id: "interviews",
           title: "Interviews",
-          copy: "I interviewed Colin, a graphic designer with three years of digital-nomad experience, and Ivy, a manager with five years of experience. Both valued the freedom of the working model, and both described problems that had nothing to do with location.",
+          copy: "Conversations with a graphic designer and a manager surfaced recurring challenges beyond location independence.",
           media: [
             {
               src: `${media}/research/interviews-colin-ivy.png`,
@@ -172,7 +136,7 @@ export const digitalNoMoreMadCaseStudy: CaseStudy = {
         {
           id: "persona",
           title: "Persona",
-          copy: "Alexander is a programmer who has worked as a digital nomad for one year and moves between roughly five countries each year. He wants to focus on meaningful work while spending less time managing fragmented daily operations.",
+          copy: "The findings were synthesized into the Alexander persona.",
           media: [
             {
               src: `${media}/research/persona-alexander.png`,
@@ -246,6 +210,7 @@ export const digitalNoMoreMadCaseStudy: CaseStudy = {
           id: "comparative-cases",
           title: "Comparative cases",
           copy: "DAO participation and skill-exchange communities suggest a system combining transparent value distribution with active knowledge sharing.",
+          pair: true,
           media: [
             {
               src: `${media}/research/dao-distribution-case-study.png`,

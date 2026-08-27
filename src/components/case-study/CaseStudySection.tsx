@@ -1,8 +1,38 @@
 import { MediaBlock } from "@/components/case-study/MediaBlock";
 import type {
   CaseStudyChapter,
+  CaseStudyMedia,
   CaseStudyModule,
-} from "@/data/case-studies/digital-no-more-mad";
+} from "@/data/case-studies/types";
+
+function MediaList({
+  items,
+  pair = false,
+  priority = false,
+}: {
+  items: CaseStudyMedia[];
+  pair?: boolean;
+  priority?: boolean;
+}) {
+  if (items.length === 0) {
+    return null;
+  }
+
+  const blocks = items.map((item, index) => (
+    <MediaBlock
+      key={item.src}
+      media={item}
+      priority={priority && index === 0}
+      inPair={pair}
+    />
+  ));
+
+  if (pair && items.length === 2) {
+    return <div className="case-media-pair">{blocks}</div>;
+  }
+
+  return blocks;
+}
 
 function Module({
   module,
@@ -42,13 +72,13 @@ function Module({
         </ol>
       ) : null}
 
-      {module.media?.map((item, index) => (
-        <MediaBlock
-          key={item.src}
-          media={item}
-          priority={priorityMedia && index === 0}
+      {module.media ? (
+        <MediaList
+          items={module.media}
+          pair={module.pair}
+          priority={priorityMedia}
         />
-      ))}
+      ) : null}
 
       {module.entries ? (
         <div className="case-entries">
@@ -78,11 +108,8 @@ export function CaseStudySection({
       className="case-chapter"
       aria-labelledby={`${chapter.id}-title`}
     >
-      <p className="case-chapter__eyebrow">
+      <h2 className="case-chapter__eyebrow" id={`${chapter.id}-title`}>
         {chapter.number} / {chapter.label.toUpperCase()}
-      </p>
-      <h2 className="case-chapter__title" id={`${chapter.id}-title`}>
-        {chapter.title}
       </h2>
       <p className="case-chapter__lead">{chapter.lead}</p>
 

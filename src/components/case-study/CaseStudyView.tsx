@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CaseStudySection } from "@/components/case-study/CaseStudySection";
 import { ChapterNav } from "@/components/case-study/ChapterNav";
 import { ProjectMetadata } from "@/components/case-study/ProjectMetadata";
-import type { CaseStudy } from "@/data/case-studies/digital-no-more-mad";
+import type { CaseStudy } from "@/data/case-studies/types";
 import type { Project } from "@/data/projects";
 
 type CaseStudyViewProps = {
@@ -29,6 +29,7 @@ export function CaseStudyView({
           height={caseStudy.hero.height}
           sizes="100vw"
           priority
+          className="case-hero__image"
         />
       </div>
 
