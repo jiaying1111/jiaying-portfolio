@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { AboutRoleAccordion } from "@/components/about/AboutRoleAccordion";
 import { aboutContent, socialControls } from "@/data/site";
-import type { AboutRoleEntry } from "@/data/site";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { localize } from "@/i18n/localize";
+import { ui } from "@/i18n/ui";
 
 function EntryIndex({ index, date }: { index: string; date: string }) {
   return (
@@ -11,48 +16,32 @@ function EntryIndex({ index, date }: { index: string; date: string }) {
   );
 }
 
-function RoleEntries({ entries }: { entries: readonly AboutRoleEntry[] }) {
-  return (
-    <ol className="about-entries">
-      {entries.map((entry) => (
-        <li key={`${entry.index}-${entry.organization}`}>
-          <div className="about-entry">
-            <EntryIndex index={entry.index} date={entry.date} />
-            <div>
-              <p className="about-entry__organization">{entry.organization}</p>
-              <p className="about-entry__role">{entry.role}</p>
-              <ul className="about-entry__bullets">
-                {entry.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </li>
-      ))}
-    </ol>
-  );
-}
-
 export function AboutSection() {
+  const { locale } = useLocale();
+  const copy = ui(locale);
+  const content = localize(aboutContent, locale);
+  const controls = localize(socialControls, locale);
   const skillPills = [
-    ...aboutContent.skills.languages,
-    ...aboutContent.skills.items,
+    ...content.skills.languages,
+    ...content.skills.items,
   ];
 
   return (
     <main className="about measure">
       <div className="about__intro">
-        <div>
-          <h1 className="about__title">{aboutContent.title}</h1>
+        <div className="about__intro-copy">
+          <h1 className="about__title">{content.title}</h1>
           <div className="about__social">
-            {socialControls.map((control) =>
+            {controls.map((control) =>
               control.href ? (
                 <a
                   key={control.id}
-                  className="about-circle"
+                  className={`about-circle about-circle--${control.id}`}
                   href={control.href}
                   aria-label={control.label}
+                  {...(control.href.startsWith("http")
+                    ? { target: "_blank", rel: "noreferrer" }
+                    : {})}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={control.icon.src} alt="" width={26} height={26} />
@@ -60,7 +49,7 @@ export function AboutSection() {
               ) : (
                 <span
                   key={control.id}
-                  className="about-circle"
+                  className={`about-circle about-circle--${control.id}`}
                   aria-hidden="true"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -69,12 +58,12 @@ export function AboutSection() {
               ),
             )}
           </div>
-          <p className="about__bio">{aboutContent.biography}</p>
+          <p className="about__bio">{content.biography}</p>
         </div>
         <div className="about__portrait">
           <Image
-            src={aboutContent.portrait.src}
-            alt={aboutContent.portrait.alt}
+            src={content.portrait.src}
+            alt={content.portrait.alt}
             fill
             sizes="(max-width: 899px) 320px, 532px"
             priority
@@ -86,10 +75,10 @@ export function AboutSection() {
 
       <section className="about-section" aria-labelledby="about-education">
         <h2 className="about-section__title" id="about-education">
-          Education
+          {copy.education}
         </h2>
         <ol className="about-entries">
-          {aboutContent.education.map((entry) => (
+          {content.education.map((entry) => (
             <li key={entry.index}>
               <div className="about-entry">
                 <EntryIndex index={entry.index} date={entry.date} />
@@ -110,33 +99,38 @@ export function AboutSection() {
         aria-labelledby="about-experience"
       >
         <h2 className="about-section__title" id="about-experience">
-          Experience
+          {copy.selectedExperience}
         </h2>
-        <RoleEntries entries={aboutContent.experience} />
-      </section>
-
-      <div className="about__rule" />
-
-      <section className="about-section" aria-labelledby="about-extracurricular">
-        <h2 className="about-section__title" id="about-extracurricular">
-          Extracurricular Activities
-        </h2>
-        <RoleEntries entries={aboutContent.extracurricular} />
+        <AboutRoleAccordion
+          entries={content.experience}
+          sectionId="about-experience"
+        />
       </section>
 
       <div className="about__rule" />
 
       <section className="about-section" aria-labelledby="about-awards">
         <h2 className="about-section__title" id="about-awards">
-          Awards
+          {copy.awards}
         </h2>
         <ol className="about-entries">
-          {aboutContent.awards.map((entry) => (
+          {content.awards.map((entry) => (
             <li key={entry.index}>
               <div className="about-entry">
                 <EntryIndex index={entry.index} date={entry.date} />
                 <div>
-                  <p className="about-entry__organization">{entry.title}</p>
+                  {entry.href ? (
+                    <a
+                      className="about-entry__organization about-entry__link"
+                      href={entry.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {entry.title} ↗
+                    </a>
+                  ) : (
+                    <p className="about-entry__organization">{entry.title}</p>
+                  )}
                 </div>
               </div>
             </li>
@@ -148,7 +142,7 @@ export function AboutSection() {
 
       <section className="about-section" aria-labelledby="about-skills">
         <h2 className="about-section__title" id="about-skills">
-          Personal Skills
+          {copy.personalSkills}
         </h2>
         <ul className="about-skills">
           {skillPills.map((skill) => (

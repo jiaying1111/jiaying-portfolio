@@ -1,7 +1,7 @@
 import {
   experienceListingMedia,
   homepageCardAssets,
-  type CardStatePair,
+  type HomepageCardAssets,
   type HoverLoopSet,
 } from "@/data/assets";
 
@@ -18,7 +18,7 @@ export type Project = {
   tools: string;
   listingGroup: ProjectListingGroup;
   listingMedia: HoverLoopSet;
-  card: CardStatePair;
+  card: HomepageCardAssets;
 };
 
 export const projects: Project[] = [

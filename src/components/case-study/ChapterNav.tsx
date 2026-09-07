@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { joinClassNames } from "@/lib/utils";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { ui } from "@/i18n/ui";
 
 type ChapterNavProps = {
   chapters: { id: string; number: string; label: string }[];
@@ -24,6 +26,8 @@ function scrollToChapter(id: string) {
 }
 
 export function ChapterNav({ chapters }: ChapterNavProps) {
+  const { locale } = useLocale();
+  const copy = ui(locale);
   const [activeId, setActiveId] = useState(chapters[0]?.id ?? "");
 
   const goTo = useCallback((id: string, updateHistory: boolean) => {
@@ -67,25 +71,32 @@ export function ChapterNav({ chapters }: ChapterNavProps) {
       return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    let frame = 0;
+    const updateActiveChapter = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        const marker = window.innerWidth < 900 ? 96 : 72;
+        const active = sections.reduce(
+          (current, section) =>
+            section.getBoundingClientRect().top <= marker ? section : current,
+          sections[0],
+        );
+        setActiveId(active.id);
+      });
+    };
 
-        if (visible[0]) {
-          setActiveId(visible[0].target.id);
-        }
-      },
-      { rootMargin: "-15% 0px -70% 0px", threshold: 0 },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    updateActiveChapter();
+    window.addEventListener("scroll", updateActiveChapter, { passive: true });
+    window.addEventListener("resize", updateActiveChapter);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateActiveChapter);
+      window.removeEventListener("resize", updateActiveChapter);
+    };
   }, [chapters]);
 
   return (
-    <nav className="case-nav" aria-label="Case study chapters">
+    <nav className="case-nav" aria-label={copy.caseChapters}>
       <ol className="case-nav__list">
         {chapters.map((chapter) => {
           const current = chapter.id === activeId;

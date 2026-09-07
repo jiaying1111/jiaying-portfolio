@@ -4,6 +4,29 @@ Status: **CURRENT — supersedes every earlier design token document**
 Reference package date: 2026-08-26, 06:02–06:04  
 Desktop reference width: 1440px
 
+## 2026-09-03 global editorial override
+
+The 2026-09-03 editorial HTML is the layout, surface, and motion reference.
+Typography stays on the shared Inter / Noto Sans scale below. Do not copy the
+HTML’s 10px navigation; 12px nav with tracking is the site minimum.
+
+- Use a 1160px editorial content measure, 78px header, thin gray rules, pale
+  gray canvas `#fcfcfb`, black footer, generous vertical spacing, and line-based
+  hierarchy.
+- Apply the DreamWhorl case-study structure to every complete case study:
+  full-bleed hero, overview and metadata, sticky chapter navigation, spacious
+  chapter modules, neutral image surfaces, and restrained violet accents.
+- Every route includes a fixed 2px reading progress bar.
+- Sections and modules reveal with a 0.65s opacity/18px vertical transition.
+- Images use a restrained 0.7s scale-to-1.02 hover treatment.
+- Preserve the existing carousel, hover-loop, rail, tabs, accordion, and
+  accessibility behavior; only restyle them to this editorial system.
+- Disable nonessential motion under `prefers-reduced-motion`.
+
+The remaining sections document the underlying typography and content-specific
+measurements. Layout and motion follow this editorial override; type size and
+hierarchy follow §3.
+
 This specification is derived from the newest `home_figma.zip`,
 `experience__figma.zip`, `artwork_figma.zip`, and `about_figma.zip` exports.
 The authoritative rendered references are only the files inside:
@@ -25,7 +48,7 @@ necessary. The reference image always wins over an inferred number.
 
 ```css
 :root {
-  --canvas: #ffffff;
+  --canvas: #fcfcfb;
   --ink: #000000;
   --text-secondary: #808080;
   --text-disabled: #bfbfbf;
@@ -39,7 +62,7 @@ necessary. The reference image always wins over an inferred number.
 }
 ```
 
-- Canvas and primary text are pure white/black.
+- Canvas is a pale warm gray `#fcfcfb`. Primary text is black.
 - Listing category/year uses neutral gray, approximately `#808080`.
 - `More In Progress...` uses `#BFBFBF`; rules use `#D9D9D9`.
 - Footer is pure black with white text.
@@ -56,26 +79,45 @@ necessary. The reference image always wins over an inferred number.
 
 ## 3. Current desktop type scale
 
+Shared site scale: **12 / 16 / 24 / 32**, plus a Hero-only display tier
+(52 / 58) and a 13px wordmark. One step smaller than the previous 14 / 20 /
+28 / 40 ladder, for a finer editorial texture. Orphan sizes from the old
+scale are not used.
+
+Every route — listings, About, Experience case studies, and Artwork — uses
+this scale. Case studies may change color and spacing, not type size.
+
 | Token | Family | Weight/style | Size | Line height | Color | Use |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| `logo` | Inter | 800 | 16px | 54px | black | `JIAYING LI` |
-| `nav` | Inter | 300 | 14px | 54px | black | Header nav |
-| `back-link` | Inter | 300 | 14px | 20px | secondary | Back to Home |
-| `listing-page-title` | Inter | 700 | 72px | 86px | black | Experience / Artwork |
-| `listing-page-intro` | Inter | 300 | 32px | 44px | black | Page statement |
-| `tab` | Inter | 400 | 20px | 28px | black | Page tabs |
-| `work-title` | Inter | 700 | 32px | 40px | black | Listing title |
-| `work-meta` | Inter | 300 | 14px | 20px | secondary | Category/year |
-| `work-summary` | Inter | 400 | 14px | 28px | black | Description |
-| `spec-label` | Inter | 700 | 14px | 20px | black | Type/Tools |
-| `spec-value` | Inter | 400 | 14px | 20px | black | Spec value |
-| `button-label` | Inter | 400 | 20px | 24px | black | View Project |
-| `progress-label` | Inter | 400 | 20px | 28px | disabled | More In Progress |
-| `footer-heading` | Noto Sans | 500 | 28px | 54px | white | Footer heading |
-| `footer-link` | Noto Sans | 300 | 20px | 54px | white | Footer link |
+| `logo` | Inter | 800 | 13px | 54px | black | `JIAYING LI` wordmark |
+| `nav` | Inter | 300 | 12px | 54px | black | Header nav |
+| `back-link` | Inter | 300 | 12px | 18px | secondary | Back to Home |
+| `listing-page-title` | Inter | 700 | 32px | 42px | black | Experience / Artwork |
+| `listing-page-intro` | Inter | 300 | 16px | 26px | black | Page statement |
+| `tab` | Inter | 400 | 16px | 26px | black | Page tabs |
+| `work-title` | Inter | 700 | 24px | 32px | black | Listing title |
+| `work-meta` | Inter | 300 | 12px | 18px | secondary | Category/year |
+| `work-summary` | Inter | 400 | 16px | 26px | black | Description |
+| `spec-label` | Inter | 700 | 12px | 18px | black | Type/Tools |
+| `spec-value` | Inter | 400 | 12px | 18px | black | Spec value |
+| `button-label` | Inter | 400 | 16px | 24px | black | View Project |
+| `progress-label` | Inter | 400 | 16px | 26px | disabled | More In Progress |
+| `case-study-title` | Inter | 500 | 32px | 42px | black | Project detail title, chapter headline |
+| `case-module-title` | Inter | 400 | 24px | 32px | black | Case-study module heading |
+| `footer-heading` | Noto Sans | 500 | 24px | 54px | white | Footer heading |
+| `footer-link` | Noto Sans | 300 | 16px | 54px | white | Footer link |
 
-The previous implementation's 52px listing H1, 16px page intro, red metadata,
-14px CTA, and 18px footer heading are obsolete.
+The previous implementation's 40px listing H1, 20px page intro, and 28px
+module titles are superseded by this smaller scale.
+
+Components must reference the shared tokens rather than repeating values:
+
+- Meta / captions: `--type-meta-size: 12px` / `--type-meta-line-height: 18px`
+- Body / intros / UI: `--type-body-size: 16px` / `--type-body-line-height: 26px`
+- Section and work titles: `--type-title-size: 24px` / `--type-title-line-height: 32px`
+- Page titles: `--type-large-title-size: 32px` / `--type-large-title-line-height: 42px`
+
+The homepage Hero remains a separate display-heading tier (52 / 58).
 
 ## 4. Header
 
@@ -93,9 +135,9 @@ folder. Intro canvas is 1440 × 2922; project states are 1440 × 2953.
 
 | Token | Weight/style | Size | Line height | Color |
 | --- | --- | ---: | ---: | --- |
-| Category / `Hi, this is` | Thin 100 | 64px | 84px | black |
-| Project/name | Light 300 Italic | 70px | 84px | black |
-| Summary/tagline | Light 300 | 20px | 54px | `#686868` |
+| Category / `Hi, this is` | Thin 100 | 52px | 68px | black |
+| Project/name | Light 300 Italic | 58px | 68px | black |
+| Summary/tagline | Light 300 | 16px | 32px | `#686868` |
 
 - Intro hero is approximately 887px high.
 - Main copy begins around x181.
@@ -109,7 +151,7 @@ folder. Intro canvas is 1440 × 2922; project states are 1440 × 2953.
 | Element | Desktop target |
 | --- | --- |
 | Content | 1080px centered, 180px gutters |
-| Section title / More | 28px/54px, regular |
+| Section title / More | 24px/40px, regular |
 | Experience grid | 2 columns, 28–29px gaps |
 | Experience media | source ratios around 521–530 × 438 |
 | Artwork tile | 350 × 350px |
@@ -153,14 +195,14 @@ Current canvases: Experience Projects/Practice and Artwork Installation are
 
 | Token | Weight/style | Size | Line height | Use |
 | --- | --- | ---: | ---: | --- |
-| Page/section heading | Regular 400 | 52px | 64px | About, Education, etc. |
-| Biography | Regular 400 | 20px | 42px | Introduction |
-| Timeline index | Bold 700 | 28px | 34px | 01, 02... |
-| Date | Regular 400 | 20px | 28px | Dates |
-| Institution | Semi Bold 600 | 28px | 36px | Organization |
-| Degree/role | Regular Italic | 28px | 36px | Degree/role |
-| Bullet copy | Regular 400 | 20px | 28px | Details |
-| Skill pill | Regular 400 | 28px | 36px | Final skill labels |
+| Page/section heading | Regular 400 | 32px | 42px | About, Education, etc. |
+| Biography | Regular 400 | 16px | 34px | Introduction |
+| Timeline index | Bold 700 | 24px | 32px | 01, 02... |
+| Date | Regular 400 | 16px | 26px | Dates |
+| Institution | Semi Bold 600 | 24px | 32px | Organization |
+| Degree/role | Regular Italic | 24px | 32px | Degree/role |
+| Bullet copy | Regular 400 | 16px | 26px | Details |
+| Skill pill | Regular 400 | 24px | 32px | Final skill labels |
 
 ### About geometry
 
@@ -179,7 +221,8 @@ Current canvases: Experience Projects/Practice and Artwork Installation are
 
 No mobile reference exists. Preserve hierarchy while adapting:
 
-- Scale large headings with `clamp()`.
+- Keep the 12 / 16 / 24 / 32 ladder. Do not collapse module titles into body size.
+- Page titles may clamp between 24 and 32. Homepage display may clamp down to 32.
 - Stack listing media above details below approximately 900px.
 - Keep titles, metadata, and actions visible without hover.
 - Homepage hero must never collapse to zero height.

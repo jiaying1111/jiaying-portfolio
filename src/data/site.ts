@@ -7,7 +7,7 @@ export const siteIdentity = {
   role: "Experience Designer and Illustrator",
   biography:
     "Jiaying Li is an Experience Designer and Illustrator. Her practice explores the intersection of emerging technologies, storytelling, and human-centered design.",
-  email: "jiayingli0128@gmail.com",
+  email: "jiaying_li@gsd.harvard.edu",
 } as const;
 
 export const navigation = [
@@ -39,9 +39,9 @@ export const socialControls: SocialControl[] = [
   },
   {
     id: "linkedin",
-    label: "LinkedIn (link pending verification)",
+    label: "Jiaying Li on LinkedIn",
     icon: socialIcons.linkedin,
-    href: null,
+    href: "https://www.linkedin.com/in/jiaying-li-a71b5324a/",
   },
 ];
 
@@ -63,7 +63,7 @@ export const heroSlides: HeroSlide[] = [
     display: "JIAYING LI",
     summary: "I believe every interaction tells a story.",
     image: heroSlideImages.intro,
-    href: null,
+    href: "/artwork",
   },
   {
     id: "digital-no-more-mad",
@@ -141,117 +141,131 @@ export type AboutRoleEntry = {
   role: string;
   date: string;
   bullets: string[];
+  href?: string;
 };
 
 export type AboutAwardEntry = {
   index: string;
   title: string;
   date: string;
+  href?: string;
 };
 
 export const aboutContent = {
   title: "About",
   portrait: aboutPortrait,
-  biography: siteIdentity.biography,
+  biography:
+    "Hi! My name is Jiaying, and I am an Experience Designer and Illustrator. My practice explores the intersection of emerging technologies, storytelling, and human-centered design.",
   education: [
     {
       index: "01",
       institution: "Harvard University",
-      date: "Expected 2028",
-      qualification: "MDes Mediums",
+      date: "Sept 2026 - Expected June 2028",
+      qualification: "Master in Design Studies · Track: Mediums",
     },
     {
       index: "02",
       institution: "Rhode Island School of Design",
-      date: "June 2026",
-      qualification: "Illustration (Honor Distinction)",
+      date: "Sept 2022 - June 2026",
+      qualification: "Illustration · Computation, Technology, Culture · GPA 3.95/4.00",
     },
   ] satisfies AboutEducationEntry[],
   experience: [
     {
       index: "01",
-      organization: "Shanghai Concord Bilingual School",
-      role: "Teaching Assistant",
-      date: "July 2026",
+      organization: "HarvardXR Club",
+      role: "Design & Operations Lead",
+      date: "May 2023 - Present",
+      href: "https://www.harvardxr.com/",
       bullets: [
-        "Assisted Prof. Polly Becker in teaching experimental workshop, a course focused on collage and image-making;",
-        "Collaborated on syllabus development and course planning.",
+        "Led visual design for the event, including posters, brochures, and social media graphics, ensuring a cohesive visual identity.",
+        "Collaborated closely with technical, operations, and marketing teams to align visuals and maximize audience engagement.",
+        "Produced 30+ materials for online and offline promotion, boosting the event’s professionalism, recognition, and social media reach.",
       ],
     },
     {
       index: "02",
       organization: "Rhode Island School of Design",
-      role: "Teaching Assistant",
+      role: "Teaching Assistant · Ambient Interfaces",
       date: "Sept 2025 - Dec 2025",
       bullets: [
-        "Assisted Prof. Tess Oldfield in teaching DM2000–Ambient Interfaces, a course on physical computing and interactive art;",
+        "Assisted Prof. Tess Oldfield in teaching DM2000—Ambient Interfaces, a course on physical computing and interactive art.",
         "Prepared technical materials, coordinated class logistics, and supported tutorials on C++ coding.",
+        "Guided students in developing, prototyping, and testing responsive systems, providing feedback during critiques.",
       ],
     },
     {
       index: "03",
-      organization: "Lenovo (Beijing) Co., Ltd",
-      role: "Visual Design Intern",
-      date: "June 2025 - Aug 2025",
-      bullets: [
-        "Designed key visuals and campaign materials for three large-scale events at Lenovo Customer Briefing Center, including KVs, brochures, presentation decks, and social media graphics, ensuring consistent brand identity.",
-        "Led the end-to-end design process and produced 30+ promotional assets aligned with business objectives.",
-        "Supported event planning, on-site coordination, and community engagement to advance marketing and operational goals.",
-      ],
-    },
-  ] satisfies AboutRoleEntry[],
-  extracurricular: [
-    {
-      index: "01",
-      organization: "HarvardXR Club",
-      role: "Design & Operations Lead",
-      date: "May 2023 - Present",
-      bullets: [
-        "Led visual design for the event, including posters, brochures, social media graphics, etc., ensuring cohesive visual identity;",
-        "Collaborated closely with technical, operations, and marketing teams to align visuals and maximize audience engagement;",
-        "Produced 30+ materials for online & offline promotion, boosting the event’s professionalism, recognition and social media reach",
-      ],
-    },
-    {
-      index: "02",
-      organization: "Creative.Tech Community",
-      role: "Design Lead",
+      organization: "Future Reality AI Film Hackathon",
+      role: "Design & Marketing Lead",
       date: "May 2025 - Present",
+      href: "https://future-reality.ai.studio/",
       bullets: [
-        "Assisted in event planning and designed promotional materials, from initial concept discussions to final execution;",
-        "Co-organized a roundtable session featuring the Horizon of Khufu core team from Excurio and Professor Huang from Shanghai Jiao Tong University, contributing to the event’s professional profile and reach.",
-      ],
-    },
-    {
-      index: "03",
-      organization: "The Brown Daily Herald, Brown University",
-      role: "Illustrator",
-      date: "Sept 2024 - Sept 2025",
-      bullets: [
-        "Collaborated with article authors to capture the tone and themes of each piece in visual form;",
-        "Created sketches and refined them into final illustrations according to editors’ feedback and requirements;",
-        "Created monthly editorial illustrations published in Post-Magazine, consistently supporting the publication’s visual direction.",
+        "Led the event’s visual identity and cross-platform marketing strategy, creating campaign graphics, social media content, and promotional materials.",
+        "Developed and managed the marketing calendar from open call through the submission deadline.",
       ],
     },
     {
       index: "04",
-      organization: "After Studio Podcast",
-      role: "Content Team Member",
-      date: "Nov 2022 - Oct 2023",
+      organization: "Lenovo (Beijing) Co., Ltd",
+      role: "Visual Design Intern",
+      date: "June 2025 - Aug 2025",
       bullets: [
-        "Sourced and coordinated interviewees, assisted with podcast planning and hosting, and drafted interview questions;",
-        "Contributed to content ideation, theme selection, and headline creation for each episode;",
-        "Designed posters, edited audio, and produced articles for WeChat, ensuring engaging and cohesive multimedia content.",
+        "Designed key visuals and campaign materials for three large-scale events at Lenovo Customer Beijing Center, including KVs, brochures, presentation decks, and social media graphics; produced 30+ promotional assets aligned with business objectives.",
+        "Supported event planning, on-site coordination, and community engagement to advance marketing and operational goals.",
       ],
     },
     {
       index: "05",
+      organization: "Creative.Tech Community",
+      role: "Design Lead",
+      date: "Sept 2024 - Sept 2025",
+      href: "https://www.creative.tech/",
+      bullets: [
+        "Assisted in event planning and designed promotional materials, from initial concept discussions to final execution.",
+        "Co-organized a roundtable session featuring the Horizon of Khufu core team from Excurio and Professor Huang from Shanghai Jiao Tong University.",
+      ],
+    },
+    {
+      index: "06",
       organization: "XR Club, Brown University and RISD",
       role: "Designer",
       date: "Sept 2022 - June 2023",
       bullets: [
-        "Supported exhibition arrangement and promotional activities, including artwork arrangement, poster design and installation;",
-        "Designed and finished part of the print materials to enhance the audience’s engagement.",
+        "Supported exhibition arrangement and promotional activities, including artwork arrangement, poster design, and installation.",
+        "Designed and finished part of the print materials to enhance audience engagement.",
+      ],
+    },
+    {
+      index: "07",
+      organization: "Rhode Island School of Design",
+      role: "Teaching Assistant · The Collaged Image",
+      date: "Dec 2025 - Jan 2026",
+      bullets: [
+        "Assisted Prof. Polly Becker in teaching ILLUS 3760-101: The Collaged Image, a course focused on collage and image-making.",
+        "Collaborated on syllabus development and course planning.",
+        "Supported student experimentation and provided feedback during in-class critiques and individual consultations.",
+      ],
+    },
+    {
+      index: "08",
+      organization: "Shanghai Concord Bilingual School",
+      role: "Teaching Assistant · Experimental Workshop",
+      date: "July 2026",
+      bullets: [
+        "Assisted Prof. Polly Becker in teaching an experimental workshop focused on collage and image-making.",
+        "Collaborated on syllabus development and course planning.",
+      ],
+    },
+    {
+      index: "09",
+      organization: "After Studio Podcast",
+      role: "Content Team Member",
+      date: "Nov 2022 - Oct 2023",
+      bullets: [
+        "Sourced and coordinated interviewees, assisted with podcast planning and hosting, and drafted interview questions.",
+        "Contributed to content ideation, theme selection, and headline creation for each episode.",
+        "Designed posters, edited audio, and produced articles for WeChat, ensuring engaging and cohesive multimedia content.",
       ],
     },
   ] satisfies AboutRoleEntry[],
@@ -260,6 +274,7 @@ export const aboutContent = {
       index: "01",
       title: "Shortlist Winner for the Hiii Illustration International Award 2025",
       date: "July 2026",
+      href: "https://hiiibrand.com/winners/0ff52906a1ca445393d705ed5fc969ac",
     },
     {
       index: "02",
@@ -277,17 +292,18 @@ export const aboutContent = {
       index: "04",
       title: "Shortlist Winner for the Hiii Illustration International Award 2024",
       date: "July 2025",
+      href: "https://hiiibrand.com/winners/d0b18983add248b7b2a9b2c18873a0bc",
     },
     {
       index: "05",
       title:
         "Most Popular Award for the Hiii Illustration International Award 2024",
       date: "July 2025",
+      href: "https://hiiibrand.com/winners/d0b18983add248b7b2a9b2c18873a0bc",
     },
   ] satisfies AboutAwardEntry[],
   /**
-   * Spelling mirrors docs/content.md exactly ("Finalcut", "Java Script"); it
-   * must not be normalised without designer approval.
+   * Skills follow the English CV. Tool names stay in English.
    */
   skills: {
     languages: ["Chinese", "English"],
@@ -295,15 +311,15 @@ export const aboutContent = {
       "Microsoft Office Suite",
       "Adobe Creative Suite",
       "Figma",
-      "Finalcut",
+      "Final Cut",
       "Procreate",
       "Blender",
       "Rhino",
       "Arduino physical computing",
-      "C++ coding language",
+      "C++",
       "HTML",
       "CSS",
-      "Java Script",
+      "JavaScript",
       "Digital Fabrication (Laser-cutting, 3D printing)",
       "various hand-drawing media",
     ],

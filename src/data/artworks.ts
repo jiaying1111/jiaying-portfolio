@@ -44,7 +44,7 @@ const installation: Artwork[] = [
     section: "installation",
     title: "Present & Absent",
     category: "Motion Capture",
-    year: "2024",
+    year: "2025",
     summary:
       "Using motion capture and performance, this project explores how gender shapes whose lives are valued, remembered, and allowed to exist.",
     type: "Independent Project",
@@ -121,11 +121,10 @@ const illustration: Artwork[] = [
     category: "Animation",
     year: "2025",
     summary:
-      "This work explores the complex and fluid relationship between humans and animals through a series of interactive box installations that can be disassembled, reassembled, folded, and unfolded.",
+      "Imaginary beings born from memory, intuition, and incomplete forms.",
     type: "Independent Project",
     tools: "Collage",
     listingMedia: artworkListingMedia["imaginary-beings"],
-    summaryNeedsAuthorReview: true,
   },
   {
     id: "hypnagogia",
@@ -138,6 +137,18 @@ const illustration: Artwork[] = [
     type: "Independent Project",
     tools: "Collage",
     listingMedia: artworkListingMedia.hypnagogia,
+  },
+  {
+    id: "bodigram",
+    section: "illustration",
+    title: "Bodigram",
+    category: "Interactive",
+    year: "2025",
+    summary:
+      "An interactive card set that lets viewers choose words and body fragments to form a composite, evolving body.",
+    type: "Independent Project",
+    tools: "Collage",
+    listingMedia: artworkListingMedia.bodigram,
   },
 ];
 
@@ -152,4 +163,8 @@ export const artworks: Artwork[] = artworkSections.flatMap(
 
 export function getArtworkSection(id: ArtworkSectionId) {
   return artworkSections.find((section) => section.id === id);
+}
+
+export function getArtworkById(id: string) {
+  return artworks.find((artwork) => artwork.id === id);
 }

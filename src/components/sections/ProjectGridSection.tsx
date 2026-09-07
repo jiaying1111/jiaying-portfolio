@@ -1,22 +1,32 @@
+"use client";
+
 import Link from "next/link";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { projects } from "@/data/projects";
 import { homepageCopy } from "@/data/site";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { localize } from "@/i18n/localize";
+import { ui } from "@/i18n/ui";
 
 export function ProjectGridSection() {
+  const { locale } = useLocale();
+  const copy = localize(homepageCopy, locale);
+  const items = localize(projects, locale);
+  const moreCopy = ui(locale);
+
   return (
     <section className="home-experience measure" aria-labelledby="home-experience-title">
       <div className="home-section__head">
         <h2 className="home-section__title" id="home-experience-title">
-          {homepageCopy.experienceLabel}
+          {copy.experienceLabel}
         </h2>
         <Link href="/experience-design" className="home-section__more">
-          {homepageCopy.moreLabel}
-          <span className="visually-hidden"> Experience Design projects</span>
+          {copy.moreLabel}
+          <span className="visually-hidden">{moreCopy.moreExperience}</span>
         </Link>
       </div>
       <ul className="project-grid">
-        {projects.map((project) => (
+        {items.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}
       </ul>

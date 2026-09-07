@@ -6,10 +6,10 @@ export type MediaAsset = {
   alt: string;
 };
 
-export type CardStatePair = {
-  id: string;
-  regular: MediaAsset;
-  hover: MediaAsset;
+export type HomepageCardAssets = {
+  default: MediaAsset;
+  hoverFrames: MediaAsset[];
+  overlay: MediaAsset;
 };
 
 export type HoverLoopSet = {
@@ -100,92 +100,121 @@ export const heroSlideImages = {
   },
 } as const satisfies Record<string, MediaAsset>;
 
-/** Homepage Experience Design cards: regular + hover state per project. */
+const homepageCardOverlay: MediaAsset = {
+  id: "home-card-overlay",
+  src: "/images/home/experience-cards/shared-hover-overlay.png",
+  width: 521,
+  height: 438,
+  alt: "",
+};
+
+type HomepageHoverFrameSpec = {
+  ext: "svg" | "png" | "jpg";
+  width: number;
+  height: number;
+};
+
+function homepageCardMedia(
+  fileSlug: string,
+  title: string,
+  defaultSize: { width: number; height: number },
+  frames: [HomepageHoverFrameSpec, HomepageHoverFrameSpec, HomepageHoverFrameSpec],
+): HomepageCardAssets {
+  const base = "/images/home/experience-cards";
+  return {
+    default: {
+      id: `home-card-${fileSlug}-default`,
+      src: `${base}/${fileSlug}-default.svg`,
+      width: defaultSize.width,
+      height: defaultSize.height,
+      alt: title,
+    },
+    hoverFrames: frames.map((frame, index) => {
+      const suffix = String(index + 1).padStart(2, "0");
+      return {
+        id: `home-card-${fileSlug}-hover-${suffix}`,
+        src: `${base}/${fileSlug}-hover-frame-${suffix}.${frame.ext}`,
+        width: frame.width,
+        height: frame.height,
+        alt: "",
+      };
+    }),
+    overlay: homepageCardOverlay,
+  };
+}
+
+/** Homepage Experience Design cards: default image + three hover frames. */
 export const homepageCardAssets = {
-  "digital-nomad": {
-    id: "digital-no-more-mad",
-    regular: {
-      id: "home-card-01-regular",
-      src: "/images/home/experience-cards/digital-no-more-mad-regular.svg",
-      width: 521,
-      height: 438,
-      alt: "Digital No More Mad",
-    },
-    hover: {
-      id: "home-card-01-hover",
-      src: "/images/home/experience-cards/digital-no-more-mad-hover.svg",
-      width: 521,
-      height: 438,
-      alt: "",
-    },
-  },
-  dreamwhorl: {
-    id: "dreamwhorl",
-    regular: {
-      id: "home-card-02-regular",
-      src: "/images/home/experience-cards/dreamwhorl-regular.svg",
-      width: 529,
-      height: 438,
-      alt: "DreamWhorl",
-    },
-    hover: {
-      id: "home-card-02-hover",
-      src: "/images/home/experience-cards/dreamwhorl-hover.svg",
-      width: 529,
-      height: 438,
-      alt: "",
-    },
-  },
-  "little-red-riding-hood": {
-    id: "little-red-riding-hood",
-    regular: {
-      id: "home-card-03-regular",
-      src: "/images/home/experience-cards/little-red-riding-hood-regular.svg",
-      width: 522,
-      height: 438,
-      alt: "Little Red Riding Hood",
-    },
-    hover: {
-      id: "home-card-03-hover",
-      src: "/images/home/experience-cards/little-red-riding-hood-hover.svg",
-      width: 522,
-      height: 438,
-      alt: "",
-    },
-  },
-  nushu: {
-    id: "nushu",
-    regular: {
-      id: "home-card-04-regular",
-      src: "/images/home/experience-cards/nushu-regular.svg",
-      width: 530,
-      height: 438,
-      alt: "Nushu",
-    },
-    hover: {
-      id: "home-card-04-hover",
-      src: "/images/home/experience-cards/nushu-hover.svg",
-      width: 530,
-      height: 438,
-      alt: "",
-    },
-  },
-} as const satisfies Record<string, CardStatePair>;
+  "digital-nomad": homepageCardMedia(
+    "digital-no-more-mad",
+    "Digital No More Mad",
+    { width: 521, height: 438 },
+    [
+      { ext: "svg", width: 623, height: 420 },
+      { ext: "png", width: 524, height: 528 },
+      { ext: "png", width: 522, height: 544 },
+    ],
+  ),
+  dreamwhorl: homepageCardMedia(
+    "dreamwhorl",
+    "DreamWhorl",
+    { width: 529, height: 438 },
+    [
+      { ext: "png", width: 1600, height: 1264 },
+      { ext: "png", width: 1600, height: 1082 },
+      { ext: "png", width: 1600, height: 1120 },
+    ],
+  ),
+  "little-red-riding-hood": homepageCardMedia(
+    "little-red-riding-hood",
+    "Little Red Riding Hood",
+    { width: 522, height: 438 },
+    [
+      { ext: "svg", width: 623, height: 420 },
+      { ext: "jpg", width: 1600, height: 1067 },
+      { ext: "jpg", width: 1600, height: 1067 },
+    ],
+  ),
+  nushu: homepageCardMedia(
+    "nushu",
+    "Nushu",
+    { width: 530, height: 438 },
+    [
+      { ext: "png", width: 1600, height: 1079 },
+      { ext: "png", width: 1600, height: 752 },
+      { ext: "png", width: 1600, height: 751 },
+    ],
+  ),
+} as const satisfies Record<string, HomepageCardAssets>;
+
+/** Homepage rail order, mapped to artwork detail routes. */
+const homepageArtworkRailIds = [
+  "resounding-nature",
+  "circular-ruins",
+  "imaginary-beings",
+  "dreamgaze",
+  "hypnagogia",
+  "present-and-absent",
+  "your-destination",
+  "animal-city",
+] as const;
 
 /** Eight rail tiles in the exact order given by docs/media-library.md. */
-export const homepageArtworkRailItems: MediaAsset[] = Array.from(
-  { length: 8 },
-  (_, index) => {
-    const suffix = String(index + 1).padStart(2, "0");
-    return {
-      id: `rail-item-${suffix}`,
-      src: `/images/home/artwork-rail/rail-item-${suffix}.svg`,
-      width: RAIL_TILE_SIZE,
-      height: RAIL_TILE_SIZE,
-      alt: "",
-    };
-  },
-);
+export const homepageArtworkRailItems: (MediaAsset & {
+  href: string;
+  artworkId: (typeof homepageArtworkRailIds)[number];
+})[] = homepageArtworkRailIds.map((artworkId, index) => {
+  const suffix = String(index + 1).padStart(2, "0");
+  return {
+    id: `rail-item-${suffix}`,
+    artworkId,
+    href: `/artwork/${artworkId}`,
+    src: `/images/home/artwork-rail/rail-item-${suffix}.svg`,
+    width: RAIL_TILE_SIZE,
+    height: RAIL_TILE_SIZE,
+    alt: "",
+  };
+});
 
 export const socialIcons = {
   email: {
@@ -319,6 +348,16 @@ export const artworkListingMedia = {
       { index: 3, ext: "jpg" },
     ],
     "DreamGaze — branding system for a creative studio",
+  ),
+  bodigram: hoverLoopSet(
+    "artwork-bodigram",
+    "/images/artwork/bodigram",
+    [
+      { index: 1, ext: "jpg" },
+      { index: 2, ext: "jpg" },
+      { index: 3, ext: "jpg" },
+    ],
+    "Bodigram — interactive cards of body fragments and words",
   ),
   "your-destination": hoverLoopSet(
     "artwork-your-destination",

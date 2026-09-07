@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CaseStudyView } from "@/components/case-study/CaseStudyView";
 import { ProjectDetailSection } from "@/components/sections/ProjectDetailSection";
-import { getCaseStudyBySlug } from "@/data/case-studies/digital-no-more-mad";
+import { LocalizedBackLink } from "@/components/ui/LocalizedBackLink";
+import { getCaseStudyBySlug } from "@/data/case-studies";
 import { getProjectBySlug, projects } from "@/data/projects";
 
 type ProjectPageProps = {
@@ -22,9 +22,10 @@ export async function generateMetadata({
   if (!project) {
     return { title: "Project — Jiaying Li" };
   }
+  const caseStudy = getCaseStudyBySlug(slug);
   return {
-    title: `${project.title} — Jiaying Li`,
-    description: getCaseStudyBySlug(slug)?.summary ?? project.summary,
+    title: `${caseStudy?.title ?? project.title} — Jiaying Li`,
+    description: caseStudy?.summary ?? project.summary,
   };
 }
 
@@ -52,9 +53,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main className="listing measure">
-      <Link href="/experience-design" className="listing__back">
-        {"< Back to Experience Design"}
-      </Link>
+      <LocalizedBackLink
+        href="/experience-design"
+        text="< Back to Experience Design"
+      />
       <ProjectDetailSection project={project} />
     </main>
   );

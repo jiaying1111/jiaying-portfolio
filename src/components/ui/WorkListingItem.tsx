@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { HoverLoopMedia } from "@/components/ui/HoverLoopMedia";
 import type { HoverLoopSet } from "@/data/assets";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { ui } from "@/i18n/ui";
 
 function ArrowRight() {
   return (
@@ -49,6 +51,8 @@ export function WorkListingItem({
   priority = false,
 }: WorkListingItemProps) {
   const [active, setActive] = useState(false);
+  const { locale } = useLocale();
+  const copy = ui(locale);
 
   const mediaBlock = (
     <HoverLoopMedia media={media} priority={priority} active={active} />
@@ -63,50 +67,59 @@ export function WorkListingItem({
       onBlurCapture={() => setActive(false)}
     >
       {href ? (
-        <Link href={href} tabIndex={-1} aria-hidden="true">
+        <Link
+          href={href}
+          className="work-item__media"
+          tabIndex={-1}
+          aria-hidden="true"
+        >
           {mediaBlock}
         </Link>
       ) : (
-        mediaBlock
+        <div className="work-item__media">{mediaBlock}</div>
       )}
 
       <div className="work-item__info">
-        <h3 className="work-item__title">{title}</h3>
-        <p className="work-item__meta">
-          <span>{category}</span>
-          <span>{year}</span>
-        </p>
+        <div className="work-item__heading">
+          <h3 className="work-item__title">{title}</h3>
+          <p className="work-item__meta">
+            <span>{category}</span>
+            <span>{year}</span>
+          </p>
+        </div>
         <p className="work-item__summary">{summary}</p>
-        <div className="work-item__separator" aria-hidden="true" />
-        <dl className="work-item__specs">
-          <div>
-            <dt>Type</dt>
-            <dd>{type}</dd>
+        <div className="work-item__footer">
+          <div className="work-item__separator" aria-hidden="true" />
+          <dl className="work-item__specs">
+            <div>
+              <dt>{copy.type}</dt>
+              <dd>{type}</dd>
+            </div>
+            <div>
+              <dt>{copy.tools}</dt>
+              <dd>{tools}</dd>
+            </div>
+          </dl>
+          <div className="work-item__action">
+            {href ? (
+              <Link href={href} className="view-project">
+                <span>
+                  {copy.viewProject}
+                  <span className="visually-hidden">{` — ${title}`}</span>
+                </span>
+                <ArrowRight />
+              </Link>
+            ) : (
+              /*
+               * No detail route exists for artwork yet, so the Figma CTA is kept
+               * as static text instead of a control that cannot be activated.
+               */
+              <p className="view-project view-project--inert">
+                <span>{copy.viewProject}</span>
+                <ArrowRight />
+              </p>
+            )}
           </div>
-          <div>
-            <dt>Tools</dt>
-            <dd>{tools}</dd>
-          </div>
-        </dl>
-        <div className="work-item__action">
-          {href ? (
-            <Link href={href} className="view-project">
-              <span>
-                View Project
-                <span className="visually-hidden">{` — ${title}`}</span>
-              </span>
-              <ArrowRight />
-            </Link>
-          ) : (
-            /*
-             * No detail route exists for artwork yet, so the Figma CTA is kept
-             * as static text instead of a control that cannot be activated.
-             */
-            <p className="view-project view-project--inert">
-              <span>View Project</span>
-              <ArrowRight />
-            </p>
-          )}
         </div>
       </div>
     </li>

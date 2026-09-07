@@ -30,6 +30,18 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Working originals and camera RAW — not served by the site
+**/_source/
+*.ARW
+
+# Over GitHub's 100MB limit until these move to Git LFS
+/public/videos/2-Present&Absent.mp4
+/public/videos/3-Nushu.mp4
+/public/videos/resounding/final.mp4
+
+# Design reference, not a production asset
+/public/images/Frame 13-2.jpg
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

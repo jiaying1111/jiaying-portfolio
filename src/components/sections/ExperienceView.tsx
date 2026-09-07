@@ -6,6 +6,9 @@ import { PageTabs } from "@/components/ui/PageTabs";
 import { WorkListingItem } from "@/components/ui/WorkListingItem";
 import { getProjectsByGroup, type ProjectListingGroup } from "@/data/projects";
 import { experiencePageCopy } from "@/data/site";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { localize } from "@/i18n/localize";
+import { ui } from "@/i18n/ui";
 
 export function ExperienceView({
   activeTab,
@@ -13,7 +16,10 @@ export function ExperienceView({
   activeTab: ProjectListingGroup;
 }) {
   const router = useRouter();
-  const items = getProjectsByGroup(activeTab);
+  const { locale } = useLocale();
+  const pageCopy = localize(experiencePageCopy, locale);
+  const items = localize(getProjectsByGroup(activeTab), locale);
+  const copy = ui(locale);
 
   const onSelect = (id: ProjectListingGroup) => {
     router.replace(
@@ -25,23 +31,22 @@ export function ExperienceView({
   return (
     <main className="listing measure">
       <Link href="/" className="listing__back">
-        {experiencePageCopy.back}
+        {pageCopy.back}
       </Link>
-      <h1 className="listing__title">{experiencePageCopy.title}</h1>
+      <h1 className="listing__title">{pageCopy.title}</h1>
       <p className="listing__intro listing__intro--experience">
-        {experiencePageCopy.intro}
+        {pageCopy.intro}
       </p>
 
       <PageTabs
-        tabs={experiencePageCopy.tabs.map((tab) => ({
+        tabs={pageCopy.tabs.map((tab) => ({
           id: tab.id as ProjectListingGroup,
           label: tab.label,
         }))}
         activeId={activeTab}
-        ariaLabel="Experience Design categories"
+        ariaLabel={copy.experienceCategories}
         onSelect={onSelect}
       />
-      <div className="listing__rule" />
 
       <ul
         className="work-list"
@@ -65,7 +70,7 @@ export function ExperienceView({
         ))}
       </ul>
 
-      <p className="listing__more">{experiencePageCopy.moreInProgress}</p>
+      <p className="listing__more">{pageCopy.moreInProgress}</p>
     </main>
   );
 }

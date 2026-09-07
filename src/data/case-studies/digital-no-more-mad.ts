@@ -1,43 +1,33 @@
 /**
- * Digital No More Mad case study.
+ * Digital No More Mad
  *
- * Copy, section order, and image-to-copy relationships come from
- * outputs/digital-no-more-mad-website-structure/full-page-layout.html.
- * Media comes from the approved export in
- * public/images/projects/digital-no-more-mad/ (README-media-map.md order).
- * Layout and type belong to Frame 13-2, not to the source HTML.
- *
- * Overview title, category, year, and summary follow Frame 13-2 / docs/content.md
- * so the case-study header matches the rest of the site. Chapter copy follows
- * the HTML.
+ * Page order follows the approved website structure:
+ * Hero → Overview → Idea → Research → Process → Outcome → Project navigation.
+ * Media is the high-resolution, semantically named export library.
  */
 
 import type { CaseStudy } from "@/data/case-studies/types";
-
-export type {
-  CaseStudy,
-  CaseStudyChapter,
-  CaseStudyEntry,
-  CaseStudyMedia,
-  CaseStudyModule,
-} from "@/data/case-studies/types";
 
 const media = "/images/projects/digital-no-more-mad";
 
 export const digitalNoMoreMadCaseStudy: CaseStudy = {
   slug: "digital-nomad",
-  category: "UIUX",
+  category: "UI/UX",
   year: "2025",
+  kicker: "Service Design · UI/UX · 2025",
+  heroIntro:
+    "A connected platform that helps independent professionals work, get paid, and grow across locations.",
+  editorialTitle: "Designing a connected work ecosystem for digital nomads",
   summary:
-    "This project focuses on digital nomadism, building a platform that helps digital nomads expand cooperation channels, grow sustainably, and work and live efficiently. The app integrates various services to enable smoother collaboration between digital nomads and their clients.",
+    "Digital No More Mad is a service and interface design project for digital nomads. It brings project collaboration, cross-border payments, professional development, and community exchange into one connected platform, helping independent professionals work and live across locations with less friction.",
   hero: {
     src: `${media}/hero/digital-no-more-mad-hero.png`,
-    alt: "Digital No More Mad mobile screens shown across three angled phone mockups",
+    alt: "Digital No More Mad mobile application shown across three angled phone mockups",
     width: 1439,
     height: 642,
   },
   metadata: [
-    { label: "Role", value: "UIUX" },
+    { label: "Role", value: "UI/UX Designer" },
     { label: "Tools", value: "Figma" },
     { label: "Duration", value: "2 months" },
     { label: "Type", value: "Independent Project" },
@@ -48,44 +38,51 @@ export const digitalNoMoreMadCaseStudy: CaseStudy = {
       number: "01",
       label: "Idea",
       title: "Designing a connected work ecosystem for digital nomads",
-      lead: "Remote workers can move freely between places, but the systems supporting their work remain fragmented. Payments, project communication, professional growth, and community resources often live in separate tools.",
+      headline: "Designing a connected work ecosystem for digital nomads",
+      lead:
+        "The project began with a simple observation: remote workers can move freely between places, but the systems supporting their work remain fragmented. Payments, project communication, professional growth, and community resources often live in separate tools.",
       modules: [
         {
           id: "inspiration",
           title: "Inspiration",
-          copy: "During a summer internship, I worked with colleagues who travelled while working remotely. Their experience raised a larger question: what infrastructure is needed to support work that is no longer tied to a single location?",
+          copy:
+            "During a summer internship, I worked with colleagues who travelled while working remotely. Their experience introduced me to digital nomadism and raised a larger question: what infrastructure is needed to support work that is no longer tied to a single location?",
+          pair: true,
           media: [
             {
               src: `${media}/idea/remote-work-inspiration.png`,
-              alt: "Two remote workers on either side of a globe, connected by a line, with office colleagues faded into the background",
+              alt: "Remote professionals working while travelling",
               caption: "Remote work observation",
               width: 1212,
               height: 600,
-              displayWidth: 606,
+            },
+            {
+              src: `${media}/research/digital-nomad-enabling-factors-v2.png`,
+              alt: "Diagram showing factors contributing to digital nomadism",
+              caption: "Factors enabling digital nomadism",
+              width: 1711,
+              height: 1284,
             },
           ],
         },
         {
           id: "opportunity",
-          title: "Opportunity",
-          copy: "The platform should become more than a productivity tool. It should connect the financial, social, and professional infrastructure needed for a mobile working life.",
+          title: "Design challenge",
           statement:
-            "How might we help digital nomads manage cross-border work, collaborate more transparently, and continue growing professionally?",
+            "How might we help digital nomads manage cross-border work, collaborate more transparently, and continue growing professionally while moving between places?",
+          layout: "cards",
           points: [
             {
               term: "Efficient cross-border work",
-              detail:
-                "Reduce friction across payments, project management, and daily services.",
+              detail: "Reduce friction across payments, project management, and daily services.",
             },
             {
               term: "Multi-channel collaboration",
-              detail:
-                "Connect clients, creators, and shared resources through one system.",
+              detail: "Connect clients, creators, and shared resources through one system.",
             },
             {
               term: "Personal development",
-              detail:
-                "Make skills, peer knowledge, and professional opportunities easier to exchange.",
+              detail: "Make skills, peer knowledge, and professional opportunities easier to exchange.",
             },
           ],
         },
@@ -96,51 +93,72 @@ export const digitalNoMoreMadCaseStudy: CaseStudy = {
       number: "02",
       label: "Research",
       title: "Understanding a mobile and distributed workforce",
-      lead: "Desk research, interviews, persona development, and comparative cases revealed what breaks across borders and where a connected platform could create value.",
+      headline: "Understanding a mobile and distributed workforce",
+      lead:
+        "Desk research, interviews, persona development, and comparative case studies were used to understand how digital nomads work, what breaks across borders, and where a shared platform could create value.",
       modules: [
         {
           id: "desk-research",
           title: "Desk research",
-          copy: "Digital nomadism is rapidly growing, globally distributed, and shaped by both work autonomy and geographic mobility.",
-          media: [
+          copy:
+            "Digital nomadism is rapidly growing, globally distributed, and shaped by both work autonomy and geographic mobility.",
+          layout: "explain",
+          entries: [
             {
-              src: `${media}/research/digital-nomad-enabling-factors.png`,
-              alt: "Diagram placing the digital nomad at the centre of five enabling factors: increasing international mobility, wireless communication, transportation system enhancement, global relative wealth, and flexibility of working lives",
-              caption: "Factors enabling digital nomadism",
-              width: 814,
-              height: 466,
+              id: "growth",
+              title: "A rapidly growing workforce",
+              role: "2018–2024",
+              copy: "Location-independent work rose from about 4.5 million to 18 million. The steepest climb is in the United States, where remote jobs made mobility a default rather than a privilege.",
+              media: {
+                src: `${media}/research/digital-nomad-growth-chart-v2.png`,
+                alt: "Bar and line chart showing the growth of digital nomadism from 2018 to 2024",
+                width: 1891,
+                height: 931,
+              },
             },
             {
-              src: `${media}/research/digital-nomad-growth-chart.png`,
-              alt: "Combined bar and line chart showing digital nomad numbers rising from under 5 in 2018 to over 18 in 2024",
-              caption: "Growth of location-independent work",
-              width: 1716,
-              height: 894,
+              id: "enablers",
+              title: "A global pattern",
+              role: "Universality",
+              copy: "Digital nomads are active across countries and industries. The United States accounts for 47%, followed by the UK, Russia, Canada, and Germany — a spread, not a single-city scene.",
+              media: {
+                src: `${media}/research/global-distribution-map.jpg`,
+                alt: "Global distribution map of digital nomads",
+                width: 1620,
+                height: 920,
+              },
+            },
+            {
+              id: "definition",
+              title: "A working definition",
+              role: "Work × mobility",
+              copy: "Digital nomads sit where work focus meets high mobility. That separates them from business travellers, expats, and tourists, and sets the problems a platform has to solve.",
+              media: {
+                src: `${media}/research/digital-nomad-definition-matrix.png`,
+                alt: "Matrix differentiating digital nomads from other mobile groups",
+                width: 1365,
+                height: 1143,
+              },
             },
           ],
         },
         {
-          id: "interviews",
-          title: "Interviews",
-          copy: "Conversations with a graphic designer and a manager surfaced recurring challenges beyond location independence.",
+          id: "interviews-persona",
+          title: "Interviews & persona",
+          copy:
+            "Conversations with a graphic designer and a manager surfaced recurring challenges beyond location independence. The findings were synthesized into the Alexander persona.",
+          pair: true,
           media: [
             {
               src: `${media}/research/interviews-colin-ivy.png`,
-              alt: "Interview profiles for Colin, a graphic designer of three years, and Ivy, a manager of five years, listing their comments on freedom, personal development, exchange rates, collaboration resources, salary distribution, and accommodation",
+              alt: "Interview profiles for Colin and Ivy",
               caption: "Interview participants",
               width: 1042,
               height: 546,
             },
-          ],
-        },
-        {
-          id: "persona",
-          title: "Persona",
-          copy: "The findings were synthesized into the Alexander persona.",
-          media: [
             {
               src: `${media}/research/persona-alexander.png`,
-              alt: "Persona board for Alexander, a programmer working across five countries a year, listing his needs, pain points, and expectations",
+              alt: "Persona profile for Alexander, a programmer and digital nomad",
               caption: "Primary persona",
               width: 1028,
               height: 520,
@@ -148,83 +166,78 @@ export const digitalNoMoreMadCaseStudy: CaseStudy = {
           ],
         },
         {
-          id: "findings",
-          title: "Research findings",
-          copy: "Four themes recurred across the interviews and the persona.",
-          entries: [
-            {
-              id: "professional-growth",
-              title: "Professional growth",
-              copy: "Distributed workers often lack a visible development path.",
-              media: {
-                src: `${media}/research/pain-point-personal-development.png`,
-                alt: "Personal development pain point: without a promotion system inside a company, a digital nomad has no clear individual development plan",
-                width: 938,
-                height: 310,
-              },
-            },
-            {
-              id: "unequal-distribution",
-              title: "Unequal distribution",
-              copy: "Responsibilities and compensation can feel unclear.",
-              media: {
-                src: `${media}/research/pain-point-unequal-distribution.png`,
-                alt: "Unequal distribution pain point: work and reward are not shared evenly across a distributed team",
-                width: 988,
-                height: 298,
-              },
-            },
-            {
-              id: "currency-friction",
-              title: "Currency friction",
-              copy: "Exchange rates and cross-border payments add cost.",
-              media: {
-                src: `${media}/research/pain-point-currency-exchange.png`,
-                alt: "Currency exchange pain point: converting payments between currencies loses value for the digital nomad",
-                width: 964,
-                height: 346,
-              },
-            },
-            {
-              id: "limited-resources",
-              title: "Limited resources",
-              copy: "Trusted collaborators and local support take time to find.",
-            },
+          id: "insights",
+          title: "Key insights",
+          copy: "Four recurring problems shaped the product direction.",
+          layout: "cards",
+          points: [
+            { term: "Professional growth", detail: "Distributed workers often lack a visible development path." },
+            { term: "Reward distribution", detail: "Responsibilities and compensation can feel unclear or unfair." },
+            { term: "Currency friction", detail: "Exchange rates and cross-border payments add cost and complexity." },
+            { term: "Collaboration resources", detail: "Finding trusted people, skills, and local support takes time." },
           ],
         },
         {
           id: "ecosystem",
           title: "Stakeholder ecosystem",
-          copy: "Financial services, life services, social media, and collaboration communities form the resource network around each digital nomad, who exchanges currency, information, and project opportunities with every group.",
+          copy:
+            "The cooperation map identified four connected resource groups: financial services, life services, social media channels, and collaboration communities. The digital nomad exchanges currency, information, and project opportunities with each group.",
+          layout: "explain",
           media: [
             {
-              src: `${media}/research/stakeholder-cooperation-map.png`,
-              alt: "Cooperation map with the digital nomad at the centre exchanging currency with financial and life services and contacting social media and cooperation resources",
-              caption: "Cooperation map",
-              width: 1622,
-              height: 874,
+              src: `${media}/research/digital-nomad-resource-ecosystem.png`,
+              alt: "Resource ecosystem connecting digital nomads with financial, life, social, and collaboration services",
+              width: 2133,
+              height: 1222,
+            },
+          ],
+          entries: [
+            {
+              id: "finance",
+              title: "Financial services",
+              role: "Exchange currency",
+              copy: "Banks, wallets, and payment rails move value across borders. Fees and conversion delays sit between finished work and usable money.",
+            },
+            {
+              id: "life",
+              title: "Life services",
+              role: "Exchange currency",
+              copy: "Housing, transport, and daily services are paid in local currency, so income has to convert again each time the nomad changes city.",
+            },
+            {
+              id: "social",
+              title: "Social media",
+              role: "Post · Contact",
+              copy: "Public channels are where work is shown and clients are reached. Visibility is high, but project terms stay informal and scattered.",
+            },
+            {
+              id: "coop",
+              title: "Collaboration communities",
+              role: "Get in touch",
+              copy: "Peer groups, DAOs, and skill-exchange circles are the expanded resource: they supply people, advice, and the next project.",
             },
           ],
         },
         {
           id: "comparative-cases",
           title: "Comparative cases",
-          copy: "DAO participation and skill-exchange communities suggest a system combining transparent value distribution with active knowledge sharing.",
+          copy:
+            "DAO-based distribution offers a model for transparent participation and reward allocation. Skill-exchange communities show how distributed workers can build expertise, networks, and long-term professional growth.",
           pair: true,
           media: [
             {
-              src: `${media}/research/dao-distribution-case-study.png`,
-              alt: "Case study of DAO distribution, explaining token-based membership and how it could balance cooperation between digital nomads",
-              caption: "Transparent value distribution",
-              width: 854,
-              height: 516,
+              src: `${media}/research/dao-distribution-case-study-v2.png`,
+              alt: "Purple network visual representing DAO-based distribution and voting",
+              caption: "DAO-based distribution",
+              width: 777,
+              height: 462,
             },
             {
-              src: `${media}/research/skill-exchange-case-study.png`,
-              alt: "Case study of a skill exchange community, showing how distributed workers trade expertise and build professional networks",
-              caption: "Professional development",
-              width: 844,
-              height: 454,
+              src: `${media}/research/skill-exchange-community-case-study.png`,
+              alt: "Group of people representing skill exchange and peer learning",
+              caption: "Skill-exchange communities",
+              width: 777,
+              height: 465,
             },
           ],
         },
@@ -235,70 +248,85 @@ export const digitalNoMoreMadCaseStudy: CaseStudy = {
       number: "03",
       label: "Process",
       title: "Translating insights into a service ecosystem",
-      lead: "Research insights were converted into platform principles, an end-to-end service flow, a system map, and a reusable interface language.",
+      headline: "Translating insights into a service ecosystem",
+      lead:
+        "Research insights were converted into platform principles, an end-to-end service flow, a system map, and a reusable interface language.",
       modules: [
         {
           id: "feature-mapping",
           title: "Insight-to-feature mapping",
-          copy: "Each core research problem leads to a focused design response rather than an isolated feature.",
+          copy:
+            "Each core research problem leads to a focused design response: DAO-inspired voting and token distribution, community publishing and AI-supported management, skill exchange, and a token wallet with local redemption.",
           points: [
-            {
-              term: "Unequal collaboration and compensation",
-              detail: "DAO-inspired voting and token distribution.",
-            },
-            {
-              term: "Limited collaboration resources",
-              detail: "Community publishing and AI-supported management.",
-            },
-            {
-              term: "Unclear professional growth",
-              detail: "Skill exchange and experience sharing.",
-            },
-            {
-              term: "Cross-border payment friction",
-              detail: "Token wallet and local redemption.",
-            },
-          ],
-          media: [
-            {
-              src: `${media}/process/insight-to-feature-mapping.png`,
-              alt: "Diagram linking three research problems to three platform responses: managing social media with AI tools, using a DAO cooperation model, and establishing a community and skill-exchange platform",
-              caption: "Mapping findings to features",
-              width: 1044,
-              height: 520,
-            },
+            { term: "Unequal collaboration and compensation", detail: "DAO-inspired voting and token distribution" },
+            { term: "Limited collaboration resources", detail: "Community publishing and AI-supported management" },
+            { term: "Unclear professional growth", detail: "Skill exchange and experience sharing" },
+            { term: "Cross-border payment friction", detail: "Token wallet and local redemption" },
           ],
         },
         {
-          id: "concept-direction",
+          id: "design-principles",
           title: "Concept direction",
           copy: "The concept combines transparent cooperation, efficient work, multi-channel communication, and personal development.",
+          layout: "explain",
           media: [
             {
+              src: `${media}/process/conceptualization-mapping.png`,
+              alt: "Conceptualization map connecting problems with design responses",
+              width: 1950,
+              height: 1212,
+            },
+            {
               src: `${media}/process/design-concept-principles.png`,
-              alt: "Collage illustrating the three design principles: efficient working conditions, multi-channel communication, and personal development",
-              caption: "Three design principles",
+              alt: "Three visual principles for the design concept",
               width: 1062,
               height: 438,
+            },
+          ],
+          entries: [
+            {
+              id: "cooperation",
+              title: "Transparent cooperation",
+              role: "DAO model",
+              copy: "Unequal collaboration is answered with voting and token distribution, so contribution and reward stay visible to everyone involved.",
+            },
+            {
+              id: "channels",
+              title: "Multi-channel communication",
+              role: "AI-supported publishing",
+              copy: "Limited collaboration resources are answered by community posting plus AI tools that help manage accounts across channels.",
+            },
+            {
+              id: "growth-path",
+              title: "Personal development",
+              role: "Skill exchange",
+              copy: "Unclear growth is answered by a community where nomads trade skills, experience, and longer-term development advice.",
+            },
+            {
+              id: "efficiency",
+              title: "Efficient working conditions",
+              role: "Connected workspace",
+              copy: "Projects, payment, and feedback sit in one place, so moving city does not mean rebuilding a new set of tools.",
             },
           ],
         },
         {
           id: "service-flow",
           title: "Service flow",
-          copy: "The platform connects project posting, acceptance, contracting, progress checks, feedback, and social publishing.",
+          copy:
+            "A client posts a project; a digital nomad accepts it; both parties confirm an agreement; a mid-project check aligns progress; the client reviews the final work; and approved work can be shared to community and social channels.",
           steps: [
             "Client posts a project requirement.",
             "Digital nomad reviews and accepts the work.",
-            "Both parties confirm an agreement.",
-            "A mid-project check aligns progress.",
-            "The client reviews and gives feedback.",
-            "Approved work moves into community channels.",
+            "Both parties confirm a short-term agreement.",
+            "A mid-project check aligns progress and direction.",
+            "The client reviews the final work and submits feedback.",
+            "Approved work is shared to community and social channels.",
           ],
           media: [
             {
               src: `${media}/process/service-flow.png`,
-              alt: "Six-step service flow diagram covering order posting, job acceptance, mid-term check, final check, customer feedback, and synchronising to social media",
+              alt: "Six-step service flow for the Digital No More Mad platform",
               caption: "End-to-end service flow",
               width: 1502,
               height: 994,
@@ -308,26 +336,70 @@ export const digitalNoMoreMadCaseStudy: CaseStudy = {
         {
           id: "system-map",
           title: "System map",
-          copy: "The platform acts as a currency medium, an information center, and a professional-development hub.",
+          copy:
+            "The platform acts as a currency medium, an information center for matching clients and collaborators, and a development hub where digital nomads exchange skills and experience.",
+          layout: "map",
           media: [
             {
               src: `${media}/process/system-map.png`,
-              alt: "System map showing requirements and budget flowing from the client to the platform, tokens and local currency flowing to the digital nomad, and currency arriving from the bank",
-              caption: "Platform system map",
+              alt: "System map showing flows among digital nomads, clients, the platform, and banks",
               width: 1080,
               height: 566,
+            },
+          ],
+          entries: [
+            {
+              id: "client",
+              title: "Client",
+              role: "Requirements · budget",
+              copy: "Posts a brief and budget, receives an appropriate collaborator, and reviews the finished work.",
+            },
+            {
+              id: "nomad",
+              title: "Digital nomad",
+              role: "Work · tokens · growth",
+              copy: "Receives matched work and development advice, delivers the project outcome, and can convert tokens into local currency.",
+            },
+            {
+              id: "platform",
+              title: "Platform",
+              role: "Match · mediate · develop",
+              copy: "Sits in the middle as a currency medium, an information center for matching, and a hub for skill exchange.",
+            },
+            {
+              id: "bank",
+              title: "Bank",
+              role: "Currency",
+              copy: "Supplies local currency so tokens earned on the platform can be redeemed where the nomad is living.",
             },
           ],
         },
         {
           id: "visual-system",
           title: "Visual system",
-          copy: "A focused purple identity, neutral typography, and rounded outline icons create a consistent mobile product language.",
+          copy:
+            "A focused purple identity, SF Pro, and rounded outline icons create a consistent mobile product language.",
+          layout: "visual",
+          typeSpec: {
+            family: "SF Pro",
+            usage: "Regular and Medium · product UI type",
+            scale: [
+              { role: "Title", family: "SF Pro Bold", size: "16", hex: "#6132FD" },
+              { role: "Sub-title", family: "SF Pro Bold", size: "14", hex: "#656565" },
+              { role: "Body", family: "SF Pro Regular", size: "12", hex: "#656565" },
+              { role: "Hint", family: "SF Pro Regular", size: "10", hex: "#767676" },
+            ],
+          },
+          swatches: [
+            { hex: "#6132FD", label: "#6132FD", name: "Brand", usage: "Primary actions, identity, and key icons." },
+            { hex: "#767676", label: "#767676", name: "Neutral", usage: "Secondary text, inactive icons, and supporting UI." },
+            { hex: "#FF6868", label: "#FF6868", name: "Alert", usage: "Warnings, errors, and urgent states." },
+            { hex: "#FFFFFF", label: "#FFFFFF", name: "Surface", usage: "Backgrounds, cards, and open space." },
+          ],
           media: [
             {
               src: `${media}/process/product-icon-system.png`,
-              alt: "Product icon set drawn as rounded outlines, with primary actions in purple and secondary navigation icons in grey",
-              caption: "Product icon system",
+              alt: "Rounded outline icons used across the Digital No More Mad mobile interface",
               width: 1494,
               height: 470,
             },
@@ -340,90 +412,75 @@ export const digitalNoMoreMadCaseStudy: CaseStudy = {
       number: "04",
       label: "Outcome",
       title: "A connected platform for work, value, and community",
-      lead: "The final prototype brings project collaboration, token-based payment, community exchange, and AI-assisted publishing into one mobile experience.",
+      headline: "A connected platform for work, value, and community",
+      lead:
+        "The final prototype brings project collaboration, token-based payment, community exchange, and AI-assisted publishing into one mobile experience.",
       modules: [
         {
-          id: "journey",
-          title: "End-to-end journey",
-          copy: "The storyboard follows the complete journey from posting a brief to receiving token-based payment redeemable in local currency.",
-          media: [
+          id: "core-experience",
+          title: "Core product experience",
+          copy: "Four connected feature groups support the day-to-day experience.",
+          layout: "gallery",
+          entries: [
             {
-              src: `${media}/outcome/storyboard-user-journey.png`,
-              alt: "Six-panel storyboard: a customer posts a project requirement, a digital nomad accepts it from a beach, both sides sign a short-term contract online, the nomad produces the work, client and nomad review it together, and the nomad receives token payment redeemable as local currency",
-              caption: "Six-step user journey",
-              width: 1778,
-              height: 1008,
+              id: "home",
+              title: "Home and project workspace",
+              copy: "Shortcuts connect the wallet, project list, feedback, and forum.",
+              media: { src: `${media}/outcome/home-page-interface-v2.png`, alt: "Digital No More Mad home and project interface", width: 846, height: 865 },
+            },
+            {
+              id: "forum",
+              title: "Community forum",
+              copy: "Community, Skill Exchange, and Experience channels for sharing knowledge.",
+              media: { src: `${media}/outcome/community-forum-interface-v2.png`, alt: "Digital No More Mad community forum", width: 1006, height: 1020 },
+            },
+            {
+              id: "wallet",
+              title: "Token wallet",
+              copy: "Project participation creates value that can be transferred or converted into local currency.",
+              media: { src: `${media}/outcome/token-wallet-interface-v2.png`, alt: "Digital No More Mad token wallet", width: 696, height: 849 },
+            },
+            {
+              id: "feedback",
+              title: "AI-assisted feedback and publishing",
+              copy: "The platform structures client feedback and helps users adapt approved work for social channels.",
+              media: { src: `${media}/outcome/ai-feedback-interface-v2.png`, alt: "Digital No More Mad AI feedback flow", width: 900, height: 1053 },
             },
           ],
         },
         {
-          id: "final-interface",
-          title: "Final interface",
-          copy: "Four connected feature groups support the full experience, from finding work to building long-term professional value.",
-          media: [
-            {
-              src: `${media}/outcome/home-page-interface.png`,
-              alt: "Home page screens showing project progress, a function shortcut row, and a flexible notification bar with a notification list",
-              caption: "Home and project workspace",
-              width: 1664,
-              height: 916,
+          id: "storyboard",
+          title: "End-to-end storyboard",
+          copy:
+            "The storyboard follows the complete experience from a client posting a brief to a digital nomad receiving token-based payment that can be redeemed locally.",
+          layout: "gallery",
+          entries: [
+            ["01", "Post a project"], ["02", "Accept the work"], ["03", "Confirm agreement"],
+            ["04", "Produce the work"], ["05", "Review together"], ["06", "Receive payment"],
+          ].map(([number, title]) => ({
+            id: `storyboard-${number}`,
+            title,
+            media: {
+              src: `${media}/outcome/storyboard-${number}.jpg`,
+              alt: `Storyboard step ${number}: ${title.toLowerCase()}`,
+              width: 1200,
+              height: 800,
             },
-            {
-              src: `${media}/outcome/forum-interface.png`,
-              alt: "Community forum screens with Community, Skill Exchange, and Experience channels",
-              caption: "Community forum",
-              width: 1864,
-              height: 1002,
-            },
-            {
-              src: `${media}/outcome/token-transfer-interface.png`,
-              alt: "Token transfer screens showing accumulated token income and a currency selection list for converting tokens into local currency",
-              caption: "Token wallet and transfer",
-              width: 1828,
-              height: 954,
-            },
-            {
-              src: `${media}/outcome/ai-feedback-interface.png`,
-              alt: "AI-assisted feedback screens that summarise client comments and prepare approved work for publishing",
-              caption: "AI-assisted feedback and publishing",
-              width: 1810,
-              height: 1040,
-            },
-          ],
+          })),
         },
         {
           id: "final-value",
           title: "Final value",
-          copy: "One service ecosystem connects short-term project delivery with long-term mobility and professional development.",
+          copy:
+            "One service ecosystem connects short-term project delivery with long-term mobility and professional development.",
+          layout: "cards",
           points: [
-            {
-              term: "Work",
-              detail: "A clearer path from project discovery to delivery.",
-            },
-            {
-              term: "Value",
-              detail: "More transparent compensation across locations.",
-            },
-            {
-              term: "Growth",
-              detail: "Shared resources for long-term development.",
-            },
+            { term: "Work", detail: "A clearer path from project discovery to delivery." },
+            { term: "Value", detail: "More transparent compensation across currencies and locations." },
+            { term: "Growth", detail: "Shared resources that help independent professionals develop over time." },
           ],
-        },
-        {
-          id: "reflection",
-          title: "Reflection",
-          copy: "The prototype establishes a complete service concept and interaction direction. The next phase should validate the token model, trust in DAO-inspired collaboration, and the clarity of the combined feature set through real project scenarios.",
         },
       ],
     },
   ],
 };
-
-export const caseStudiesBySlug: Record<string, CaseStudy> = {
-  [digitalNoMoreMadCaseStudy.slug]: digitalNoMoreMadCaseStudy,
-};
-
-export function getCaseStudyBySlug(slug: string) {
-  return caseStudiesBySlug[slug];
-}
