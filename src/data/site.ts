@@ -178,8 +178,9 @@ export const aboutContent = {
       date: "May 2023 - Present",
       href: "https://www.harvardxr.com/",
       bullets: [
-        "Led planning and execution of the annual HarvardXR conference and related programs, attracting 2,000+ in-person attendees.",
-        "Coordinated a cross-functional team of 30+ across design, publicity, and outreach, managing timelines and delivery.",
+        "Led planning and execution of the annual HarvardXR conference and related programs, drawing over 2,000 in-person attendees.",
+        "Led a cross-functional team of 30+ across design, publicity, and outreach, and established project workflows, timelines, and collaboration systems.",
+        "Mapped on-site interaction flows and designed key experience touchpoints, coordinating design and operations for online publishing and offline delivery.",
       ],
     },
     {

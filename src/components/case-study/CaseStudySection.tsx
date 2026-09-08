@@ -368,7 +368,12 @@ function Module({
               key={entry.id}
               className={`case-flow__card case-flow__card--${entry.id}`}
             >
-              <h4 className="case-flow__header">{entry.title}</h4>
+              <h4 className="case-flow__header">
+                {entry.role ? (
+                  <span className="case-flow__index">{entry.role}</span>
+                ) : null}
+                <span>{entry.title}</span>
+              </h4>
               <div className="case-flow__body">
                 {entry.copy ? <p className="case-flow__copy">{entry.copy}</p> : null}
                 {entry.href ? (
