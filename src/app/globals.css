@@ -4871,8 +4871,8 @@ body:has(.case--illustration) .reading-progress {
 
 .case--digital-nomad .case-module--storyboard .case-media {
   display: grid;
-  aspect-ratio: 1 / 1;
-  padding: 22px;
+  aspect-ratio: 4 / 3;
+  padding: 12px;
   place-items: center;
 }
 
