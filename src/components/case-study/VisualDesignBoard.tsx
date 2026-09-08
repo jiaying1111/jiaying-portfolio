@@ -229,8 +229,6 @@ export function VisualDesignBoard({
               media={item}
               className="vd-board__photo"
               priority={priority && index === 0}
-              fit="cover"
-              fill
               sizes="(max-width: 900px) 100vw, 48vw"
             />
           ))}
@@ -246,8 +244,6 @@ export function VisualDesignBoard({
             media={main}
             className="vd-board__photo-main"
             priority={priority}
-            fit="cover"
-            fill
             sizes="(max-width: 900px) 100vw, 55vw"
           />
         ) : null}
@@ -256,8 +252,6 @@ export function VisualDesignBoard({
             <Figure
               media={top}
               className="vd-board__photo-top"
-              fit="cover"
-              fill
               sizes="(max-width: 900px) 100vw, 28vw"
             />
           ) : null}
@@ -265,8 +259,6 @@ export function VisualDesignBoard({
             <Figure
               media={bottom}
               className="vd-board__photo-bottom"
-              fit="cover"
-              fill
               sizes="(max-width: 900px) 100vw, 28vw"
             />
           ) : null}

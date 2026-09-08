@@ -7846,29 +7846,41 @@ body:has(.case--visual-design) .reading-progress {
   object-position: top center;
 }
 
-/* Photos — cover collage, no letterbox */
+/* Photos — full uncropped images, top-aligned collage */
 .vd-board--photos {
   display: grid;
-  grid-template-columns: 1.35fr 0.9fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 16px;
-  align-items: stretch;
-  min-height: 440px;
+  align-items: start;
 }
 
-.vd-board__photo-main {
-  min-height: 0;
+.vd-board__photo-main,
+.vd-board__photo-top,
+.vd-board__photo-bottom,
+.vd-board__photo {
+  width: 100%;
+  background: transparent;
+}
+
+.vd-board__photo-main .vd-fig__image,
+.vd-board__photo-top .vd-fig__image,
+.vd-board__photo-bottom .vd-fig__image,
+.vd-board__photo .vd-fig__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: top center;
 }
 
 .vd-board__photo-side {
   display: grid;
-  grid-template-rows: 1fr 1fr;
   gap: 16px;
-  min-height: 0;
+  align-content: start;
 }
 
 .vd-board--photos-pair {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  min-height: 380px;
+  align-items: start;
 }
 
 .vd-board--photos-pair .vd-board__photo-side {
@@ -8087,17 +8099,11 @@ body:has(.case--visual-design) .reading-progress {
 
   .vd-board--photos {
     min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .vd-board__photo-side {
-    grid-template-rows: none;
     gap: 16px;
-  }
-
-  .vd-board--photos .vd-fig--fill {
-    aspect-ratio: 4 / 3;
-    height: auto;
-    min-height: 0;
   }
 
   .vd-board__badge-grid {
