@@ -29,6 +29,7 @@ export type CaseStudyEntry = {
 };
 
 export type CaseStudyModuleLayout =
+  | "architecture"
   | "cards"
   | "gallery"
   | "credits"
@@ -95,6 +96,13 @@ export type CaseStudyModule = {
     usage: string;
     scale?: { role: string; family: string; size: string; hex: string }[];
   };
+  architecture?: {
+    number: string;
+    title: string;
+    description: string;
+    items: string[];
+    tone?: "default" | "accent";
+  }[];
 };
 
 export type CaseStudyChapter = {

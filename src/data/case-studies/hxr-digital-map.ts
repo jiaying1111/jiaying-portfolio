@@ -379,35 +379,27 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
           id: "system-diagram",
           title: "System overview",
           copy:
-            "Attendees use a Next.js mobile web app on Vercel. Route handlers authenticate users, serve rooms and schedule, issue passport state, resolve stamp and frame artwork, and enforce one vote per person against Notion records.",
-          media: [
+            "The architecture is organized around three responsibilities: a focused attendee experience, a server-side product-rules layer, and live conference content managed in Notion.",
+          layout: "architecture",
+          architecture: [
             {
-              src: `${root}/architecture/system-architecture.png`,
-              alt: "Architecture diagram showing client surfaces, Next.js API routes, and Notion data stores",
-              width: 1400,
-              height: 920,
-            },
-          ],
-        },
-        {
-          id: "layers",
-          title: "Three layers",
-          layout: "cards",
-          points: [
-            {
-              term: "Client",
-              detail:
-                "Welcome, Map, Schedule, Passport, Camera frame, and Vote screens in a mobile-first App Router UI.",
+              number: "01",
+              title: "Client",
+              description: "Mobile-first attendee experience",
+              items: ["Welcome", "Map + rooms", "Schedule", "Passport", "Voting"],
             },
             {
-              term: "API",
-              detail:
-                "Next.js handlers for auth, rooms, schedule, events, passport, stamp frames, and voting.",
+              number: "02",
+              title: "Edge / API",
+              description: "Next.js route handlers on Vercel",
+              items: ["Auth", "Rooms", "Schedule", "Passport", "Stamp frame", "Vote"],
             },
             {
-              term: "Data",
-              detail:
-                "Notion as the live CMS for attendees, guests, rooms, sessions, stamps, and votes.",
+              number: "03",
+              title: "Data",
+              description: "Notion as the live conference CMS",
+              items: ["Attendees + guests", "Rooms + sessions", "Passport + stamps", "Votes"],
+              tone: "accent",
             },
           ],
         },

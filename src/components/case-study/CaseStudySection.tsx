@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { CaseArchitectureDiagram } from "@/components/case-study/CaseArchitectureDiagram";
 import { CaseStudyCarousel } from "@/components/case-study/CaseStudyCarousel";
 import { CaseExplainBoard, CaseSwatchBoard } from "@/components/case-study/CaseExplainBoard";
 import { CaseSystemMap } from "@/components/case-study/CaseSystemMap";
@@ -181,7 +182,9 @@ function Module({
 
       {module.copy ? <p className="case-module__copy">{module.copy}</p> : null}
 
-      {module.layout === "visual" ? (
+      {module.layout === "architecture" && module.architecture ? (
+        <CaseArchitectureDiagram layers={module.architecture} />
+      ) : module.layout === "visual" ? (
         <CaseVisualSystem
           typeScale={module.typeSpec?.scale}
           swatches={module.swatches}
@@ -191,7 +194,7 @@ function Module({
         <CaseSwatchBoard swatches={module.swatches} />
       ) : null}
 
-      {module.layout === "visual" ? null : module.typeSpec ? (
+      {module.layout === "architecture" || module.layout === "visual" ? null : module.typeSpec ? (
         <p className="case-type-spec">
           <strong>{module.typeSpec.family}</strong>
           <span>{module.typeSpec.usage}</span>
@@ -248,7 +251,7 @@ function Module({
         </dl>
       ) : null}
 
-      {module.layout === "map" && module.entries ? (
+      {module.layout === "architecture" ? null : module.layout === "map" && module.entries ? (
         <CaseSystemMap
           items={module.entries}
           figure={module.media?.[0]}
@@ -346,7 +349,7 @@ function Module({
         />
       ) : null}
 
-      {module.layout === "explain" || module.layout === "map" || module.layout === "visual" ? null : module.layout === "flow" && module.entries ? (
+      {module.layout === "architecture" || module.layout === "explain" || module.layout === "map" || module.layout === "visual" ? null : module.layout === "flow" && module.entries ? (
         <div className="case-flow">
           {module.entries.map((entry) => (
             <article
