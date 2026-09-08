@@ -4863,11 +4863,9 @@ body:has(.case--illustration) .reading-progress {
 .case--digital-nomad .case-module--storyboard .case-entries--gallery {
   align-items: stretch;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-auto-rows: 1fr;
 }
 
 .case--digital-nomad .case-module--storyboard .case-entry {
-  min-height: 100%;
   padding: 16px 16px 0;
 }
 

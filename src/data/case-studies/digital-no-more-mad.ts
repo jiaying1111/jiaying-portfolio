@@ -461,10 +461,10 @@ export const digitalNoMoreMadCaseStudy: CaseStudy = {
             id: `storyboard-${number}`,
             title,
             media: {
-              src: `${media}/outcome/storyboard-${number}-aligned.jpg`,
+              src: `${media}/outcome/storyboard-${number}.jpg`,
               alt: `Storyboard step ${number}: ${title.toLowerCase()}`,
-              width: 420,
-              height: 330,
+              width: 1200,
+              height: 800,
             },
           })),
         },
