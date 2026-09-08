@@ -4457,7 +4457,7 @@ body:has(.case--illustration) .reading-progress {
 .case--digital-nomad .case-sysmap__figure {
   position: relative;
   margin: 0;
-  padding: 24px 28px 22px;
+  padding: 28px 32px 26px;
   background: #fff;
 }
 
@@ -4842,15 +4842,19 @@ body:has(.case--illustration) .reading-progress {
 .case--digital-nomad .case-module--storyboard .case-entries--gallery {
   align-items: stretch;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
 }
 
 .case--digital-nomad .case-module--storyboard .case-entry {
+  min-height: 100%;
   padding: 16px 16px 0;
 }
 
 .case--digital-nomad .case-module--storyboard .case-media {
+  display: grid;
   aspect-ratio: 1 / 1;
   padding: 22px;
+  place-items: center;
 }
 
 .case--digital-nomad .case-module--storyboard .case-media__image {
@@ -4861,6 +4865,14 @@ body:has(.case--illustration) .reading-progress {
   aspect-ratio: auto;
   object-fit: contain;
   object-position: center;
+}
+
+.case--digital-nomad .case-module--ecosystem .case-explain__figure {
+  padding: 24px 30px;
+}
+
+.case--digital-nomad .case-module--ecosystem .case-explain__figure .case-media {
+  padding: 0;
 }
 
 .case--digital-nomad .case-module--storyboard .case-entry__title {
