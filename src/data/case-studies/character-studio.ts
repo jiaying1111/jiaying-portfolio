@@ -1,243 +1,131 @@
 import type { CaseStudy, CaseStudyMedia } from "@/data/case-studies/types";
 
 const root = "/images/projects/character-studio";
-
-function image(
-  path: string,
-  alt: string,
-  width: number,
-  height: number,
-  extras: Partial<CaseStudyMedia> = {},
-): CaseStudyMedia {
-  return { src: `${root}/${path}`, alt, width, height, ...extras };
-}
+const shot = (path: string, alt: string, extras: Partial<CaseStudyMedia> = {}): CaseStudyMedia => ({
+  src: `${root}/${path}`, alt, width: 1440, height: 900, ...extras,
+});
 
 export const characterStudioCaseStudy: CaseStudy = {
   slug: "character-studio",
   title: "Character Studio",
   category: "AI Tool · Interaction Design",
   year: "2026",
-  kicker: "Collaborative Project · AI Tool",
-  heroIntro:
-    "An AI partner for illustrators that deepens characters through dialogue, notes, and visual thinking—without drawing for you.",
-  editorialTitle: "AI as a speculative partner, not a shortcut",
-  summary:
-    "Character Studio is an AI-assisted tool for illustrators and world-builders. It starts from an uploaded drawing, then supports character development through dialogue, note-taking, sketching, and an infinite canvas—keeping authorship and visual decision-making with the artist.",
-  hero: image(
-    "hero/character-studio-ui.png",
-    "Character Studio interface showing the infinite canvas and workflow sidebar",
-    1440,
-    900,
-  ),
+  kicker: "Collaborative Project · AI Tool · 2026",
+  heroIntro: "An AI thinking partner that helps illustrators turn a character sketch into a richer world—without drawing for them.",
+  editorialTitle: "Designing AI to expand authorship, not replace it",
+  summary: "Character Studio is a browser-based workspace for illustrators and world-builders. Starting with an uploaded drawing, it combines visual interpretation, character dialogue, narrative shaping, and an infinite canvas while keeping every creative decision with the artist.",
+  hero: shot("hero/character-studio-ui.png", "Character Studio interface showing an infinite canvas and workflow sidebar"),
   metadata: [
     { label: "Role", value: "Experience Designer & Creative Technologist" },
+    { label: "Focus", value: "AI interaction, workflow, prototyping" },
     { label: "Tools", value: "HTML, CSS, JavaScript, Anthropic API" },
-    { label: "Media", value: "Web tool, dialogue, infinite canvas" },
-    { label: "Type", value: "Collaboration Project" },
+    { label: "Output", value: "Working browser prototype" },
   ],
   links: [
     { label: "Try the tool", href: "/tools/character-studio/" },
-    {
-      label: "Project statement",
-      href: "https://jiaying1111.github.io/illustratortool/",
-    },
+    { label: "Project statement", href: "https://jiaying1111.github.io/illustratortool/" },
   ],
   chapters: [
     {
-      id: "idea",
-      number: "01",
-      label: "Idea",
-      title: "From a drawing fragment to a living character world",
-      headline: "From a drawing fragment to a living character world",
-      lead:
-        "In studio, many people can invent an interesting character or image, but struggle to expand that fragment into relationships, emotions, setting, and narrative structure. Character Studio supports that expansion without replacing drawing.",
+      id: "challenge", number: "01", label: "Challenge",
+      title: "The difficult part begins after the first sketch",
+      headline: "The difficult part begins after the first sketch",
+      lead: "A character drawing may suggest a mood, silhouette, or personality, but turning that fragment into relationships, motivations, setting, and narrative structure takes sustained reflection. Most generative tools jump directly to polished output instead of supporting that work.",
       modules: [
-        {
-          id: "problem",
-          title: "The gap after the first image",
-          copy:
-            "We may know what a character looks like, or have a rough sense of their personality, while the surrounding world stays thin. The tool treats the uploaded drawing as a starting point for interpretation, conversation, and iterative worldbuilding.",
-          statement:
-            "How might AI help illustrators deepen a visual idea without automating the final image?",
-        },
-        {
-          id: "position",
-          title: "Design position",
-          copy:
-            "Many image-generation systems compress the distance between thought and result. This project argues for a different role: AI as a speculative partner that preserves authorship, ambiguity, and visual decision-making.",
-          layout: "cards",
-          points: [
-            {
-              term: "Support thought",
-              detail: "Interpretation and speculation come before polished output.",
-            },
-            {
-              term: "Keep authorship",
-              detail: "The artist corrects, redirects, and decides what stays.",
-            },
-            {
-              term: "Stay visual",
-              detail: "Sketches remain central; AI does not replace drawing.",
-            },
-            {
-              term: "Remain open-ended",
-              detail: "Provisional readings invite revision rather than fixed truth.",
-            },
-          ],
-        },
+        { id: "problem", title: "Design question", copy: "Character Studio treats the uploaded image as evidence, not a command. AI offers a provisional reading that the illustrator can question, correct, and expand before anything becomes fixed.", statement: "How might AI help illustrators ask better questions and deepen a visual idea without automating the final image?" },
+        { id: "goals", title: "Success criteria", layout: "cards", points: [
+          { term: "Protect authorship", detail: "The artist approves, edits, and carries forward every interpretation." },
+          { term: "Keep drawing central", detail: "Sketches remain active material throughout the workflow." },
+          { term: "Make uncertainty useful", detail: "AI readings stay provisional and invite correction." },
+          { term: "Support continuity", detail: "Dialogue, notes, and images remain connected in one workspace." },
+        ] },
       ],
     },
     {
-      id: "system",
-      number: "02",
-      label: "System",
-      title: "A workflow that moves between image, dialogue, and canvas",
-      headline: "A workflow that moves between image, dialogue, and canvas",
-      lead:
-        "The system begins with an uploaded character drawing. AI forms a provisional reading, opens dialogue, gathers notes, and reorganizes material onto an infinite canvas where sketches and ideas can develop together.",
+      id: "strategy", number: "02", label: "Strategy",
+      title: "AI as a speculative partner, not a shortcut",
+      headline: "AI as a speculative partner, not a shortcut",
+      lead: "The product deliberately adds productive distance between input and outcome. Instead of generating a finished character, it surfaces clues, asks questions, organizes fragments, and gives the artist multiple places to intervene.",
       modules: [
-        {
-          id: "loop",
-          title: "Core loop",
-          copy:
-            "Each stage feeds the next, and the artist can return whenever a reading feels wrong or incomplete.",
-          steps: [
-            "Upload a finished, partial, or rough character drawing",
-            "AI interprets visual cues into a provisional setup",
-            "Dialogue tests, corrects, and expands the character",
-            "Notes and extracts become draggable canvas material",
-            "Sketches re-enter the loop for iterative feedback",
-            "Selection mode chooses a direction to carry forward",
-          ],
-        },
-        {
-          id: "capabilities",
-          title: "What AI does here",
-          copy:
-            "Technically, the project engages AI through image interpretation, conversation, organizational restructuring, and iterative feedback between sketches and concepts.",
-          layout: "cards",
-          points: [
-            {
-              term: "Image reading",
-              detail: "Clothing, posture, expression, objects, and atmosphere.",
-            },
-            {
-              term: "Provisional setup",
-              detail: "Personality, tone, background hints, and narrative context as starting assumptions.",
-            },
-            {
-              term: "Dialogue partner",
-              detail: "A character voice grounded in the drawing and user corrections.",
-            },
-            {
-              term: "Reorganization",
-              detail: "Traits, themes, questions, and fragments turned into movable tabs.",
-            },
-          ],
-        },
+        { id: "principles", title: "Product principles", layout: "cards", points: [
+          { term: "Interpret before generating", detail: "Visual cues become hypotheses, not final answers." },
+          { term: "Dialogue before direction", detail: "Conversation tests the character voice and world assumptions." },
+          { term: "Organize without flattening", detail: "Ideas become movable cards while ambiguity remains visible." },
+          { term: "Select with intention", detail: "The illustrator chooses which threads deserve further development." },
+        ] },
+        { id: "core-loop", title: "Core experience loop", copy: "The workflow moves repeatedly between image, language, organization, and drawing.", steps: [
+          "Upload a finished, partial, or rough character drawing",
+          "Review and correct the AI’s provisional interpretation",
+          "Use dialogue to test voice, motivation, and conflict",
+          "Extract useful ideas into notes and canvas cards",
+          "Add sketches and connect emerging relationships",
+          "Select a direction and carry it into further illustration",
+        ] },
       ],
     },
     {
-      id: "interface",
-      number: "03",
-      label: "Interface",
-      title: "Six stages in one studio surface",
-      headline: "Six stages in one studio surface",
-      lead:
-        "The interface keeps the full workflow visible: upload, interpretation, dialogue, narrative shaping, canvas thinking, and selection. Artists move between text and image without leaving the same dark studio environment.",
+      id: "experience", number: "03", label: "Experience",
+      title: "Six stages stay visible in one studio",
+      headline: "Six stages stay visible in one studio",
+      lead: "A persistent workflow rail makes progress legible without forcing a rigid sequence. Users can revisit assumptions, revise notes, and return to the canvas whenever the character changes.",
       modules: [
-        {
-          id: "upload-dialogue",
-          title: "Upload, interpretation, and dialogue",
-          copy:
-            "An uploaded drawing opens AI interpretation and a character sheet. Dialogue begins immediately, so the user can question assumptions while the figure is still provisional.",
-          layout: "gallery",
-          pair: true,
-          media: [
-            image(
-              "workflow/upload.png",
-              "Character Studio upload stage with workflow steps in the sidebar",
-              1440,
-              900,
-            ),
-            image(
-              "workflow/dialogue.png",
-              "Dialogue stage with character sheet categories for personality, world, and conflict",
-              1440,
-              900,
-            ),
-          ],
-        },
-        {
-          id: "narrative-canvas",
-          title: "Narrative curve and infinite canvas",
-          copy:
-            "A narrative curve lets the user shape intensity across story beats. Organized ideas become draggable tabs on an infinite canvas, where sketches, questions, and connections can sit side by side.",
-          layout: "gallery",
-          pair: true,
-          media: [
-            image(
-              "ui/panel-04.png",
-              "Narrative curve editor with intensity points across beginning, climax, and ending",
-              1440,
-              900,
-            ),
-            image(
-              "workflow/canvas.png",
-              "Infinite canvas with tools for marking, connecting, and developing cards",
-              1440,
-              900,
-            ),
-          ],
-        },
-        {
-          id: "selection",
-          title: "Selection mode",
-          copy:
-            "When several directions exist, selection mode asks the artist to compare which version best fits the character, holds the strongest visual potential, and supports the worldbuilding. The chosen path becomes the basis for further illustration.",
-          media: [
-            image(
-              "workflow/selection.png",
-              "Selection mode on the infinite canvas with finalize controls",
-              1440,
-              900,
-            ),
-          ],
-        },
+        { id: "six-stage-workflow", title: "Complete interface walkthrough", copy: "The six screenshots document every major system state, from source image to selected direction.", layout: "carousel", media: [
+          shot("ui/panel-01.png", "01 Upload: character drawing and workflow rail"),
+          shot("ui/panel-02.png", "02 AI interpretation: editable setup and character reading"),
+          shot("ui/panel-03.png", "03 Dialogue: conversation and character sheet"),
+          shot("ui/panel-04.png", "04 Narrative shaping: story curve and controls"),
+          shot("ui/panel-05.png", "05 Canvas: connected notes, questions, and sketches"),
+          shot("ui/panel-06.png", "06 Selection: chosen cards and finalization controls"),
+        ] },
+        { id: "system-decisions", title: "Why one surface", layout: "cards", points: [
+          { term: "Persistent context", detail: "The original drawing remains a reference while the world expands." },
+          { term: "Visible progress", detail: "Six numbered stages show where the user is and what comes next." },
+          { term: "Reversible thinking", detail: "Earlier interpretations can be revisited instead of silently replaced." },
+        ] },
       ],
     },
     {
-      id: "outcome",
-      number: "04",
-      label: "Outcome",
-      title: "A tool and a statement about authorship",
-      headline: "A tool and a statement about authorship",
-      lead:
-        "The finished work includes the system itself and the drawings, notes, and world-building structures that emerge through it. AI expands imagination; the illustrator remains the author.",
+      id: "interactions", number: "04", label: "Interactions",
+      title: "Four interactions carry the creative work",
+      headline: "Four interactions carry the creative work",
+      lead: "The experience centers the moments where the artist’s judgment matters most: setting the source, correcting interpretation, developing material, and deciding what continues.",
       modules: [
-        {
-          id: "deliverable",
-          title: "What ships",
-          copy:
-            "A browser-based Character Studio prototype, paired with a written project statement that records the critical shift from generating images to supporting thought.",
-          layout: "cards",
-          points: [
-            {
-              term: "Interactive prototype",
-              detail: "Upload, dialogue, narrative curve, canvas, and selection in one flow.",
-            },
-            {
-              term: "Artist statement",
-              detail: "A public record of the collaborative position on AI and illustration.",
-            },
-            {
-              term: "Practice outcome",
-              detail: "Evolving notes and visual directions produced through use of the tool.",
-            },
-          ],
-          statement:
-            "The goal is not to produce illustrations for the user, but to create a structure in which the artist can ask better questions.",
-        },
+        { id: "upload-interpret", title: "01 · Upload and interpret", copy: "The user begins with their own drawing. AI identifies visual cues and proposes an editable setup for identity, role, world, and essential facts before dialogue.", layout: "gallery", pair: true, media: [
+          shot("workflow/upload.png", "Upload stage with the artist’s drawing and workflow steps"),
+          shot("ui/panel-02.png", "Editable AI interpretation and provisional character setup"),
+        ] },
+        { id: "dialogue", title: "02 · Dialogue as correction", copy: "Conversation gives the provisional character a voice, but the artist can challenge every assumption. Useful exchanges become traits, memories, conflicts, questions, or notes.", media: [shot("workflow/dialogue.png", "Character dialogue with structured traits, world, and conflict notes")] },
+        { id: "canvas-thinking", title: "03 · Think spatially", copy: "The infinite canvas turns dialogue fragments into movable material. Users group ideas, draw connections, add notes, and place new sketches beside unresolved questions.", media: [shot("workflow/canvas.png", "Infinite canvas with connected notes, questions, keywords, and sketches")] },
+        { id: "selection", title: "04 · Select a direction", copy: "Selection mode asks the artist to choose the cards that best fit the character and hold the strongest visual potential. Finalization records a direction without pretending the character is complete.", media: [shot("workflow/selection.png", "Selection mode with chosen canvas cards and finalization controls")] },
+      ],
+    },
+    {
+      id: "implementation", number: "05", label: "Implementation",
+      title: "A working prototype with visible AI boundaries",
+      headline: "A working prototype with visible AI boundaries",
+      lead: "The browser prototype connects a structured interface to multimodal AI while keeping generated interpretation visibly editable. Product constraints are expressed through the interaction design, not hidden in a prompt.",
+      modules: [
+        { id: "responsibilities", title: "System responsibilities", layout: "cards", points: [
+          { term: "Interface", detail: "HTML, CSS, and JavaScript manage the staged workflow and canvas interactions." },
+          { term: "AI layer", detail: "The API interprets images, sustains dialogue, and restructures selected material." },
+          { term: "Artist control", detail: "Editable fields, notes, sketches, links, and selection remain user-controlled." },
+          { term: "Local continuity", detail: "Gallery and canvas states keep working material available across the session." },
+        ] },
+        { id: "guardrails", title: "Interaction guardrails", copy: "AI suggestions remain separate from artist-authored decisions. Interpretation is labeled provisional, questions require active answers, and the final board is assembled through explicit selection.", statement: "AI can propose, connect, and question. The illustrator decides what the character becomes." },
+      ],
+    },
+    {
+      id: "outcome", number: "06", label: "Outcome",
+      title: "A complete tool and a clear position on authorship",
+      headline: "A complete tool and a clear position on authorship",
+      lead: "The result is both a usable browser prototype and a design argument: AI can strengthen an illustrator’s process when it helps sustain inquiry instead of collapsing it into instant output.",
+      modules: [
+        { id: "deliverables", title: "What shipped", layout: "cards", points: [
+          { term: "End-to-end prototype", detail: "Upload, interpretation, dialogue, narrative shaping, canvas, and selection." },
+          { term: "Documented workflow", detail: "Ten interface screenshots record the complete product experience." },
+          { term: "Public statement", detail: "The companion text explains the project’s position on AI and creative authorship." },
+        ] },
+        { id: "reflection", title: "Design takeaway", copy: "The strongest AI interaction is not always the shortest path to an answer. For creative practice, value can come from preserving uncertainty, making reasoning visible, and giving the user better material to think with.", statement: "The goal is not to draw for the illustrator, but to create a structure in which they can ask better questions." },
       ],
     },
   ],

@@ -5113,6 +5113,121 @@ body:has(.case--illustration) .reading-progress {
   }
 }
 /* DreamWhorl: project-scoped image and narrative layout. */
+.case.case--character-studio {
+  --project-accent: #d4b671;
+  --project-wash: #f7f3ea;
+  --project-dark: #151515;
+  --project-muted: #5f5a51;
+}
+
+.case.case--character-studio .case-hero {
+  background: #151515;
+}
+
+.case.case--character-studio .case-hero__image {
+  object-position: center;
+  filter: none;
+}
+
+.case.case--character-studio .case-hero::after {
+  background: linear-gradient(90deg, rgb(16 16 16 / 78%), transparent 58%);
+}
+
+.case.case--character-studio .case-hero__copy,
+.case.case--character-studio .case-hero__kicker {
+  color: #f4e4bc;
+}
+
+.case.case--character-studio .case-module {
+  grid-template-columns: minmax(190px, 230px) minmax(0, 1fr);
+  column-gap: 42px;
+}
+
+.case.case--character-studio .case-module__statement {
+  padding: 38px 42px;
+  border-left: 3px solid var(--project-accent);
+  background: var(--project-wash);
+}
+
+.case.case--character-studio .case-points--cards {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  border: 0;
+}
+
+.case.case--character-studio .case-points--cards .case-points__row {
+  min-height: 170px;
+  padding: 26px 24px;
+  border: 1px solid var(--rule);
+  background: #fff;
+}
+
+.case.case--character-studio .case-steps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.case.case--character-studio .case-steps li {
+  min-height: 170px;
+  padding: 24px;
+  border: 1px solid var(--rule);
+  background: linear-gradient(145deg, #fff, var(--project-wash));
+}
+
+.case.case--character-studio .case-module--six-stage-workflow .case-carousel {
+  --carousel-ratio: 16 / 10;
+  margin-top: 36px;
+  border: 1px solid #29261f;
+  background: #111;
+}
+
+.case.case--character-studio .case-module--six-stage-workflow .case-carousel__image {
+  object-fit: contain;
+}
+
+.case.case--character-studio .case-module--upload-interpret .case-media-pair {
+  gap: 16px;
+}
+
+.case.case--character-studio .case-module--upload-interpret .case-media,
+.case.case--character-studio .case-module--dialogue > .case-media,
+.case.case--character-studio .case-module--canvas-thinking > .case-media,
+.case.case--character-studio .case-module--selection > .case-media {
+  padding: 14px;
+  border: 1px solid var(--rule);
+  background: #111;
+}
+
+.case.case--character-studio .case-module--dialogue > .case-media,
+.case.case--character-studio .case-module--canvas-thinking > .case-media,
+.case.case--character-studio .case-module--selection > .case-media {
+  max-width: none;
+}
+
+@media (max-width: 1050px) {
+  .case.case--character-studio .case-points--cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 899px) {
+  .case.case--character-studio .case-module,
+  .case.case--character-studio .case-points--cards,
+  .case.case--character-studio .case-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case.case--character-studio .case-module__statement {
+    padding: 26px 24px;
+  }
+
+  .case.case--character-studio .case-points--cards .case-points__row,
+  .case.case--character-studio .case-steps li {
+    min-height: 0;
+  }
+}
+
+/* DreamWhorl: project-scoped image and narrative layout. */
 .case.case--dreamwhorl {
   --project-accent: #7faabc;
   --project-wash: #f4f8fa;
