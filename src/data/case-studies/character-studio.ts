@@ -16,6 +16,7 @@ const shot = (
 
 export const characterStudioCaseStudy: CaseStudy = {
   slug: "character-studio",
+  heroTone: "dark",
   title: "Character Studio",
   category: "AI Tool · Interaction Design",
   year: "2026",

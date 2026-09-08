@@ -52,6 +52,7 @@ export function CaseStudyView({
       className={joinClassNames(
         "case",
         `case--${caseStudy.slug}`,
+        caseStudy.heroTone === "dark" && "case--hero-dark",
         theme === "illustration" && "case--illustration",
         theme === "visual-design" && "case--visual-design",
       )}

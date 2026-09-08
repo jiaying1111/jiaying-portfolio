@@ -133,6 +133,8 @@ export type CaseStudyLink = {
 
 export type CaseStudy = {
   slug: string;
+  /** Controls the contrast of the overlaid global navigation on the hero. */
+  heroTone?: "light" | "dark";
   /** Optional editorial title used on the detail page when it differs from the listing title. */
   title?: string;
   /** Large overview heading under the hero, used when the hero already shows the project name. */

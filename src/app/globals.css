@@ -61,6 +61,35 @@
   --type-display-line-height: 68px;
 }
 
+/* Keep the overlaid global navigation readable on dark project heroes. The
+   hero declares its tone in the case-study data, so this works consistently
+   across every viewport and locale. */
+body:has(.case--hero-dark) .site-header--overlay {
+  color: #fff;
+}
+
+body:has(.case--hero-dark) .site-header--overlay .site-nav__indicator,
+body:has(.case--hero-dark) .site-header--overlay .site-lang__rule {
+  background-color: rgb(255 255 255 / 62%);
+}
+
+body:has(.case--hero-dark) .site-header--overlay .site-lang__button {
+  color: rgb(255 255 255 / 62%);
+}
+
+body:has(.case--hero-dark) .site-header--overlay .site-lang__button.is-active {
+  color: #fff;
+}
+
+body:has(.case--hero-dark) .site-header--overlay .site-header__menu {
+  border-color: rgb(255 255 255 / 82%);
+  color: #fff;
+}
+
+body:has(.case--hero-dark) .site-header--overlay :is(a, button):focus-visible {
+  outline-color: #fff;
+}
+
 * {
   box-sizing: border-box;
 }

@@ -20,6 +20,7 @@ function app(
 export const hxrDigitalMapCaseStudy: CaseStudy = {
   slug: "hxr-digital-map",
   title: "HarvardXR Digital Map",
+  heroTone: "dark",
   category: "Product Management · UX",
   year: "2026",
   kicker: "HarvardXR Conference · Product & UX · 2026",

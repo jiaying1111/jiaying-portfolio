@@ -36,6 +36,7 @@ function entry(
 
 export const presentAndAbsentCaseStudy: CaseStudy = {
   slug: "present-and-absent",
+  heroTone: "dark",
   title: "Present & Absent",
   category: "Motion Capture Performance",
   year: "2025",
