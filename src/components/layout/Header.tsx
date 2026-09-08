@@ -32,6 +32,13 @@ function hasFullBleedHero(pathname: string) {
   return getArtworkById(artworkSlug)?.section !== "illustration";
 }
 
+/** The header is rendered before the page content, so its contrast is decided
+ * from the case-study metadata instead of relying on a descendant selector. */
+function hasDarkHero(pathname: string) {
+  const projectSlug = pathname.match(/^\/projects\/([^/]+)\/?$/)?.[1];
+  return projectSlug !== undefined && caseStudiesBySlug[projectSlug]?.heroTone === "dark";
+}
+
 function isCurrent(pathname: string, href: string) {
   if (href === "/experience-design") {
     return (
@@ -49,6 +56,7 @@ export function Header() {
   const items = localize(navigation, locale);
   const [open, setOpen] = useState(false);
   const overlay = hasFullBleedHero(pathname);
+  const darkHero = hasDarkHero(pathname);
   const activeIndex = navigation.findIndex((item) =>
     isCurrent(pathname, item.href),
   );
@@ -60,6 +68,7 @@ export function Header() {
       className={joinClassNames(
         "site-header",
         overlay && "site-header--overlay",
+        darkHero && "site-header--on-dark",
       )}
     >
       <div className="site-header__inner measure">

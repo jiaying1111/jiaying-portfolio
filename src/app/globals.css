@@ -61,6 +61,54 @@
   --type-display-line-height: 68px;
 }
 
+/* Header contrast is an explicit state on the header itself. This avoids
+   depending on :has() to reach a header that sits before the page hero. */
+.site-header--on-dark {
+  color: #fff;
+}
+
+.site-header--on-dark .site-lang__button {
+  color: rgb(255 255 255 / 62%);
+}
+
+.site-header--on-dark .site-lang__button.is-active {
+  color: #fff;
+}
+
+.site-header--on-dark .site-lang__rule {
+  color: rgb(255 255 255 / 62%);
+}
+
+.site-header--on-dark .site-header__menu {
+  border-color: rgb(255 255 255 / 82%);
+  color: #fff;
+}
+
+.site-header--on-dark :is(a, button):focus-visible {
+  outline-color: #fff;
+}
+
+@media (max-width: 899px) {
+  /* The mobile header is no longer over the hero: it becomes a white surface. */
+  .site-header--on-dark.site-header--overlay {
+    color: var(--ink);
+  }
+
+  .site-header--on-dark .site-lang__button,
+  .site-header--on-dark .site-lang__rule {
+    color: var(--text-disabled);
+  }
+
+  .site-header--on-dark .site-lang__button.is-active {
+    color: var(--ink);
+  }
+
+  .site-header--on-dark .site-header__menu {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+}
+
 /* Keep the overlaid global navigation readable on dark project heroes. The
    hero declares its tone in the case-study data, so this works consistently
    across every viewport and locale. */
