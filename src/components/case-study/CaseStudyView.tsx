@@ -19,7 +19,7 @@ type CaseStudyViewProps = {
   next?: Project;
   backHref?: string;
   backLabel?: string;
-  theme?: "illustration";
+  theme?: "illustration" | "visual-design";
 };
 
 export function CaseStudyView({
@@ -38,15 +38,18 @@ export function CaseStudyView({
   const pageTitle = study.title ?? t(project.title, locale);
   const sectionLabel = t(backLabel, locale);
 
+  const galleryTheme = theme === "illustration" || theme === "visual-design";
+
   return (
     <main
       className={joinClassNames(
         "case",
         `case--${caseStudy.slug}`,
         theme === "illustration" && "case--illustration",
+        theme === "visual-design" && "case--visual-design",
       )}
     >
-      {theme === "illustration" ? null : (
+      {galleryTheme ? null : (
         <div className="case-hero">
           <Image
             src={study.hero.src}
@@ -77,26 +80,26 @@ export function CaseStudyView({
       )}
 
       <div className="case-overview measure">
-        {theme === "illustration" && study.kicker ? (
+        {galleryTheme && study.kicker ? (
           <p className="case-hero__kicker">{study.kicker}</p>
         ) : null}
-        {theme === "illustration" ? (
+        {galleryTheme ? (
           <h1 className="case-hero__title">{pageTitle}</h1>
         ) : null}
         <div className="case-overview__lead">
           <Link href={backHref} className="case-overview__back">
-            {overlayHero || theme === "illustration"
+            {overlayHero || galleryTheme
               ? backToLabel(locale, sectionLabel)
               : copy.backShort}
           </Link>
-          {theme === "illustration" ? null : overlayHero ? (
+          {galleryTheme ? null : overlayHero ? (
             study.editorialTitle ? (
               <h2 className="case-overview__title">{study.editorialTitle}</h2>
             ) : null
           ) : (
             <h1 className="case-overview__title">{pageTitle}</h1>
           )}
-          {theme === "illustration" || overlayHero ? null : (
+          {galleryTheme || overlayHero ? null : (
             <p className="case-overview__tags">
               <span>{study.category}</span>
               <span>{study.year}</span>
@@ -125,7 +128,7 @@ export function CaseStudyView({
       </div>
 
       <div className="case-body measure">
-        {theme === "illustration" ? null : (
+        {theme === "illustration" || theme === "visual-design" ? null : (
           <ChapterNav chapters={study.chapters} />
         )}
         <div className="case-content">
@@ -134,7 +137,7 @@ export function CaseStudyView({
               key={chapter.id}
               chapter={chapter}
               priorityMedia={index === 0}
-              plain={theme === "illustration"}
+              plain={theme === "illustration" || theme === "visual-design"}
             />
           ))}
 

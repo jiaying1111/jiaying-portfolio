@@ -40,7 +40,16 @@ export type CaseStudyModuleLayout =
   | "flow"
   | "explain"
   | "map"
-  | "visual";
+  | "visual"
+  | "vd-kv"
+  | "vd-assets"
+  | "vd-online"
+  | "vd-print"
+  | "vd-photos"
+  | "vd-stamps"
+  | "vd-passport"
+  | "vd-extensions"
+  | "vd-gift-ext";
 
 export type CaseStudyFlow = {
   id: string;

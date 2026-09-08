@@ -43,7 +43,6 @@ export default async function ArtworkDetailPage({
 
   const illustration = artwork.section === "illustration";
   const visualDesign = artwork.section === "visual-design";
-  const galleryTheme = illustration || visualDesign;
 
   return (
     <CaseStudyView
@@ -59,7 +58,9 @@ export default async function ArtworkDetailPage({
       backLabel={
         visualDesign ? "Visual Design" : illustration ? "Illustration" : "Artwork"
       }
-      theme={galleryTheme ? "illustration" : undefined}
+      theme={
+        visualDesign ? "visual-design" : illustration ? "illustration" : undefined
+      }
     />
   );
 }

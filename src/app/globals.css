@@ -2220,7 +2220,7 @@ body:has(.case) .site-header--overlay {
 }
 
 .case .case-meta__row {
-  grid-template-columns: 82px minmax(0, 1fr);
+  grid-template-columns: minmax(118px, max-content) minmax(0, 1fr);
   column-gap: 18px;
   padding: 16px 0;
   border-top: 1px solid var(--rule);
@@ -2235,6 +2235,12 @@ body:has(.case) .site-header--overlay {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.case .case-meta dd {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .case .case-body {
@@ -3401,7 +3407,22 @@ body:has(.case) .site-header--overlay {
   .case .case-meta {
     margin-top: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 20px;
+  }
+
+  .case .case-meta__row {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 6px;
+    column-gap: 0;
+  }
+
+  .case .case-meta dt {
+    white-space: normal;
+  }
+
+  .case .case-meta dd {
+    overflow-wrap: break-word;
   }
 
   .case .case-body {
@@ -7450,7 +7471,14 @@ body:has(.case--illustration) .reading-progress {
   row-gap: 20px;
 }
 
-.case.case--illustration .case-module--stills .case-media {
+.case.case--illustration .case-module__copy {
+  max-width: 46rem;
+  margin: 0;
+  color: #444;
+  line-height: 1.65;
+}
+
+.case.case--illustration .case-module .case-media {
   width: 100%;
   max-width: none;
   margin-top: 28px;
@@ -7458,11 +7486,11 @@ body:has(.case--illustration) .reading-progress {
   background: #f3f3f3;
 }
 
-.case.case--illustration .case-module--stills .case-media:first-of-type {
+.case.case--illustration .case-module .case-media:first-of-type {
   margin-top: 0;
 }
 
-.case.case--illustration .case-module--stills .case-media__image {
+.case.case--illustration .case-module .case-media__image {
   width: 100%;
   height: auto;
   aspect-ratio: auto;
@@ -7506,6 +7534,602 @@ body:has(.case--illustration) .reading-progress {
 
   .case.case--illustration .case-body {
     padding-top: 36px;
+  }
+}
+
+/* Visual Design — website style + PPT composition grids */
+.case.case--visual-design {
+  --project-accent: #111;
+  --project-wash: #f6f6f6;
+  --project-dark: #111;
+  --project-muted: #555;
+}
+
+body:has(.case--visual-design) .reading-progress {
+  background: #111;
+}
+
+.case.case--visual-design .case-overview {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.case.case--visual-design .case-hero__kicker,
+.case.case--visual-design .case-hero__title {
+  grid-column: 1 / -1;
+}
+
+.case.case--visual-design .case-hero__kicker {
+  margin: 0 0 18px;
+  color: var(--project-accent);
+}
+
+.case.case--visual-design .case-hero__title {
+  max-width: none;
+  margin: 0 0 28px;
+}
+
+.case.case--visual-design .case-overview__back {
+  margin-bottom: 28px;
+}
+
+.case.case--visual-design .case-chapter__eyebrow,
+.case.case--visual-design .case-chapter__headline,
+.case.case--visual-design .case-chapter__lead {
+  display: none;
+}
+
+.case.case--visual-design .case-body {
+  grid-template-columns: minmax(0, 1fr);
+  padding-top: 56px;
+}
+
+.case.case--visual-design .case-nav,
+.case.case--visual-design .case-pager {
+  display: none;
+}
+
+.case.case--visual-design .case-content {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+
+.case.case--visual-design .case-module {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.case.case--visual-design .case-module__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.case.case--visual-design .case-module__copy {
+  max-width: 46rem;
+  margin: 0;
+  color: #444;
+  line-height: 1.65;
+}
+
+.vd-board {
+  width: 100%;
+}
+
+.vd-fig {
+  margin: 0;
+  min-width: 0;
+  display: block;
+  background: transparent;
+}
+
+.vd-fig__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  vertical-align: bottom;
+}
+
+.vd-fig--fill {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+.vd-fig--fill .vd-fig__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vd-fig__image--contain {
+  object-fit: contain;
+}
+
+.vd-fig__image--cover {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* KV — full uncropped key visual, natural ratio */
+.vd-board--kv .vd-board__hero {
+  width: 100%;
+}
+
+.vd-board--kv .vd-board__hero .vd-fig__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+.vd-board--kv-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+.vd-board--kv-pair .vd-fig {
+  width: 100%;
+}
+
+.vd-board--kv-pair .vd-fig__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+/* Assets — equal columns, bottom-aligned, shared max height */
+.vd-board--assets {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+  align-items: end;
+}
+
+.vd-board--assets .vd-fig {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 200px;
+}
+
+.vd-board--assets .vd-fig__image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 200px;
+  margin: 0 auto;
+}
+
+/* Online — tall pair + wide/top + bottom row, shared outer height */
+.vd-board--online {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.vd-board__talls {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  flex: 0 0 auto;
+}
+
+.vd-board__tall {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.vd-board__tall .vd-fig__image {
+  width: auto;
+  height: 100%;
+  max-height: 640px;
+  object-fit: contain;
+  object-position: top center;
+}
+
+.vd-board__online-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.vd-board__wide {
+  width: 100%;
+}
+
+.vd-board__wide .vd-fig__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+.vd-board__bottom {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+.vd-board__bottom .vd-fig {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.vd-board__bottom .vd-fig__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+/* Print — banner + tickets/arm/frame + tall rollup */
+.vd-board--print {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.vd-board__print-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.vd-board__banner .vd-fig__image {
+  width: 100%;
+  height: auto;
+}
+
+.vd-board__print-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.95fr) minmax(0, 0.75fr);
+  gap: 16px;
+  align-items: end;
+}
+
+.vd-board__tickets {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.vd-board__ticket,
+.vd-board__arm,
+.vd-board__frame {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 0;
+}
+
+.vd-board__ticket .vd-fig__image,
+.vd-board__arm .vd-fig__image,
+.vd-board__frame .vd-fig__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+.vd-board__rollup {
+  flex: 0 0 clamp(120px, 14vw, 168px);
+  display: flex;
+  align-items: stretch;
+}
+
+.vd-board__rollup .vd-fig__image {
+  width: 100%;
+  height: 100%;
+  max-height: 720px;
+  object-fit: contain;
+  object-position: top center;
+}
+
+/* Photos — cover collage, no letterbox */
+.vd-board--photos {
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  gap: 16px;
+  align-items: stretch;
+  min-height: 440px;
+}
+
+.vd-board__photo-main {
+  min-height: 0;
+}
+
+.vd-board__photo-side {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  min-height: 0;
+}
+
+.vd-board--photos-pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-height: 380px;
+}
+
+.vd-board--photos-pair .vd-board__photo-side {
+  display: contents;
+}
+
+/* Stamps — equal cells, center-aligned */
+.vd-board--stamps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 112px;
+  gap: 28px;
+  align-items: start;
+}
+
+.vd-board__badge-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+.vd-board__city-col {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+  justify-items: center;
+}
+
+.vd-board--stamps .vd-fig {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vd-board--stamps .vd-fig__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Passport — page grid + cover, top-aligned */
+.vd-board--passport {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 0.24fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.vd-board__passport-pages {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 8px;
+  align-items: start;
+}
+
+.vd-board--passport .vd-fig__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: top center;
+}
+
+.vd-board__passport-cover .vd-fig__image {
+  width: 100%;
+  height: auto;
+}
+
+/* Extensions — equal columns, bottom baseline */
+.vd-board--extensions {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+.vd-board--extensions .vd-fig {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 520px;
+}
+
+.vd-board--extensions .vd-fig__image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  object-position: bottom center;
+  margin: 0 auto;
+}
+
+/* Gift extensions — bottom-aligned system */
+.vd-board--gift-ext {
+  display: grid;
+  grid-template-columns: 0.65fr 1.1fr 0.8fr 1.65fr;
+  gap: 16px;
+  align-items: end;
+}
+
+.vd-board__gift-right {
+  display: grid;
+  gap: 16px;
+  align-content: end;
+}
+
+.vd-board__gift-tickets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: end;
+}
+
+.vd-board--gift-ext .vd-fig {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.vd-board--gift-ext .vd-fig__image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  object-position: bottom center;
+  margin: 0 auto;
+}
+
+.vd-board__gift-box .vd-fig__image,
+.vd-board__gift-tickets .vd-fig__image {
+  width: 100%;
+}
+
+.vd-board--stack {
+  display: grid;
+  gap: 20px;
+}
+
+@media (max-width: 899px) {
+  .case.case--visual-design .case-overview {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .case.case--visual-design .case-body {
+    padding-top: 36px;
+  }
+
+  .case.case--visual-design .case-content {
+    gap: 48px;
+  }
+
+  .vd-board--kv-pair,
+  .vd-board--assets,
+  .vd-board--stamps,
+  .vd-board--passport,
+  .vd-board--gift-ext,
+  .vd-board--photos,
+  .vd-board--photos-pair {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .vd-board--assets {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .vd-board--assets .vd-fig {
+    height: 140px;
+  }
+
+  .vd-board--assets .vd-fig__image {
+    max-height: 140px;
+  }
+
+  .vd-board--online {
+    flex-direction: column;
+  }
+
+  .vd-board__talls {
+    justify-content: center;
+  }
+
+  .vd-board__tall .vd-fig__image {
+    height: min(70vh, 520px);
+    max-height: none;
+  }
+
+  .vd-board__bottom {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vd-board--print {
+    flex-direction: column;
+  }
+
+  .vd-board__print-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vd-board__rollup {
+    flex: none;
+    width: min(180px, 42vw);
+    margin: 0 auto;
+  }
+
+  .vd-board__rollup .vd-fig__image {
+    height: auto;
+    max-height: 520px;
+  }
+
+  .vd-board--photos {
+    min-height: 0;
+  }
+
+  .vd-board__photo-side {
+    grid-template-rows: none;
+    gap: 16px;
+  }
+
+  .vd-board--photos .vd-fig--fill {
+    aspect-ratio: 4 / 3;
+    height: auto;
+    min-height: 0;
+  }
+
+  .vd-board__badge-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .vd-board__city-col {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .vd-board__passport-pages {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .vd-board--extensions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .vd-board--extensions .vd-fig {
+    height: 320px;
+  }
+
+  .vd-board--extensions .vd-fig__image {
+    max-height: 320px;
+  }
+
+  .vd-board--gift-ext {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vd-board--gift-ext .vd-fig__image {
+    max-height: 360px;
   }
 }
 

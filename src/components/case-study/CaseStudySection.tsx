@@ -7,6 +7,10 @@ import { CaseExplainBoard, CaseSwatchBoard } from "@/components/case-study/CaseE
 import { CaseSystemMap } from "@/components/case-study/CaseSystemMap";
 import { CaseVisualSystem } from "@/components/case-study/CaseVisualSystem";
 import { MediaBlock } from "@/components/case-study/MediaBlock";
+import {
+  isVisualDesignLayout,
+  VisualDesignBoard,
+} from "@/components/case-study/VisualDesignBoard";
 import type {
   CaseStudyChapter,
   CaseStudyMedia,
@@ -167,6 +171,7 @@ function Module({
   );
 
   const hideHeading = plain && module.id === "stills";
+  const vdLayout = isVisualDesignLayout(module.layout);
 
   return (
     <section
@@ -184,6 +189,13 @@ function Module({
 
       {module.layout === "architecture" && module.architecture ? (
         <CaseArchitectureDiagram layers={module.architecture} />
+      ) : vdLayout && module.media ? (
+        <VisualDesignBoard
+          layout={module.layout!}
+          media={module.media}
+          points={module.points}
+          priority={priorityMedia}
+        />
       ) : module.layout === "visual" ? (
         <CaseVisualSystem
           typeScale={module.typeSpec?.scale}
@@ -234,7 +246,7 @@ function Module({
             ))}
           </dl>
         </div>
-      ) : module.points ? (
+      ) : !vdLayout && module.points ? (
         <dl className={pointsClassName}>
           {module.compareLabels ? (
             <div className="case-points__header">
@@ -335,7 +347,7 @@ function Module({
             <p className="case-analogy__body">{module.aside.copy}</p>
           </aside>
         </div>
-      ) : module.layout === "explain" || module.layout === "map" || module.layout === "visual" ? null : module.media ? (
+      ) : module.layout === "explain" || module.layout === "map" || module.layout === "visual" || vdLayout ? null : module.media ? (
         <MediaList
           items={module.media}
           pair={module.pair}
@@ -439,12 +451,15 @@ export function CaseStudySection({
       {plain ? null : (
         <>
           <h2 className="case-chapter__eyebrow" id={`${chapter.id}-title`}>
-            {chapter.number} / {locale === "zh" ? chapter.label : chapter.label.toUpperCase()}
+            {chapter.number ? `${chapter.number} / ` : ""}
+            {locale === "zh" ? chapter.label : chapter.label.toUpperCase()}
           </h2>
           {chapter.headline ? (
             <p className="case-chapter__headline">{chapter.headline}</p>
           ) : null}
-          <p className="case-chapter__lead">{chapter.lead}</p>
+          {chapter.lead ? (
+            <p className="case-chapter__lead">{chapter.lead}</p>
+          ) : null}
         </>
       )}
 

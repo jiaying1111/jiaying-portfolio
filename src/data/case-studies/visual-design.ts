@@ -21,8 +21,11 @@ function toCaseStudy(study: VisualDesignStudy): CaseStudy {
     throw new Error(`Missing artwork listing for visual design slug "${study.slug}"`);
   }
 
-  const heroStill = study.gallery[0];
-  const stills = study.gallery.map((still, index) => stillToMedia(still, study.title, index));
+  const heroStill = study.sections[0]?.gallery[0];
+  if (!heroStill) {
+    throw new Error(`Missing gallery for visual design slug "${study.slug}"`);
+  }
+
   const summary = study.summary.join(" ");
 
   return {
@@ -34,8 +37,8 @@ function toCaseStudy(study: VisualDesignStudy): CaseStudy {
     summary,
     hero: stillToMedia(heroStill, study.title, 0),
     metadata: [
-      { label: "Role", value: "Visual Design Intern" },
-      { label: "Organization", value: "Lenovo (Beijing) Co., Ltd" },
+      { label: "Role", value: study.role },
+      { label: "Organization", value: study.company },
       { label: "Tools", value: artwork.tools },
       { label: "Media", value: study.medium },
       { label: "Year", value: study.year },
@@ -47,13 +50,15 @@ function toCaseStudy(study: VisualDesignStudy): CaseStudy {
         label: "Work",
         title: study.title,
         lead: summary,
-        modules: [
-          {
-            id: "stills",
-            title: "Selected work",
-            media: stills,
-          },
-        ],
+        modules: study.sections.map((section) => ({
+          id: section.id,
+          title: section.title,
+          copy: section.copy,
+          layout: section.layout,
+          media: section.gallery.map((still, mediaIndex) =>
+            stillToMedia(still, `${study.title} — ${section.title}`, mediaIndex),
+          ),
+        })),
       },
     ],
   };
