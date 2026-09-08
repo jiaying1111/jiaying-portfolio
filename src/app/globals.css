@@ -4280,6 +4280,7 @@ body:has(.case--illustration) .reading-progress {
 .case--digital-nomad .case-explain__figure--stack {
   display: grid;
   overflow: hidden;
+  padding: 18px 20px;
   border: 1px solid var(--rule);
   background: #fff;
 }
@@ -4432,6 +4433,7 @@ body:has(.case--illustration) .reading-progress {
 
 .case--digital-nomad .case-explain--gallery .case-media {
   margin: 0;
+  padding: 18px 20px 14px;
 }
 
 .case--digital-nomad .case-explain--gallery .case-media__image {
@@ -4455,6 +4457,7 @@ body:has(.case--illustration) .reading-progress {
 .case--digital-nomad .case-sysmap__figure {
   position: relative;
   margin: 0;
+  padding: 24px 28px 22px;
   background: #fff;
 }
 
@@ -4774,6 +4777,7 @@ body:has(.case--illustration) .reading-progress {
 
 .case--digital-nomad .case-entries--gallery .case-media {
   margin: 0;
+  padding: 18px 20px 14px;
 }
 
 .case--digital-nomad .case-entries--gallery .case-entry__kicker,
