@@ -54,7 +54,7 @@ export const projects: Project[] = [
     category: "Product Management · UX",
     year: "2026",
     summary:
-      "The official digital companion for HarvardXR Conference 2026: audience and guest login, an interactive Gund Hall map, digital passport stamps, and one-vote showcase voting. Product Manager & UX Designer with Chloe Ni (UI/UX) and Wenxin Li (Backend).",
+      "The official digital companion for HarvardXR Conference 2026: audience and guest login, an interactive Gund Hall map, digital passport stamps, and one-vote showcase voting. Product Manager & UX Designer with Chloe Ni (UI Design) and Wenxin Li (Backend).",
     type: "Live event product",
     tools: "Next.js, Vercel, Notion, Figma",
     listingGroup: "projects",

@@ -7802,12 +7802,33 @@ body:has(.case--illustration) .reading-progress {
 }
 
 .case-architecture__layer {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(190px, .65fr) minmax(0, 1.35fr);
+  width: 100%;
   gap: 32px;
   padding: 26px;
   border: 1px solid #373440;
+  border-radius: 0;
   background: #18171e;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.case-architecture__layer:hover,
+.case-architecture__layer:focus-visible,
+.case-architecture__layer--active {
+  border-color: #8c7aff;
+  background: #211e2d;
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.case-architecture__layer:focus-visible {
+  box-shadow: 0 0 0 2px #0f0f16, 0 0 0 4px #8c7aff;
 }
 
 .case-architecture__intro {
@@ -7867,6 +7888,16 @@ body:has(.case--illustration) .reading-progress {
   color: #fff;
 }
 
+.case-architecture__hint {
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  color: #817b8c;
+  font-size: 9px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
 .case-architecture__connector {
   display: grid;
   height: 34px;
@@ -7897,6 +7928,39 @@ body:has(.case--illustration) .reading-progress {
   margin: 24px 0 0;
   color: #87838f;
   font-size: 11px;
+}
+
+.case-architecture__detail {
+  display: grid;
+  grid-template-columns: minmax(140px, .55fr) minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 24px;
+  margin-top: 8px;
+  padding: 22px 24px;
+  border: 1px solid rgb(140 122 255 / 45%);
+  background: linear-gradient(110deg, rgb(140 122 255 / 14%), rgb(140 122 255 / 3%));
+}
+
+.case-architecture__detail > div {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.case-architecture__detail span {
+  color: #8c7aff;
+  font-size: 11px;
+}
+
+.case-architecture__detail strong {
+  color: #fff;
+  font-size: 14px;
+}
+
+.case-architecture__detail p {
+  margin: 0;
+  color: #aaa6b2;
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 @media (max-width: 1100px) {
@@ -7945,6 +8009,11 @@ body:has(.case--illustration) .reading-progress {
 
   .case-architecture__layer ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-architecture__detail {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
   }
 
   .case.case--hxr-digital-map .case-module--stamp-set > .case-media {

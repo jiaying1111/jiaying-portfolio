@@ -36,7 +36,7 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
   },
   metadata: [
     { label: "Role", value: "Product Manager & UX Designer" },
-    { label: "Team", value: "Chloe Ni · UI/UX · Wenxin Li · Backend" },
+    { label: "Team", value: "Chloe Ni · UI Designer · Wenxin Li · Backend" },
     { label: "Organization", value: "HarvardXR" },
     { label: "Stack", value: "Next.js, Vercel, Notion" },
     { label: "Event", value: "HXR Conference 2026 · April 11" },
@@ -66,7 +66,7 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
           id: "team",
           title: "Team",
           copy:
-            "A small team shipped the live companion for conference day. Product and UX set the flows; UI/UX shaped the dark mobile interface; backend kept rooms, stamps, and votes in sync with Notion.",
+            "A small team shipped the live companion for conference day. Product and UX set the flows; UI design shaped the dark mobile interface; backend kept rooms, stamps, and votes in sync with Notion.",
           layout: "credits",
           entries: [
             {
@@ -78,7 +78,7 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
             {
               id: "chloe",
               title: "Chloe Ni",
-              role: "UI/UX Designer",
+              role: "UI Designer",
               copy: "Visual system, mobile UI, stamp artwork, and the photo-frame capture screens.",
             },
             {
@@ -305,7 +305,7 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
               title: "Before · framed capture",
               role: "Capture",
               media: app(
-                "camera-capture.png",
+                "camera-capture-v2.png",
                 "Camera screen with HXR photo frame overlay before taking a stamp photo",
               ),
             },
@@ -314,7 +314,7 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
               title: "After · stamp collected",
               role: "Collect & share",
               media: app(
-                "camera-framed.png",
+                "camera-framed-v2.png",
                 "After capture screen with COLLECTED badge, framed photo, stamp, and share actions",
               ),
             },
@@ -335,15 +335,15 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
           pair: true,
           media: [
             {
-              src: `${root}/stamps/framed-photo-example.png`,
+              src: `${root}/stamps/framed-photo-example-v2.png`,
               alt: "Example HXR framed photo card with conference branding and stamp",
               width: 610,
               height: 876,
               displayWidth: 360,
             },
             {
-              src: `${root}/stamps/photo-frame.png`,
-              alt: "Transparent HXR conference photo frame asset used around attendee photos",
+              src: `${root}/stamps/photo-frame-v2.png`,
+              alt: "HXR conference photo frame shown with an attendee event photo",
               width: 610,
               height: 876,
               displayWidth: 360,
