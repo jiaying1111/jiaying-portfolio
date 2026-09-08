@@ -24,7 +24,7 @@ export function CaseArchitectureDiagram({
   return (
     <div className="case-architecture" aria-label="Technical architecture">
       <div className="case-architecture__header">
-        <span>HXR Digital Map</span>
+        <span>HarvardXR Digital Map</span>
         <span>{locale === "zh" ? "技术架构" : "Technical architecture"}</span>
       </div>
       <div className="case-architecture__flow">

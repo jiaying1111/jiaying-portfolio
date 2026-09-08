@@ -224,7 +224,7 @@ export const homepageCardAssets = {
       src: "/images/home/experience-cards/hxr-digital-map-default.png",
       width: 521,
       height: 438,
-      alt: "HXR Digital Map",
+      alt: "HarvardXR Digital Map",
     },
     hoverFrames: [
       {
@@ -380,7 +380,7 @@ export const experienceListingMedia = {
       { index: 2, ext: "png" },
       { index: 3, ext: "png" },
     ],
-    "HXR Digital Map — conference floor plan, stamps, and voting on mobile",
+    "HarvardXR Digital Map — conference map, stamps, and passport on mobile",
   ),
 } as const satisfies Record<string, HoverLoopSet>;
 

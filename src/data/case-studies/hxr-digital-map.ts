@@ -19,7 +19,7 @@ function app(
 
 export const hxrDigitalMapCaseStudy: CaseStudy = {
   slug: "hxr-digital-map",
-  title: "HXR Digital Map",
+  title: "HarvardXR Digital Map",
   category: "Product Management · UX",
   year: "2026",
   kicker: "HarvardXR Conference · Product & UX · 2026",
@@ -27,12 +27,12 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
     "A mobile web companion for navigating Gund Hall, collecting stamps, and voting during HXR 2026.",
   editorialTitle: "One digital map for the conference day",
   summary:
-    "HXR Digital Map is the official digital companion for HarvardXR Conference 2026 — XR +: From Pixel to Voxel. As Product Manager and UX Designer, I defined audience and guest entry, mapped the Gund Hall experience, and shaped the stamp and voting flows. Chloe Ni designed the UI; Wenxin Li built the backend. Together we shipped a Next.js product with live Notion-backed rooms, passport stamps, and one-vote showcase voting.",
+    "HarvardXR Digital Map is the official digital companion for HarvardXR Conference 2026 — XR +: From Pixel to Voxel. As Product Manager and UX Designer, I defined audience and guest entry, mapped the Gund Hall experience, and shaped the stamp and voting flows. Chloe Ni designed the UI; Wenxin Li built the backend. Together we shipped a Next.js product with live Notion-backed rooms, passport stamps, and one-vote showcase voting.",
   hero: {
-    src: `${root}/app/map.png`,
-    alt: "HXR Digital Map mobile screen showing the Gund Hall interactive floor plan",
-    width: 780,
-    height: 1688,
+    src: `${root}/hero/product-overview.png`,
+    alt: "HarvardXR Digital Map product overview with phone screens, digital stamps, and passport collection",
+    width: 1440,
+    height: 810,
   },
   metadata: [
     { label: "Role", value: "Product Manager & UX Designer" },

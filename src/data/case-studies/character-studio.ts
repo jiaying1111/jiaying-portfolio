@@ -27,7 +27,7 @@ export const characterStudioCaseStudy: CaseStudy = {
     "Character Studio is a browser-based workspace for illustrators and world-builders. Starting with an uploaded drawing, it combines visual interpretation, character dialogue, narrative shaping, and an infinite canvas while keeping every creative decision with the artist.",
   hero: shot(
     "hero/character-studio-ui.png",
-    "Character Studio interface showing an infinite canvas and workflow sidebar",
+    "Character Studio dialogue workspace with character sheet and drawing",
   ),
   metadata: [
     { label: "Role", value: "Experience Designer & Creative Technologist" },

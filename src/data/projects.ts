@@ -50,7 +50,7 @@ export const projects: Project[] = [
   },
   {
     slug: "hxr-digital-map",
-    title: "HXR Digital Map",
+    title: "HarvardXR Digital Map",
     category: "Product Management · UX",
     year: "2026",
     summary:
