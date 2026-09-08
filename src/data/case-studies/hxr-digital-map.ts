@@ -331,24 +331,7 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
           title: "Framed keepsake",
           copy:
             "Once the shutter fires, the frame locks the image, marks the stamp as collected, and offers Share & Collect Stamp, Save to Gallery, or Retake. The stamped card becomes both proof of visit and a shareable artifact.",
-          layout: "pairs",
-          pair: true,
-          media: [
-            {
-              src: `${root}/stamps/framed-photo-example-v2.png`,
-              alt: "Example HXR framed photo card with conference branding and stamp",
-              width: 610,
-              height: 876,
-              displayWidth: 360,
-            },
-            {
-              src: `${root}/stamps/photo-frame-v2.png`,
-              alt: "HXR conference photo frame shown with an attendee event photo",
-              width: 610,
-              height: 876,
-              displayWidth: 360,
-            },
-          ],
+          layout: "cards",
           points: [
             {
               term: "Framed capture",
