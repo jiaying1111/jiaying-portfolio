@@ -10,6 +10,22 @@ import { useLocale } from "@/i18n/LocaleProvider";
 import { localize } from "@/i18n/localize";
 import { ui } from "@/i18n/ui";
 
+function artworkHref(section: ArtworkSectionId, id: string) {
+  if (
+    section === "illustration" ||
+    section === "visual-design" ||
+    id === "resounding-nature" ||
+    id === "present-and-absent"
+  ) {
+    return `/artwork/${id}`;
+  }
+  return undefined;
+}
+
+function tabHref(id: ArtworkSectionId) {
+  return id === "installation" ? "/artwork" : `/artwork?tab=${id}`;
+}
+
 export function ArtworkView({ activeTab }: { activeTab: ArtworkSectionId }) {
   const router = useRouter();
   const { locale } = useLocale();
@@ -20,9 +36,7 @@ export function ArtworkView({ activeTab }: { activeTab: ArtworkSectionId }) {
     sections.find((entry) => entry.id === activeTab) ?? sections[0];
 
   const onSelect = (id: ArtworkSectionId) => {
-    router.replace(id === "installation" ? "/artwork" : `/artwork?tab=${id}`, {
-      scroll: false,
-    });
+    router.replace(tabHref(id), { scroll: false });
   };
 
   return (
@@ -61,13 +75,7 @@ export function ArtworkView({ activeTab }: { activeTab: ArtworkSectionId }) {
             type={item.type}
             tools={item.tools}
             media={item.listingMedia}
-            href={
-              item.section === "illustration" ||
-              item.id === "resounding-nature" ||
-              item.id === "present-and-absent"
-                ? `/artwork/${item.id}`
-                : undefined
-            }
+            href={artworkHref(item.section, item.id)}
             priority={index === 0}
           />
         ))}

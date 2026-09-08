@@ -2014,6 +2014,21 @@ a {
   background: var(--ink);
 }
 
+.case-media__youtube {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #111;
+}
+
+.case-media__youtube iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .case-entries--gallery,
 .case-entries--credits {
   display: grid;
@@ -2757,6 +2772,10 @@ body:has(.case) .site-header--overlay {
 
 .case .case-module--final-video .case-media__video {
   max-height: 680px;
+}
+
+.case .case-module--final-video .case-media__youtube {
+  max-height: none;
 }
 
 .case .case-module--final-video .case-media__caption {
@@ -4255,11 +4274,24 @@ body:has(.case--illustration) .reading-progress {
   height: auto;
 }
 
+.case--digital-nomad .case-explain,
+.case--digital-nomad .case-sysmap,
+.case--digital-nomad .case-entries,
+.case--digital-nomad .case-steps,
+.case--digital-nomad .case-points,
+.case--digital-nomad .case-visual,
+.case--digital-nomad .case-media-pair,
+.case--digital-nomad .case-module > .case-media {
+  grid-column: 2;
+  min-width: 0;
+}
+
 .case--digital-nomad .case-explain__figure,
 .case--digital-nomad .case-explain__figure--pair,
 .case--digital-nomad .case-explain__figure--stack {
   display: grid;
   overflow: hidden;
+  padding: 22px 24px;
   border: 1px solid var(--rule);
   background: #fff;
 }
@@ -4388,8 +4420,11 @@ body:has(.case--illustration) .reading-progress {
 }
 
 .case--digital-nomad .case-explain--gallery .case-explain__card {
+  display: flex;
   min-height: 0;
-  padding: 0 0 20px;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 22px 22px 18px;
   overflow: hidden;
 }
 
@@ -4399,23 +4434,43 @@ body:has(.case--illustration) .reading-progress {
 
 .case--digital-nomad .case-explain--gallery .case-explain__kicker,
 .case--digital-nomad .case-explain--gallery .case-explain__title {
-  padding: 0 22px;
+  padding: 0;
 }
 
 .case--digital-nomad .case-explain--gallery .case-explain__kicker {
-  margin-top: 16px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.case--digital-nomad .case-explain--gallery .case-explain__title {
+  min-height: 1.4em;
+}
+
+.case--digital-nomad .case-explain--gallery .case-media {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+  place-items: stretch;
+  overflow: hidden;
+  padding: 28px 32px;
 }
 
 .case--digital-nomad .case-explain--gallery .case-media__image {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  height: auto;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  aspect-ratio: auto;
   object-fit: contain;
+  object-position: center;
   background: #fff;
 }
 
-.case--digital-nomad .case-explain--gallery .case-explain__card--lead .case-media__image {
-  aspect-ratio: 16 / 8;
+.case--digital-nomad .case-explain--gallery .case-explain__card--lead .case-media {
+  aspect-ratio: 2 / 1;
+  padding: 36px 40px;
 }
 
 .case--digital-nomad .case-sysmap {
@@ -4427,13 +4482,25 @@ body:has(.case--illustration) .reading-progress {
 .case--digital-nomad .case-sysmap__figure {
   position: relative;
   margin: 0;
+  overflow: hidden;
+  padding: 56px 60px 48px;
+  border: 1px solid color-mix(in srgb, var(--project-accent) 28%, var(--rule));
   background: #fff;
+}
+
+.case--digital-nomad .case-sysmap__frame {
+  position: relative;
+  width: 82%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .case--digital-nomad .case-sysmap__image {
   display: block;
   width: 100%;
   height: auto;
+  object-fit: contain;
 }
 
 .case--digital-nomad .case-sysmap__nodes {
@@ -4714,6 +4781,7 @@ body:has(.case--illustration) .reading-progress {
   min-width: 0;
   flex-direction: column;
   overflow: hidden;
+  padding: 18px 20px 0;
   border: 1px solid var(--rule);
   background: #fff;
   transition:
@@ -4733,12 +4801,18 @@ body:has(.case--illustration) .reading-progress {
 }
 
 .case--digital-nomad .case-entries--gallery .case-media {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
   margin: 0;
+  place-items: stretch;
+  overflow: hidden;
 }
 
 .case--digital-nomad .case-entries--gallery .case-entry__kicker,
 .case--digital-nomad .case-entries--gallery .case-entry__title {
-  padding: 0 28px 0 20px;
+  padding: 0;
 }
 
 .case--digital-nomad .case-entries--gallery .case-entry__kicker {
@@ -4758,6 +4832,22 @@ body:has(.case--illustration) .reading-progress {
 
 .case--digital-nomad .case-module--core-experience .case-entries--gallery {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.case--digital-nomad .case-module--core-experience .case-media {
+  aspect-ratio: 1 / 1;
+  padding: 36px 32px 20px;
+}
+
+.case--digital-nomad .case-module--core-experience .case-media__image {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin: 0;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 .case--digital-nomad .case-module--desk-research .case-entry__title,
@@ -4780,16 +4870,52 @@ body:has(.case--illustration) .reading-progress {
 }
 
 .case--digital-nomad .case-module--storyboard .case-entries--gallery {
+  align-items: stretch;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.case--digital-nomad .case-module--storyboard .case-entry {
+  padding: 16px 16px 0;
+}
+
+.case--digital-nomad .case-module--storyboard .case-media {
+  aspect-ratio: 1 / 1;
+  padding: 22px;
+}
+
+.case--digital-nomad .case-module--storyboard .case-media__image {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
 .case--digital-nomad .case-module--storyboard .case-entry__title {
-  margin-top: 14px;
-  margin-bottom: 18px;
+  margin-top: auto;
+  padding-top: 14px;
+  margin-bottom: 16px;
   font-size: var(--type-meta-size);
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.case--digital-nomad .case-module--service-flow > .case-media {
+  width: 100%;
+  max-width: none;
+  overflow: hidden;
+  padding: 40px 44px;
+  border: 1px solid var(--rule);
+  background: #fff;
+}
+
+.case--digital-nomad .case-module--service-flow .case-media__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .case--digital-nomad .case-module--final-value .case-points--cards .case-points__row,
@@ -4863,6 +4989,17 @@ body:has(.case--illustration) .reading-progress {
     height: 56px;
   }
 
+  .case--digital-nomad .case-explain,
+  .case--digital-nomad .case-sysmap,
+  .case--digital-nomad .case-entries,
+  .case--digital-nomad .case-steps,
+  .case--digital-nomad .case-points,
+  .case--digital-nomad .case-visual,
+  .case--digital-nomad .case-media-pair,
+  .case--digital-nomad .case-module > .case-media {
+    grid-column: 1;
+  }
+
   .case--digital-nomad .case-explain__cards,
   .case--digital-nomad .case-explain--gallery .case-explain__cards,
   .case--digital-nomad .case-explain__figure--pair,
@@ -4870,17 +5007,40 @@ body:has(.case--illustration) .reading-progress {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .case--digital-nomad .case-explain__figure,
+  .case--digital-nomad .case-explain__figure--pair,
+  .case--digital-nomad .case-explain__figure--stack {
+    padding: 16px;
+  }
+
+  .case--digital-nomad .case-sysmap__figure {
+    padding: 28px 22px;
+  }
+
+  .case--digital-nomad .case-sysmap__frame {
+    width: 94%;
+  }
+
+  .case--digital-nomad .case-module--service-flow > .case-media {
+    padding: 20px 16px;
+  }
+
+  .case--digital-nomad .case-explain--gallery .case-explain__card,
+  .case--digital-nomad .case-entries--gallery .case-entry {
+    padding: 14px 14px 0;
+  }
+
   .case--digital-nomad .case-explain__figure--stack .case-media:first-child,
   .case--digital-nomad .case-explain__figure--stack .case-media:last-child {
-    padding: 18px 16px;
+    padding: 12px 8px;
   }
 
   .case--digital-nomad .case-explain--gallery .case-explain__card--lead {
     grid-column: auto;
   }
 
-  .case--digital-nomad .case-explain--gallery .case-explain__card--lead .case-media__image,
-  .case--digital-nomad .case-explain--gallery .case-media__image {
+  .case--digital-nomad .case-explain--gallery .case-explain__card--lead .case-media,
+  .case--digital-nomad .case-explain--gallery .case-media {
     aspect-ratio: 4 / 3;
   }
 
@@ -7366,3 +7526,285 @@ body:has(.case--illustration) .reading-progress {
     padding-top: 36px;
   }
 }
+
+/* HXR Digital Map — dark mobile product, stamp grid, photo-frame flow */
+.case.case--hxr-digital-map {
+  --project-accent: #7b5cff;
+  --project-wash: #f4f2ff;
+  --project-dark: #0b0b12;
+  --project-muted: #6b6b78;
+}
+
+.case.case--hxr-digital-map ::selection {
+  background: #d9d0ff;
+}
+
+.case.case--hxr-digital-map .case-chapter__eyebrow,
+.case.case--hxr-digital-map .case-hero__kicker {
+  color: var(--project-accent);
+}
+
+.case.case--hxr-digital-map .case-entries--credits {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.case.case--hxr-digital-map .case-entries--credits .case-entry {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 22px 22px 24px;
+  border: 1px solid var(--rule);
+  border-top: 1px solid var(--rule);
+  background: #fff;
+}
+
+.case.case--hxr-digital-map .case-entries--credits .case-entry__title {
+  margin: 0;
+  font-size: var(--type-body-size);
+  font-weight: 600;
+}
+
+.case.case--hxr-digital-map .case-entries--credits .case-entry__role {
+  margin: 0;
+  color: var(--project-accent);
+  font-size: var(--type-meta-size);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.case.case--hxr-digital-map .case-entries--credits .case-entry__copy {
+  margin: 4px 0 0;
+  color: var(--project-muted);
+  font-size: var(--type-meta-size);
+  line-height: 1.55;
+}
+
+.case.case--hxr-digital-map .case-module--entry-split .case-media-pair,
+.case.case--hxr-digital-map .case-module--map-ux .case-media-pair,
+.case.case--hxr-digital-map .case-module--schedule-ux .case-media-pair,
+.case.case--hxr-digital-map .case-module--passport-vote-ux .case-media-pair {
+  align-items: start;
+  justify-content: center;
+  gap: 28px;
+}
+
+.case.case--hxr-digital-map .case-module--entry-split .case-media,
+.case.case--hxr-digital-map .case-module--login-rules > .case-media,
+.case.case--hxr-digital-map .case-module--map-ux .case-media,
+.case.case--hxr-digital-map .case-module--schedule-ux .case-media,
+.case.case--hxr-digital-map .case-module--passport-vote-ux .case-media,
+.case.case--hxr-digital-map .case-module--photo-frame-flow .case-media {
+  width: min(100%, 280px);
+  max-width: 280px;
+  margin-inline: auto;
+  overflow: hidden;
+  padding: 18px 16px 20px;
+  border: 1px solid var(--rule);
+  border-radius: 28px;
+  background: #111118;
+}
+
+.case.case--hxr-digital-map .case-module--entry-split .case-media__image,
+.case.case--hxr-digital-map .case-module--login-rules > .case-media .case-media__image,
+.case.case--hxr-digital-map .case-module--map-ux .case-media__image,
+.case.case--hxr-digital-map .case-module--schedule-ux .case-media__image,
+.case.case--hxr-digital-map .case-module--passport-vote-ux .case-media__image,
+.case.case--hxr-digital-map .case-module--photo-frame-flow .case-media__image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border-radius: 18px;
+}
+
+.case.case--hxr-digital-map .case-module--login-rules > .case-media {
+  margin-top: 28px;
+}
+
+.case.case--hxr-digital-map .case-module--stamp-set > .case-media {
+  width: 100%;
+  max-width: none;
+  overflow: hidden;
+  padding: 36px 40px;
+  border: 1px solid color-mix(in srgb, var(--project-accent) 22%, var(--rule));
+  background: #0f0f16;
+}
+
+.case.case--hxr-digital-map .case-module--stamp-set .case-media__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.case.case--hxr-digital-map .case-module--stamp-gallery .case-entries--gallery {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 16px;
+}
+
+.case.case--hxr-digital-map .case-module--stamp-gallery .case-entry {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 18px 14px 16px;
+  border: 1px solid var(--rule);
+  background: #0f0f16;
+}
+
+.case.case--hxr-digital-map .case-module--stamp-gallery .case-media {
+  display: grid;
+  width: 100%;
+  max-width: 140px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  place-items: center;
+  overflow: hidden;
+  padding: 10px;
+  background: transparent;
+}
+
+.case.case--hxr-digital-map .case-module--stamp-gallery .case-media__image {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+.case.case--hxr-digital-map .case-module--stamp-gallery .case-entry__title {
+  margin-top: 12px;
+  color: #f5f5f8;
+  font-size: var(--type-meta-size);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.case.case--hxr-digital-map .case-module--stamp-gallery .case-entry__role {
+  margin-top: 4px;
+  color: #9a96b0;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.case.case--hxr-digital-map .case-module--photo-frame-flow .case-entries--gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 20px;
+}
+
+.case.case--hxr-digital-map .case-module--photo-frame-flow .case-entry {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.case.case--hxr-digital-map .case-module--photo-frame-flow .case-entry__role {
+  order: -1;
+  margin: 0 0 10px;
+  color: var(--project-accent);
+  font-size: var(--type-meta-size);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case.case--hxr-digital-map .case-module--photo-frame-flow .case-entry__title {
+  margin-top: 14px;
+  font-size: var(--type-meta-size);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.case.case--hxr-digital-map .case-module--frame-keepsake .case-media-pair {
+  align-items: stretch;
+  gap: 24px;
+}
+
+.case.case--hxr-digital-map .case-module--frame-keepsake .case-media {
+  display: grid;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  overflow: hidden;
+  padding: 28px 24px;
+  border: 1px solid color-mix(in srgb, var(--project-accent) 22%, var(--rule));
+  background: #0f0f16;
+  place-items: center;
+}
+
+.case.case--hxr-digital-map .case-module--frame-keepsake .case-media__image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+.case.case--hxr-digital-map .case-module--system-diagram > .case-media {
+  width: 100%;
+  max-width: none;
+  overflow: hidden;
+  padding: 24px;
+  border: 1px solid var(--rule);
+  background: #fff;
+}
+
+.case.case--hxr-digital-map .case-module--system-diagram .case-media__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 1100px) {
+  .case.case--hxr-digital-map .case-module--stamp-gallery .case-entries--gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case.case--hxr-digital-map .case-module--photo-frame-flow .case-entries--gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case.case--hxr-digital-map .case-entries--credits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 899px) {
+  .case.case--hxr-digital-map .case-entries--credits,
+  .case.case--hxr-digital-map .case-module--stamp-gallery .case-entries--gallery,
+  .case.case--hxr-digital-map .case-module--photo-frame-flow .case-entries--gallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case.case--hxr-digital-map .case-module--stamp-set > .case-media {
+    padding: 22px 18px;
+  }
+
+  .case.case--hxr-digital-map .case-module--frame-keepsake .case-media {
+    padding: 20px 16px;
+  }
+
+  .case.case--hxr-digital-map .case-module--entry-split .case-media,
+  .case.case--hxr-digital-map .case-module--login-rules > .case-media,
+  .case.case--hxr-digital-map .case-module--map-ux .case-media,
+  .case.case--hxr-digital-map .case-module--schedule-ux .case-media,
+  .case.case--hxr-digital-map .case-module--passport-vote-ux .case-media,
+  .case.case--hxr-digital-map .case-module--photo-frame-flow .case-media {
+    width: min(100%, 260px);
+    max-width: 260px;
+  }
+}
+

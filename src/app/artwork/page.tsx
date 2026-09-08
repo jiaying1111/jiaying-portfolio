@@ -10,11 +10,17 @@ type ArtworkPageProps = {
   searchParams: Promise<{ tab?: string | string[] }>;
 };
 
+function parseTab(raw: string | undefined): ArtworkSectionId {
+  if (raw === "illustration" || raw === "visual-design") {
+    return raw;
+  }
+  return "installation";
+}
+
 export default async function ArtworkPage({ searchParams }: ArtworkPageProps) {
   const params = await searchParams;
   const raw = Array.isArray(params.tab) ? params.tab[0] : params.tab;
-  const activeTab: ArtworkSectionId =
-    raw === "illustration" ? "illustration" : "installation";
+  const activeTab = parseTab(raw);
 
   return <ArtworkView activeTab={activeTab} />;
 }

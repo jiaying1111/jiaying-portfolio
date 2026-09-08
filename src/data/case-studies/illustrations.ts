@@ -127,7 +127,8 @@ function toCaseStudy(study: IllustrationStudy): CaseStudy {
                   copy: "A walkthrough of the finished work.",
                   media: [
                     {
-                      src: extras.film.src,
+                      src: extras.film.youtube ?? extras.film.src,
+                      youtube: extras.film.youtube,
                       alt: `Film of ${study.title}`,
                       width: extras.film.width,
                       height: extras.film.height,

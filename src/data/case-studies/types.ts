@@ -11,6 +11,8 @@ export type CaseStudyMedia = {
   poster?: string;
   /** Looping clips autoplay muted, like a compressed GIF. */
   loop?: boolean;
+  /** When set, the player embeds this YouTube film instead of a local file. */
+  youtube?: string;
 };
 
 /** A titled text + image pair inside a module, e.g. one research finding. */

@@ -1,6 +1,6 @@
 import { artworkListingMedia, type HoverLoopSet } from "@/data/assets";
 
-export type ArtworkSectionId = "installation" | "illustration";
+export type ArtworkSectionId = "installation" | "illustration" | "visual-design";
 
 export type Artwork = {
   id: string;
@@ -152,9 +152,49 @@ const illustration: Artwork[] = [
   },
 ];
 
+const visualDesign: Artwork[] = [
+  {
+    id: "ai-imagination-journey",
+    section: "visual-design",
+    title: "AI创想之旅",
+    category: "Campaign Design",
+    year: "2025",
+    summary:
+      "A Lenovo Customer Center campaign with a key visual, banners, stamps, and a passport keepake that turns an AI-themed visit into a collectible journey.",
+    type: "Internship · Lenovo",
+    tools: "Adobe Illustrator, Photoshop",
+    listingMedia: artworkListingMedia["ai-imagination-journey"],
+  },
+  {
+    id: "explore-the-future",
+    section: "visual-design",
+    title: "探索未来",
+    category: "Campaign Design",
+    year: "2025",
+    summary:
+      "Visual identity and event materials for Lenovo’s sustainability learning program, from handbook covers and roll-ups to mini-program covers and classroom aids.",
+    type: "Internship · Lenovo",
+    tools: "Adobe Illustrator, Photoshop",
+    listingMedia: artworkListingMedia["explore-the-future"],
+  },
+  {
+    id: "gift-shop-launch",
+    section: "visual-design",
+    title: "礼品店上新",
+    category: "Campaign Design",
+    year: "2025",
+    summary:
+      "Gift-shop launch visuals for Lenovo Customer Center, including KVs, long-form detail pages, city banners, raffle boards, and prize tickets.",
+    type: "Internship · Lenovo",
+    tools: "Adobe Illustrator, Photoshop",
+    listingMedia: artworkListingMedia["gift-shop-launch"],
+  },
+];
+
 export const artworkSections: ArtworkSection[] = [
   { id: "installation", label: "Installation", items: installation },
   { id: "illustration", label: "Illustration", items: illustration },
+  { id: "visual-design", label: "Visual Design", items: visualDesign },
 ];
 
 export const artworks: Artwork[] = artworkSections.flatMap(

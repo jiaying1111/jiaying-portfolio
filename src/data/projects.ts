@@ -49,6 +49,32 @@ export const projects: Project[] = [
     card: homepageCardAssets.dreamwhorl,
   },
   {
+    slug: "hxr-digital-map",
+    title: "HXR Digital Map",
+    category: "Product Management · UX",
+    year: "2026",
+    summary:
+      "The official digital companion for HarvardXR Conference 2026: audience and guest login, an interactive Gund Hall map, digital passport stamps, and one-vote showcase voting. Product Manager & UX Designer with Chloe Ni (UI/UX) and Wenxin Li (Backend).",
+    type: "Live event product",
+    tools: "Next.js, Vercel, Notion, Figma",
+    listingGroup: "projects",
+    listingMedia: experienceListingMedia["hxr-digital-map"],
+    card: homepageCardAssets["hxr-digital-map"],
+  },
+  {
+    slug: "character-studio",
+    title: "Character Studio",
+    category: "AI Tool · Interaction Design",
+    year: "2026",
+    summary:
+      "An AI-assisted tool for illustrators and world-builders that supports character development through dialogue, note-taking, sketching, and visual organization—without replacing authorship or drawing.",
+    type: "Collaboration Project",
+    tools: "HTML, CSS, JavaScript, Anthropic API",
+    listingGroup: "practice",
+    listingMedia: experienceListingMedia["character-studio"],
+    card: homepageCardAssets["character-studio"],
+  },
+  {
     slug: "little-red-riding-hood",
     title: "Little Red Riding Hood",
     category: "Interactive Installation",

@@ -13,9 +13,10 @@ function image(
   return { src: `${root}/${path}`, alt, width, height, ...extras };
 }
 
-function video(file: string, alt: string): CaseStudyMedia {
+function video(file: string, alt: string, youtube?: string): CaseStudyMedia {
   return {
-    src: `${videoRoot}/${file}`,
+    src: youtube ?? `${videoRoot}/${file}`,
+    youtube,
     alt,
     width: 1280,
     height: 720,
@@ -295,7 +296,13 @@ export const resoundingNatureCaseStudy: CaseStudy = {
         {
           id: "final-video",
           title: "Final video",
-          media: [video("final.mp4", "Film of the completed Re:Sounding Nature installation in motion")],
+          media: [
+            video(
+              "final.mp4",
+              "Film of the completed Re:Sounding Nature installation in motion",
+              "https://youtu.be/0j38oYFXYA8",
+            ),
+          ],
         },
       ],
     },

@@ -8,10 +8,21 @@ import { useLocale } from "@/i18n/LocaleProvider";
 import { localize } from "@/i18n/localize";
 import { ui } from "@/i18n/ui";
 
+/** Homepage Experience grid keeps the four featured projects only. */
+const homepageProjectSlugs = new Set([
+  "digital-nomad",
+  "dreamwhorl",
+  "little-red-riding-hood",
+  "nushu",
+]);
+
 export function ProjectGridSection() {
   const { locale } = useLocale();
   const copy = localize(homepageCopy, locale);
-  const items = localize(projects, locale);
+  const items = localize(
+    projects.filter((project) => homepageProjectSlugs.has(project.slug)),
+    locale,
+  );
   const moreCopy = ui(locale);
 
   return (

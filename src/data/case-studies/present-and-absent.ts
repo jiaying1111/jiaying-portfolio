@@ -14,7 +14,8 @@ function image(
 
 function video(alt: string): CaseStudyMedia {
   return {
-    src: "/videos/2-Present%26Absent.mp4",
+    src: "https://youtu.be/qMYnkuJSPCs",
+    youtube: "https://youtu.be/qMYnkuJSPCs",
     alt,
     width: 3840,
     height: 2160,

@@ -12,9 +12,10 @@ function image(
   return { src: `${media}/${path}`, alt, width, height, ...extras };
 }
 
-function video(file: string, alt: string): CaseStudyMedia {
+function video(file: string, alt: string, youtube?: string): CaseStudyMedia {
   return {
-    src: `/videos/${file}`,
+    src: youtube ?? `/videos/${file}`,
+    youtube,
     alt,
     width: 1920,
     height: 1148,
@@ -45,6 +46,7 @@ export const littleRedRidingHoodCaseStudy: CaseStudy = {
     { label: "Media", value: "Web interaction, acrylic sculpture" },
     { label: "Type", value: "Independent Project" },
   ],
+  links: [{ label: "Video link", href: "https://youtu.be/fOt7TaUZdxQ" }],
   chapters: [
     {
       id: "idea",
@@ -270,6 +272,7 @@ export const littleRedRidingHoodCaseStudy: CaseStudy = {
             video(
               "5-Reimagination of Little Red Riding Hood.mp4",
               "Film of the Little Red Riding Hood installation and interactive system",
+              "https://youtu.be/fOt7TaUZdxQ",
             ),
           ],
         },

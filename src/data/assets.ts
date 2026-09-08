@@ -185,6 +185,72 @@ export const homepageCardAssets = {
       { ext: "png", width: 1600, height: 751 },
     ],
   ),
+  "character-studio": {
+    default: {
+      id: "home-card-character-studio-default",
+      src: "/images/home/experience-cards/character-studio-default.png",
+      width: 521,
+      height: 438,
+      alt: "Character Studio",
+    },
+    hoverFrames: [
+      {
+        id: "home-card-character-studio-hover-01",
+        src: "/images/home/experience-cards/character-studio-hover-frame-01.png",
+        width: 623,
+        height: 420,
+        alt: "",
+      },
+      {
+        id: "home-card-character-studio-hover-02",
+        src: "/images/home/experience-cards/character-studio-hover-frame-02.png",
+        width: 623,
+        height: 420,
+        alt: "",
+      },
+      {
+        id: "home-card-character-studio-hover-03",
+        src: "/images/home/experience-cards/character-studio-hover-frame-03.png",
+        width: 623,
+        height: 420,
+        alt: "",
+      },
+    ],
+    overlay: homepageCardOverlay,
+  },
+  "hxr-digital-map": {
+    default: {
+      id: "home-card-hxr-digital-map-default",
+      src: "/images/home/experience-cards/hxr-digital-map-default.png",
+      width: 521,
+      height: 438,
+      alt: "HXR Digital Map",
+    },
+    hoverFrames: [
+      {
+        id: "home-card-hxr-digital-map-hover-01",
+        src: "/images/home/experience-cards/hxr-digital-map-hover-frame-01.png",
+        width: 623,
+        height: 420,
+        alt: "",
+      },
+      {
+        id: "home-card-hxr-digital-map-hover-02",
+        src: "/images/home/experience-cards/hxr-digital-map-hover-frame-02.png",
+        width: 623,
+        height: 420,
+        alt: "",
+      },
+      {
+        id: "home-card-hxr-digital-map-hover-03",
+        src: "/images/home/experience-cards/hxr-digital-map-hover-frame-03.png",
+        width: 623,
+        height: 420,
+        alt: "",
+      },
+    ],
+    overlay: homepageCardOverlay,
+  },
 } as const satisfies Record<string, HomepageCardAssets>;
 
 /** Homepage rail order, mapped to artwork detail routes. */
@@ -296,6 +362,26 @@ export const experienceListingMedia = {
     ],
     "Nushu — an ink-wash mountain landscape in virtual reality",
   ),
+  "character-studio": hoverLoopSet(
+    "experience-character-studio",
+    "/images/experience/character-studio",
+    [
+      { index: 1, ext: "png" },
+      { index: 2, ext: "png" },
+      { index: 3, ext: "png" },
+    ],
+    "Character Studio — AI-assisted character and worldbuilding interface",
+  ),
+  "hxr-digital-map": hoverLoopSet(
+    "experience-hxr-digital-map",
+    "/images/experience/hxr-digital-map",
+    [
+      { index: 1, ext: "png" },
+      { index: 2, ext: "png" },
+      { index: 3, ext: "png" },
+    ],
+    "HXR Digital Map — conference floor plan, stamps, and voting on mobile",
+  ),
 } as const satisfies Record<string, HoverLoopSet>;
 
 export const artworkListingMedia = {
@@ -398,5 +484,35 @@ export const artworkListingMedia = {
       { index: 3, ext: "jpg" },
     ],
     "Hypnagogia — collaged images of the threshold between waking and dreaming",
+  ),
+  "ai-imagination-journey": hoverLoopSet(
+    "artwork-ai-imagination-journey",
+    "/images/artwork/ai-imagination-journey",
+    [
+      { index: 1, ext: "jpg" },
+      { index: 2, ext: "jpg" },
+      { index: 3, ext: "jpg" },
+    ],
+    "AI创想之旅 — Lenovo campaign key visual and event materials",
+  ),
+  "explore-the-future": hoverLoopSet(
+    "artwork-explore-the-future",
+    "/images/artwork/explore-the-future",
+    [
+      { index: 1, ext: "jpg" },
+      { index: 2, ext: "jpg" },
+      { index: 3, ext: "jpg" },
+    ],
+    "探索未来 — Lenovo sustainability event visual system",
+  ),
+  "gift-shop-launch": hoverLoopSet(
+    "artwork-gift-shop-launch",
+    "/images/artwork/gift-shop-launch",
+    [
+      { index: 1, ext: "jpg" },
+      { index: 2, ext: "jpg" },
+      { index: 3, ext: "jpg" },
+    ],
+    "礼品店上新 — Lenovo gift-shop launch campaign visuals",
   ),
 } as const satisfies Record<string, HoverLoopSet>;

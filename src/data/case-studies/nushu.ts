@@ -12,9 +12,10 @@ function image(
   return { src: `${root}/${path}`, alt, width, height, ...extras };
 }
 
-function video(file: string, alt: string): CaseStudyMedia {
+function video(file: string, alt: string, youtube?: string): CaseStudyMedia {
   return {
-    src: `/videos/${file}`,
+    src: youtube ?? `/videos/${file}`,
+    youtube,
     alt,
     width: 1920,
     height: 960,
@@ -55,6 +56,7 @@ export const nushuCaseStudy: CaseStudy = {
     { label: "Media", value: "VR, spatial sound, text" },
     { label: "Type", value: "Independent Project" },
   ],
+  links: [{ label: "Video link", href: "https://youtu.be/KrA92P4uYxY" }],
   chapters: [
     {
       id: "idea",
@@ -310,6 +312,7 @@ export const nushuCaseStudy: CaseStudy = {
             video(
               "3-Nushu.mp4",
               "Walkthrough of the Nüshu VR experience, from the opening room into the ink-wash landscape",
+              "https://youtu.be/KrA92P4uYxY",
             ),
           ],
         },

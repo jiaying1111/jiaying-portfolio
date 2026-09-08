@@ -30,42 +30,44 @@ export function CaseSystemMap({
     <div className="case-sysmap">
       {figure ? (
         <figure className="case-sysmap__figure">
-          <Image
-            src={figure.src}
-            alt={figure.alt}
-            width={figure.width}
-            height={figure.height}
-            quality={90}
-            sizes="(max-width: 899px) 100vw, (max-width: 1439px) 62vw, 895px"
-            className="case-sysmap__image"
-          />
-          <div className="case-sysmap__nodes" role="radiogroup" aria-label={label}>
-            {items.map((item) => {
-              const checked = item.id === selectedId;
-              const preview = item.id === activeId;
+          <div className="case-sysmap__frame">
+            <Image
+              src={figure.src}
+              alt={figure.alt}
+              width={figure.width}
+              height={figure.height}
+              quality={90}
+              sizes="(max-width: 899px) 100vw, (max-width: 1439px) 62vw, 895px"
+              className="case-sysmap__image"
+            />
+            <div className="case-sysmap__nodes" role="radiogroup" aria-label={label}>
+              {items.map((item) => {
+                const checked = item.id === selectedId;
+                const preview = item.id === activeId;
 
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  role="radio"
-                  aria-checked={checked}
-                  aria-label={item.title}
-                  className={joinClassNames(
-                    "case-sysmap__hotspot",
-                    preview && "case-sysmap__hotspot--active",
-                  )}
-                  style={HOTSPOTS[item.id]}
-                  onClick={() => setSelectedId(item.id)}
-                  onMouseEnter={() => setHoverId(item.id)}
-                  onMouseLeave={() => setHoverId(null)}
-                  onFocus={() => setHoverId(item.id)}
-                  onBlur={() => setHoverId(null)}
-                >
-                  <span className="visually-hidden">{item.title}</span>
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    role="radio"
+                    aria-checked={checked}
+                    aria-label={item.title}
+                    className={joinClassNames(
+                      "case-sysmap__hotspot",
+                      preview && "case-sysmap__hotspot--active",
+                    )}
+                    style={HOTSPOTS[item.id]}
+                    onClick={() => setSelectedId(item.id)}
+                    onMouseEnter={() => setHoverId(item.id)}
+                    onMouseLeave={() => setHoverId(null)}
+                    onFocus={() => setHoverId(item.id)}
+                    onBlur={() => setHoverId(null)}
+                  >
+                    <span className="visually-hidden">{item.title}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </figure>
       ) : null}

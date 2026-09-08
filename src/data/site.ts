@@ -123,7 +123,7 @@ export const experiencePageCopy = {
 export const artworkPageCopy = {
   title: "Artwork",
   intro:
-    "Through installations and illustrations, I create playful worlds where objects, images, and stories invite new ways of seeing.",
+    "Through installations, illustrations, and visual design, I create playful worlds where objects, images, and stories invite new ways of seeing.",
   back: "< Back to Home",
   moreInProgress: "More In Progress...",
 } as const;
@@ -350,6 +350,7 @@ export const footerColumns = [
     links: [
       { href: "/artwork", label: "Installation" },
       { href: "/artwork?tab=illustration", label: "Illustration" },
+      { href: "/artwork?tab=visual-design", label: "Visual Design" },
     ],
   },
   {

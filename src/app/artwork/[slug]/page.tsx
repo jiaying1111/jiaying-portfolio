@@ -42,14 +42,24 @@ export default async function ArtworkDetailPage({
   }
 
   const illustration = artwork.section === "illustration";
+  const visualDesign = artwork.section === "visual-design";
+  const galleryTheme = illustration || visualDesign;
 
   return (
     <CaseStudyView
       project={artwork}
       caseStudy={caseStudy}
-      backHref={illustration ? "/artwork?tab=illustration" : "/artwork"}
-      backLabel={illustration ? "Illustration" : "Artwork"}
-      theme={illustration ? "illustration" : undefined}
+      backHref={
+        visualDesign
+          ? "/artwork?tab=visual-design"
+          : illustration
+            ? "/artwork?tab=illustration"
+            : "/artwork"
+      }
+      backLabel={
+        visualDesign ? "Visual Design" : illustration ? "Illustration" : "Artwork"
+      }
+      theme={galleryTheme ? "illustration" : undefined}
     />
   );
 }
