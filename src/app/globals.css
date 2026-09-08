@@ -4275,24 +4275,11 @@ body:has(.case--illustration) .reading-progress {
   height: auto;
 }
 
-.case--digital-nomad .case-explain,
-.case--digital-nomad .case-sysmap,
-.case--digital-nomad .case-entries,
-.case--digital-nomad .case-steps,
-.case--digital-nomad .case-points,
-.case--digital-nomad .case-visual,
-.case--digital-nomad .case-media-pair,
-.case--digital-nomad .case-module > .case-media {
-  grid-column: 2;
-  min-width: 0;
-}
-
 .case--digital-nomad .case-explain__figure,
 .case--digital-nomad .case-explain__figure--pair,
 .case--digital-nomad .case-explain__figure--stack {
   display: grid;
   overflow: hidden;
-  padding: 22px 24px;
   border: 1px solid var(--rule);
   background: #fff;
 }
@@ -4421,11 +4408,8 @@ body:has(.case--illustration) .reading-progress {
 }
 
 .case--digital-nomad .case-explain--gallery .case-explain__card {
-  display: flex;
   min-height: 0;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 22px 22px 18px;
+  padding: 0 0 20px;
   overflow: hidden;
 }
 
@@ -4435,12 +4419,11 @@ body:has(.case--illustration) .reading-progress {
 
 .case--digital-nomad .case-explain--gallery .case-explain__kicker,
 .case--digital-nomad .case-explain--gallery .case-explain__title {
-  padding: 0;
+  padding: 0 22px;
 }
 
 .case--digital-nomad .case-explain--gallery .case-explain__kicker {
-  margin-top: auto;
-  padding-top: 16px;
+  margin-top: 16px;
 }
 
 .case--digital-nomad .case-explain--gallery .case-explain__title {
@@ -4448,30 +4431,19 @@ body:has(.case--illustration) .reading-progress {
 }
 
 .case--digital-nomad .case-explain--gallery .case-media {
-  display: grid;
-  width: 100%;
-  min-width: 0;
-  min-height: 0;
-  aspect-ratio: 16 / 10;
-  place-items: stretch;
-  overflow: hidden;
-  padding: 28px 32px;
+  margin: 0;
 }
 
 .case--digital-nomad .case-explain--gallery .case-media__image {
   width: 100%;
-  max-width: 100%;
-  height: 100%;
-  max-height: 100%;
-  aspect-ratio: auto;
+  aspect-ratio: 16 / 9;
+  height: auto;
   object-fit: contain;
-  object-position: center;
   background: #fff;
 }
 
-.case--digital-nomad .case-explain--gallery .case-explain__card--lead .case-media {
-  aspect-ratio: 2 / 1;
-  padding: 36px 40px;
+.case--digital-nomad .case-explain--gallery .case-explain__card--lead .case-media__image {
+  aspect-ratio: 16 / 8;
 }
 
 .case--digital-nomad .case-sysmap {
@@ -4483,18 +4455,11 @@ body:has(.case--illustration) .reading-progress {
 .case--digital-nomad .case-sysmap__figure {
   position: relative;
   margin: 0;
-  overflow: hidden;
-  padding: 56px 60px 48px;
-  border: 1px solid color-mix(in srgb, var(--project-accent) 28%, var(--rule));
   background: #fff;
 }
 
 .case--digital-nomad .case-sysmap__frame {
   position: relative;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
 }
 
 .case--digital-nomad .case-sysmap__image {
@@ -4599,7 +4564,6 @@ body:has(.case--illustration) .reading-progress {
 .case--digital-nomad .case-media-pair .case-media,
 .case--digital-nomad .case-entries--gallery .case-media {
   max-width: none;
-  padding: 10px;
 }
 
 .case--digital-nomad .case-media-pair,
@@ -4809,13 +4773,7 @@ body:has(.case--illustration) .reading-progress {
 }
 
 .case--digital-nomad .case-entries--gallery .case-media {
-  display: grid;
-  width: 100%;
-  min-width: 0;
-  min-height: 0;
   margin: 0;
-  place-items: stretch;
-  overflow: hidden;
 }
 
 .case--digital-nomad .case-entries--gallery .case-entry__kicker,
