@@ -17,25 +17,6 @@ function app(
   };
 }
 
-function stamp(
-  file: string,
-  title: string,
-  alt: string,
-): NonNullable<CaseStudy["chapters"][number]["modules"][number]["entries"]>[number] {
-  return {
-    id: file,
-    title,
-    role: "Track stamp",
-    media: {
-      src: `${root}/stamps/${file}`,
-      alt,
-      width: 345,
-      height: 342,
-      displayWidth: 140,
-    },
-  };
-}
-
 export const hxrDigitalMapCaseStudy: CaseStudy = {
   slug: "hxr-digital-map",
   title: "HXR Digital Map",
@@ -293,14 +274,14 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
       id: "stamps",
       number: "04",
       label: "Stamps",
-      title: "Digital stamps and the photo frame",
-      headline: "Digital stamps and the photo frame",
+      title: "Collect the moment, not just the stamp",
+      headline: "Discover, capture, collect, and share",
       lead:
-        "Collecting a stamp is not only a checklist item. Attendees take a photo inside a branded frame, receive the track stamp, and can share or save the result as a keepsake from that room.",
+        "The stamp and camera are one continuous interaction. Attendees discover a track identity, take a photo inside the branded frame, unlock the matching passport stamp, then save or share the result as a keepsake.",
       modules: [
         {
           id: "stamp-set",
-          title: "Digital stamp set",
+          title: "01 · Eight tracks, eight identities",
           copy:
             "Eight conference tracks each have a glass-like stamp. The passport shows collected stamps in color and locks the rest until the matching session or location is visited.",
           media: [
@@ -313,73 +294,16 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
           ],
         },
         {
-          id: "stamp-gallery",
-          title: "Track stamps",
-          copy: "Each stamp is a distinct glass form tied to one track.",
-          layout: "gallery",
-          entries: [
-            stamp(
-              "stamp-01-xr-plus-immersive-arts-culture-and-design.png",
-              "Immersive Arts",
-              "Digital stamp for XR + Immersive Arts, Culture & Design",
-            ),
-            stamp(
-              "stamp-02-xr-plus-platforms-and-content-infrastructure.png",
-              "Platforms",
-              "Digital stamp for XR + Platforms and Content Infrastructure",
-            ),
-            stamp(
-              "stamp-03-xr-plus-healthcare-and-wellbeing.png",
-              "Healthcare",
-              "Digital stamp for XR + Healthcare and Wellbeing",
-            ),
-            stamp(
-              "stamp-04-xr-plus-hardware-and-intelligent-systems.png",
-              "Hardware",
-              "Digital stamp for XR + Hardware and Intelligent Systems",
-            ),
-            stamp(
-              "stamp-05-xr-plus-ai-agents-and-the-next-interface.png",
-              "AI Agents",
-              "Digital stamp for XR + AI Agents and the Next Interface",
-            ),
-            stamp(
-              "stamp-06-reimagining-learning-and-thinking-in-the-age-of.png",
-              "Learning",
-              "Digital stamp for Reimagining Learning and Thinking",
-            ),
-            stamp(
-              "stamp-07-xr-plus-ai-world-models-and-spatial-understandin.png",
-              "World Models",
-              "Digital stamp for XR + AI World Models and Spatial Understanding",
-            ),
-            stamp(
-              "stamp-08-xr-plus-gaming-and-interactive-worlds.png",
-              "Gaming",
-              "Digital stamp for XR + Gaming and Interactive Worlds",
-            ),
-          ],
-        },
-        {
           id: "photo-frame-flow",
-          title: "Photo frame capture",
+          title: "02—04 · Capture, collect, share",
           copy:
-            "From a session, Collect Stamp opens the camera inside an HXR photo frame. The live view sits in the framed card with the track title and stamp prompt, so every capture already looks like conference media.",
+            "Collect Stamp opens the camera inside an HXR frame. The paired screenshots make the state change explicit: live capture on the left, completed card and actions on the right.",
           layout: "gallery",
           entries: [
-            {
-              id: "collect",
-              title: "Collect",
-              role: "01",
-              media: app(
-                "session-detail.png",
-                "Session detail with Collect Stamp as the primary action",
-              ),
-            },
             {
               id: "capture",
-              title: "Capture",
-              role: "02",
+              title: "Before · framed capture",
+              role: "Capture",
               media: app(
                 "camera-capture.png",
                 "Camera screen with HXR photo frame overlay before taking a stamp photo",
@@ -387,13 +311,19 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
             },
             {
               id: "share",
-              title: "Share",
-              role: "03",
+              title: "After · stamp collected",
+              role: "Collect & share",
               media: app(
                 "camera-framed.png",
                 "After capture screen with COLLECTED badge, framed photo, stamp, and share actions",
               ),
             },
+          ],
+          steps: [
+            "Open the camera from the session",
+            "Capture inside the branded frame",
+            "Unlock the matching passport stamp",
+            "Save, share, or retake",
           ],
         },
         {
