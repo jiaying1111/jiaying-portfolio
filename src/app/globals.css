@@ -4034,8 +4034,8 @@ body:has(.case--illustration) .reading-progress {
 
 .case--digital-nomad .case-module {
   align-items: start;
-  grid-template-columns: 300px minmax(0, 1fr);
-  column-gap: 40px;
+  grid-template-columns: 250px minmax(0, 1fr);
+  column-gap: 32px;
 }
 
 .case--digital-nomad .case-module__title,
@@ -4271,7 +4271,7 @@ body:has(.case--illustration) .reading-progress {
 }
 
 .case--digital-nomad .case-visual__icons .case-media__image {
-  width: min(100%, 560px);
+  width: min(100%, 760px);
   height: auto;
 }
 
@@ -4491,7 +4491,7 @@ body:has(.case--illustration) .reading-progress {
 
 .case--digital-nomad .case-sysmap__frame {
   position: relative;
-  width: 82%;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto;
   overflow: hidden;
@@ -4593,6 +4593,13 @@ body:has(.case--illustration) .reading-progress {
 .case--digital-nomad .case-points,
 .case--digital-nomad .case-module > .case-media {
   margin-top: 34px;
+}
+
+.case--digital-nomad .case-module > .case-media,
+.case--digital-nomad .case-media-pair .case-media,
+.case--digital-nomad .case-entries--gallery .case-media {
+  max-width: none;
+  padding: 10px;
 }
 
 .case--digital-nomad .case-media-pair,
