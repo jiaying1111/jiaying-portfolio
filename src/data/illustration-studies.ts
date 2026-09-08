@@ -52,11 +52,11 @@ export const illustrationStudies: IllustrationStudy[] = [
   },
   {
     slug: "dreamgaze",
-    title: "Dream Gaze Branding Design",
-    year: "2025",
+    title: "DreamGaze",
+    year: "2024",
     medium: "Adobe Illustrator",
     summary: [
-      "Dream Gaze is a creative studio that explores the space between dream and reality. It designs visual experiences that feel poetic, immersive, and thoughtful, aiming to awaken imagination and create moments of quiet wonder. In this imagined system, tears are recycled through an alchemical process to produce new lenses.",
+      "DreamGaze is a creative studio that explores the space between dream and reality. It designs visual experiences that feel poetic, immersive, and thoughtful, aiming to awaken imagination and create moments of quiet wonder. In this imagined system, tears are recycled through an alchemical process to produce new lenses.",
       "For this project, I designed three visual systems that translate this concept into a cohesive visual language.",
     ],
     gallery: [
@@ -82,7 +82,7 @@ export const illustrationStudies: IllustrationStudy[] = [
   {
     slug: "animal-city",
     title: "Animal City",
-    year: "2025",
+    year: "2024",
     medium: "Collage",
     summary: [
       "This work explores the complex and fluid relationship between humans and animals through a series of interactive box installations that can be disassembled, reassembled, folded, and unfolded.",
@@ -116,7 +116,7 @@ export const illustrationStudies: IllustrationStudy[] = [
   {
     slug: "hypnagogia",
     title: "Hypnagogia",
-    year: "2025",
+    year: "2024",
     medium: "Collage",
     summary: [
       "Hypnagogia explores the space where waking and dreaming meet. In this blurry state, time feels unstable, memories mix, and reality shifts. This interactive artwork moves away from fixed storytelling, letting the audience help create the narrative. With movable pieces, viewers can arrange, take apart, and rebuild the composition in their own way. Each interaction creates new possibilities, turning the audience into active participants. The line between memory and reality expands as people interpret and connect the elements differently, making endless versions of the story.",
@@ -140,9 +140,9 @@ export const illustrationStudies: IllustrationStudy[] = [
   },
   {
     slug: "your-destination",
-    title: "Your Destination Is On Your Left",
-    year: "2024",
-    medium: "Nomad",
+    title: "Your Destination",
+    year: "2023",
+    medium: "Blender, Nomad",
     summary: [
       "I reimagined the concept of Google Maps in a novel way to explore the overwhelming impact of digital technology on our lives. I started to think about a place that Google Maps could never be reached or found due to its error even though we were infinitely close to it. Instead of using Google Map street view directly, I made a model with surreal landscapes and imported 3D scanned buildings and houses in real life, merging the physical and digital world. Furthermore, I enhanced this model with brush strokes in Procreate, aiming to create a highly magnified world that conveys feelings of uncertainty and disorientation, thus reflecting on our complex relationship with technology.",
     ],
@@ -155,7 +155,7 @@ export const illustrationStudies: IllustrationStudy[] = [
   },
   {
     slug: "invisible-man",
-    title: "The Invisible Man Game",
+    title: "The Invisible Man",
     year: "2024",
     medium: "Adobe Illustrator",
     summary: [

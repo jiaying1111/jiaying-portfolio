@@ -144,6 +144,11 @@ export type CaseStudy = {
   category: string;
   year: string;
   summary: string;
+  /**
+   * Paragraphs used to build `summary` / chapter leads. When present, the view
+   * localizes each part then joins — so ZH does not depend on a pre-joined key.
+   */
+  summaryParts?: string[];
   hero: CaseStudyMedia;
   metadata: { label: string; value: string }[];
   links?: CaseStudyLink[];

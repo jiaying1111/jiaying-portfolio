@@ -26,7 +26,8 @@ function toCaseStudy(study: VisualDesignStudy): CaseStudy {
     throw new Error(`Missing gallery for visual design slug "${study.slug}"`);
   }
 
-  const summary = study.summary.join(" ");
+  const summaryParts = study.summary;
+  const summary = summaryParts.join(" ");
 
   return {
     slug: study.slug,
@@ -35,6 +36,7 @@ function toCaseStudy(study: VisualDesignStudy): CaseStudy {
     year: study.year,
     kicker: `${artwork.category} · ${study.year}`,
     summary,
+    summaryParts,
     hero: stillToMedia(heroStill, study.title, 0),
     metadata: [
       { label: "Role", value: study.role },

@@ -70,7 +70,8 @@ function toCaseStudy(study: IllustrationStudy): CaseStudy {
   const heroStill = study.gallery[0];
   const stills = study.gallery.map((still, index) => stillToMedia(still, study.title, index));
   const gallery = extras?.clips;
-  const summary = study.summary.join(" ");
+  const summaryParts = study.summary;
+  const summary = summaryParts.join(" ");
   const links: CaseStudyLink[] | undefined = extras?.film?.youtube
     ? [{ label: "Video link", href: extras.film.youtube }]
     : undefined;
@@ -82,6 +83,7 @@ function toCaseStudy(study: IllustrationStudy): CaseStudy {
     year: study.year,
     kicker: `${artwork.category} · ${study.year}`,
     summary,
+    summaryParts,
     hero: stillToMedia(heroStill, study.title, 0),
     metadata: [
       { label: "Role", value: "Artist" },

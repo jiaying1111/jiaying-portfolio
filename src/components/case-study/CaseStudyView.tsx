@@ -37,8 +37,15 @@ export function CaseStudyView({
   const overlayHero = Boolean(study.kicker || study.heroIntro);
   const pageTitle = study.title ?? t(project.title, locale);
   const sectionLabel = t(backLabel, locale);
-
   const galleryTheme = theme === "illustration" || theme === "visual-design";
+  // Prefer paragraph parts when present; otherwise the joined summary (also in the ZH dict).
+  const summary =
+    study.summaryParts?.length
+      ? study.summaryParts.join(locale === "zh" ? "" : " ")
+      : study.summary;
+  const kicker = galleryTheme
+    ? `${study.category} · ${study.year}`
+    : study.kicker;
 
   return (
     <main
@@ -80,8 +87,8 @@ export function CaseStudyView({
       )}
 
       <div className="case-overview measure">
-        {galleryTheme && study.kicker ? (
-          <p className="case-hero__kicker">{study.kicker}</p>
+        {galleryTheme && kicker ? (
+          <p className="case-hero__kicker">{kicker}</p>
         ) : null}
         {galleryTheme ? (
           <h1 className="case-hero__title">{pageTitle}</h1>
@@ -105,7 +112,7 @@ export function CaseStudyView({
               <span>{study.year}</span>
             </p>
           )}
-          <p className="case-overview__summary">{study.summary}</p>
+          <p className="case-overview__summary">{summary}</p>
           {study.links ? (
             <ul className="case-overview__links">
               {study.links.map((link) => (

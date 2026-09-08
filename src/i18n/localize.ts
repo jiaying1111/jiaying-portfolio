@@ -21,7 +21,18 @@ export function t(text: string, locale: Locale): string {
   if (locale !== "zh") {
     return text;
   }
-  return zhDictionary[text] ?? text;
+  const direct = zhDictionary[text];
+  if (direct) {
+    return direct;
+  }
+  // Composed labels like "Interactive Game · 2025"
+  if (text.includes(" · ")) {
+    return text
+      .split(" · ")
+      .map((part) => zhDictionary[part] ?? part)
+      .join(" · ");
+  }
+  return text;
 }
 
 export function localize<T>(value: T, locale: Locale): T {
@@ -33,7 +44,7 @@ export function localize<T>(value: T, locale: Locale): T {
 
 function walk(value: unknown): unknown {
   if (typeof value === "string") {
-    return zhDictionary[value] ?? value;
+    return t(value, "zh");
   }
   if (Array.isArray(value)) {
     return value.map(walk);
