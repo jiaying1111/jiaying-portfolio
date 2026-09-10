@@ -15,7 +15,7 @@ function image(
 
 function video(file: string, alt: string, youtube?: string): CaseStudyMedia {
   return {
-    src: youtube ?? `${videoRoot}/${file}`,
+    src: `${videoRoot}/${file}`,
     youtube,
     alt,
     width: 1280,
@@ -56,7 +56,7 @@ export const resoundingNatureCaseStudy: CaseStudy = {
     { label: "Media", value: "Physical computing installation" },
     { label: "Type", value: "Independent Project" },
   ],
-  links: [{ label: "Watch the installation ↗", href: "https://youtu.be/0j38oYFXYA8" }],
+  links: [{ label: "Watch on Bilibili ↗", href: "https://www.bilibili.com/video/BV1KkYh6DEMx" }],
   chapters: [
     {
       id: "idea",
@@ -300,7 +300,7 @@ export const resoundingNatureCaseStudy: CaseStudy = {
             video(
               "final.mp4",
               "Film of the completed Re:Sounding Nature installation in motion",
-              "https://youtu.be/0j38oYFXYA8",
+              "https://www.bilibili.com/video/BV1KkYh6DEMx",
             ),
           ],
         },

@@ -5,8 +5,7 @@ import { siteIdentity } from "@/data/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { ui } from "@/i18n/ui";
 
-/** A one-time entry transition; route changes remain immediate and uninterrupted. */
-export function SiteLoader() {
+function SiteLoaderSequence() {
   const { locale } = useLocale();
   const copy = ui(locale);
   const [visible, setVisible] = useState(true);
@@ -25,7 +24,10 @@ export function SiteLoader() {
 
     if (document.readyState === "complete") {
       dismiss();
-      return undefined;
+      return () => {
+        window.clearTimeout(exitTimer);
+        window.clearTimeout(removeTimer);
+      };
     }
 
     window.addEventListener("load", dismiss, { once: true });
@@ -56,4 +58,15 @@ export function SiteLoader() {
       </div>
     </div>
   );
+}
+
+/** A one-time entry transition after language is ready. */
+export function SiteLoader() {
+  const { languageReady } = useLocale();
+
+  if (!languageReady) {
+    return null;
+  }
+
+  return <SiteLoaderSequence key="site-loader" />;
 }

@@ -48,7 +48,7 @@ export default async function RootLayout({
       className={`${inter.variable} ${notoSans.variable} ${notoSansSc.variable}${locale === "zh" ? " is-zh" : ""}`}
     >
       <body>
-        <LocaleProvider initialLocale={locale}>
+        <LocaleProvider initialLocale={locale} initialHasPreference={false}>
           <SiteShell>{children}</SiteShell>
         </LocaleProvider>
       </body>

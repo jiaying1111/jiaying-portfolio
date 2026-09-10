@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { ListingScrollGuide } from "@/components/ui/ListingScrollGuide";
 import { PageTabs } from "@/components/ui/PageTabs";
 import { WorkListingItem } from "@/components/ui/WorkListingItem";
-import { getProjectsByGroup, type ProjectListingGroup } from "@/data/projects";
+import { getProjectsByGroup } from "@/data/projects";
+import type { ExperienceListingGroup } from "@/data/ai-practice";
 import { experiencePageCopy } from "@/data/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { localize } from "@/i18n/localize";
@@ -13,7 +15,7 @@ import { ui } from "@/i18n/ui";
 export function ExperienceView({
   activeTab,
 }: {
-  activeTab: ProjectListingGroup;
+  activeTab: ExperienceListingGroup;
 }) {
   const router = useRouter();
   const { locale } = useLocale();
@@ -21,7 +23,7 @@ export function ExperienceView({
   const items = localize(getProjectsByGroup(activeTab), locale);
   const copy = ui(locale);
 
-  const onSelect = (id: ProjectListingGroup) => {
+  const onSelect = (id: ExperienceListingGroup) => {
     router.replace(
       id === "projects" ? "/experience-design" : `/experience-design?tab=${id}`,
       { scroll: false },
@@ -40,13 +42,15 @@ export function ExperienceView({
 
       <PageTabs
         tabs={pageCopy.tabs.map((tab) => ({
-          id: tab.id as ProjectListingGroup,
+          id: tab.id as ExperienceListingGroup,
           label: tab.label,
         }))}
         activeId={activeTab}
         ariaLabel={copy.experienceCategories}
         onSelect={onSelect}
       />
+
+      <ListingScrollGuide itemCount={items.length} />
 
       <ul
         className="work-list"

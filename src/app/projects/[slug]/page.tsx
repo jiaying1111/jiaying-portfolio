@@ -3,8 +3,14 @@ import { notFound } from "next/navigation";
 import { CaseStudyView } from "@/components/case-study/CaseStudyView";
 import { ProjectDetailSection } from "@/components/sections/ProjectDetailSection";
 import { LocalizedBackLink } from "@/components/ui/LocalizedBackLink";
+import { isVibeCodingProject } from "@/data/ai-practice";
 import { getCaseStudyBySlug } from "@/data/case-studies";
-import { getProjectBySlug, projects } from "@/data/projects";
+import {
+  getExperienceProjects,
+  getProjectBySlug,
+  getVibeCodingProjects,
+  projects,
+} from "@/data/projects";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -38,15 +44,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   const caseStudy = getCaseStudyBySlug(slug);
+  const vibeCoding = isVibeCodingProject(slug);
+  const neighbors = vibeCoding ? getVibeCodingProjects() : getExperienceProjects();
+  const index = neighbors.findIndex((entry) => entry.slug === slug);
 
   if (caseStudy) {
-    const index = projects.findIndex((entry) => entry.slug === slug);
     return (
       <CaseStudyView
         project={project}
         caseStudy={caseStudy}
-        previous={projects[index - 1]}
-        next={projects[index + 1]}
+        previous={neighbors[index - 1]}
+        next={neighbors[index + 1]}
+        backHref={vibeCoding ? "/ai-practice" : "/experience-design"}
+        backLabel={vibeCoding ? "AI Practice" : "Experience Design"}
       />
     );
   }
@@ -54,8 +64,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <main className="listing measure">
       <LocalizedBackLink
-        href="/experience-design"
-        text="< Back to Experience Design"
+        href={vibeCoding ? "/ai-practice" : "/experience-design"}
+        text={
+          vibeCoding ? "< Back to AI Practice" : "< Back to Experience Design"
+        }
       />
       <ProjectDetailSection project={project} />
     </main>

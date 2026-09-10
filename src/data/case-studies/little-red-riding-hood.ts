@@ -14,7 +14,7 @@ function image(
 
 function video(file: string, alt: string, youtube?: string): CaseStudyMedia {
   return {
-    src: youtube ?? `/videos/${file}`,
+    src: `/videos/${file}`,
     youtube,
     alt,
     width: 1920,
@@ -46,7 +46,7 @@ export const littleRedRidingHoodCaseStudy: CaseStudy = {
     { label: "Media", value: "Web interaction, acrylic sculpture" },
     { label: "Type", value: "Independent Project" },
   ],
-  links: [{ label: "Video link", href: "https://youtu.be/fOt7TaUZdxQ" }],
+  links: [{ label: "Watch on Bilibili", href: "https://www.bilibili.com/video/BV1KrYh6HEon" }],
   chapters: [
     {
       id: "idea",
@@ -272,7 +272,7 @@ export const littleRedRidingHoodCaseStudy: CaseStudy = {
             video(
               "5-Reimagination of Little Red Riding Hood.mp4",
               "Film of the Little Red Riding Hood installation and interactive system",
-              "https://youtu.be/fOt7TaUZdxQ",
+              "https://www.bilibili.com/video/BV1KrYh6HEon",
             ),
           ],
         },

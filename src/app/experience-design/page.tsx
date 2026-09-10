@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ExperienceView } from "@/components/sections/ExperienceView";
-import type { ProjectListingGroup } from "@/data/projects";
+import type { ExperienceListingGroup } from "@/data/ai-practice";
 
 export const metadata: Metadata = {
   title: "Experience Design — Jiaying Li",
@@ -15,7 +15,7 @@ export default async function ExperienceDesignPage({
 }: ExperiencePageProps) {
   const params = await searchParams;
   const raw = Array.isArray(params.tab) ? params.tab[0] : params.tab;
-  const activeTab: ProjectListingGroup =
+  const activeTab: ExperienceListingGroup =
     raw === "practice" ? "practice" : "projects";
 
   return <ExperienceView activeTab={activeTab} />;

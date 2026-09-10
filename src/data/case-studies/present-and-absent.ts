@@ -14,8 +14,8 @@ function image(
 
 function video(alt: string): CaseStudyMedia {
   return {
-    src: "https://youtu.be/qMYnkuJSPCs",
-    youtube: "https://youtu.be/qMYnkuJSPCs",
+    src: "/videos/2-Present&Absent.mp4",
+    youtube: "https://www.bilibili.com/video/BV1TrYh6HEVN",
     alt,
     width: 3840,
     height: 2160,
@@ -52,13 +52,14 @@ export const presentAndAbsentCaseStudy: CaseStudy = {
     1920,
     1080,
   ),
+  heroTone: "dark",
   metadata: [
     { label: "Role", value: "Artist & Performer" },
     { label: "Methods", value: "Motion capture, 3D character design" },
     { label: "Media", value: "Live and digital performance" },
     { label: "Year", value: "2025" },
   ],
-  links: [{ label: "Video link", href: "https://youtu.be/qMYnkuJSPCs" }],
+  links: [{ label: "Watch on Bilibili", href: "https://www.bilibili.com/video/BV1TrYh6HEVN" }],
   chapters: [
     {
       id: "idea",

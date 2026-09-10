@@ -54,9 +54,11 @@ function toCaseStudy(study: VisualDesignStudy): CaseStudy {
         lead: summary,
         modules: study.sections.map((section) => ({
           id: section.id,
+          eyebrow: section.eyebrow,
           title: section.title,
           copy: section.copy,
           layout: section.layout,
+          tags: section.features,
           media: section.gallery.map((still, mediaIndex) =>
             stillToMedia(still, `${study.title} — ${section.title}`, mediaIndex),
           ),

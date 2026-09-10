@@ -389,10 +389,19 @@ function Module({
                 {entry.gallery?.length || entry.media ? (
                   <div className="case-flow__media">
                     {entry.gallery?.map((item) => (
-                        <MediaBlock key={item.src} media={item} inPair />
-                      ))}
+                      <MediaBlock
+                        key={item.src}
+                        media={item}
+                        inPair
+                        fullWidth={item.width >= 2000}
+                      />
+                    ))}
                     {!entry.gallery && entry.media ? (
-                      <MediaBlock media={entry.media} inPair />
+                      <MediaBlock
+                        media={entry.media}
+                        inPair
+                        fullWidth={entry.media.width >= 2000}
+                      />
                     ) : null}
                   </div>
                 ) : null}

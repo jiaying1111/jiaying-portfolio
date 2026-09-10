@@ -15,6 +15,7 @@ const SKIP_KEYS = new Set([
   "displayWidth",
   "section",
   "listingGroup",
+  "heroTone",
 ]);
 
 export function t(text: string, locale: Locale): string {
@@ -25,12 +26,22 @@ export function t(text: string, locale: Locale): string {
   if (direct) {
     return direct;
   }
-  // Composed labels like "Interactive Game · 2025"
+  // Composed labels like "Interactive Game · 2025" or "Title — Section"
   if (text.includes(" · ")) {
     return text
       .split(" · ")
       .map((part) => zhDictionary[part] ?? part)
       .join(" · ");
+  }
+  if (text.includes(" — ")) {
+    return text
+      .split(" — ")
+      .map((part) => zhDictionary[part] ?? part)
+      .join(" — ");
+  }
+  const passportPage = text.match(/^Passport page (\d+)$/);
+  if (passportPage) {
+    return `护照内页 ${passportPage[1]}`;
   }
   return text;
 }

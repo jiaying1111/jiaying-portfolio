@@ -12,7 +12,8 @@ export const siteIdentity = {
 
 export const navigation = [
   { href: "/experience-design", label: "Experience Design" },
-  { href: "/artwork", label: "Artwork" },
+  { href: "/artwork", label: "Visual Design & Artwork" },
+  { href: "/ai-practice", label: "AI Practice" },
   { href: "/about", label: "About" },
 ] as const;
 
@@ -104,7 +105,7 @@ export const heroSlides: HeroSlide[] = [
 
 export const homepageCopy = {
   experienceLabel: "Experience Design",
-  artworkLabel: "Artwork",
+  artworkLabel: "Visual Design & Artwork",
   moreLabel: "More",
 } as const;
 
@@ -121,9 +122,9 @@ export const experiencePageCopy = {
 } as const;
 
 export const artworkPageCopy = {
-  title: "Artwork",
+  title: "Visual Design & Artwork",
   intro:
-    "Through installations, illustrations, and visual design, I create playful worlds where objects, images, and stories invite new ways of seeing.",
+    "Through installations and illustrations, I create playful worlds where objects, images, and stories invite new ways of seeing.",
   back: "< Back to Home",
   moreInProgress: "More In Progress...",
 } as const;
@@ -314,7 +315,8 @@ export const footerColumns = [
     href: "/",
     links: [
       { href: "/experience-design", label: "Experience Design" },
-      { href: "/artwork", label: "Artwork" },
+      { href: "/artwork", label: "Visual Design & Artwork" },
+      { href: "/ai-practice", label: "AI Practice" },
       { href: "/about", label: "About" },
     ],
   },
@@ -327,12 +329,19 @@ export const footerColumns = [
     ],
   },
   {
-    title: "Artwork",
+    title: "Visual Design & Artwork",
     href: "/artwork",
     links: [
       { href: "/artwork", label: "Installation" },
       { href: "/artwork?tab=illustration", label: "Illustration" },
-      { href: "/artwork?tab=visual-design", label: "Visual Design" },
+    ],
+  },
+  {
+    title: "AI Practice",
+    href: "/ai-practice",
+    links: [
+      { href: "/ai-practice", label: "Vibe Coding" },
+      { href: "/ai-practice?tab=visual-design", label: "Visual Design" },
     ],
   },
   {

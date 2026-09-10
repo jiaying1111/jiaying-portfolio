@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CaseStudyView } from "@/components/case-study/CaseStudyView";
-import { artworks, getArtworkById } from "@/data/artworks";
+import { artworks, getArtworkById, isVisualDesignArtwork } from "@/data/artworks";
 import { getCaseStudyBySlug } from "@/data/case-studies";
 
 type ArtworkDetailPageProps = {
@@ -42,7 +42,7 @@ export default async function ArtworkDetailPage({
   }
 
   const illustration = artwork.section === "illustration";
-  const visualDesign = artwork.section === "visual-design";
+  const visualDesign = isVisualDesignArtwork(slug);
 
   return (
     <CaseStudyView
@@ -50,13 +50,17 @@ export default async function ArtworkDetailPage({
       caseStudy={caseStudy}
       backHref={
         visualDesign
-          ? "/artwork?tab=visual-design"
+          ? "/ai-practice?tab=visual-design"
           : illustration
             ? "/artwork?tab=illustration"
             : "/artwork"
       }
       backLabel={
-        visualDesign ? "Visual Design" : illustration ? "Illustration" : "Artwork"
+        visualDesign
+          ? "AI Practice"
+          : illustration
+            ? "Illustration"
+            : "Visual Design & Artwork"
       }
       theme={
         visualDesign ? "visual-design" : illustration ? "illustration" : undefined

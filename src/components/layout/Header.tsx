@@ -4,8 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
-import { getArtworkById } from "@/data/artworks";
+import { getArtworkById, isVisualDesignArtwork } from "@/data/artworks";
 import { caseStudiesBySlug } from "@/data/case-studies";
+import { isVibeCodingProject } from "@/data/ai-practice";
 import { navigation, siteIdentity } from "@/data/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { localize } from "@/i18n/localize";
@@ -40,12 +41,31 @@ function hasDarkHero(pathname: string) {
 }
 
 function isCurrent(pathname: string, href: string) {
+  const projectSlug = pathname.match(/^\/projects\/([^/]+)\/?$/)?.[1];
+  const artworkSlug = pathname.match(/^\/artwork\/([^/]+)\/?$/)?.[1];
+
+  if (href === "/ai-practice") {
+    return (
+      pathname.startsWith("/ai-practice") ||
+      (projectSlug !== undefined && isVibeCodingProject(projectSlug)) ||
+      (artworkSlug !== undefined && isVisualDesignArtwork(artworkSlug))
+    );
+  }
+
   if (href === "/experience-design") {
     return (
       pathname.startsWith("/experience-design") ||
-      pathname.startsWith("/projects/")
+      (projectSlug !== undefined && !isVibeCodingProject(projectSlug))
     );
   }
+
+  if (href === "/artwork") {
+    return (
+      pathname.startsWith("/artwork") &&
+      !(artworkSlug !== undefined && isVisualDesignArtwork(artworkSlug))
+    );
+  }
+
   return pathname.startsWith(href);
 }
 

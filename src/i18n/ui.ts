@@ -8,6 +8,8 @@ const chrome = {
     type: "Type",
     tools: "Tools",
     scrollToExplore: "Scroll to explore",
+    scrollMore: "Scroll",
+    scrollNext: "Scroll to next",
     previousProject: "Previous project",
     nextProject: "Next project",
     previousProjectLink: "\u2190 Previous project",
@@ -30,6 +32,7 @@ const chrome = {
     moreArtwork: " Artwork",
     experienceCategories: "Experience Design categories",
     artworkCategories: "Artwork categories",
+    aiPracticeCategories: "AI Practice categories",
   },
   zh: {
     menu: "菜单",
@@ -38,6 +41,8 @@ const chrome = {
     type: "类型",
     tools: "工具",
     scrollToExplore: "下滑探索",
+    scrollMore: "下滑",
+    scrollNext: "滚到下一项",
     previousProject: "上一个项目",
     nextProject: "下一个项目",
     previousProjectLink: "\u2190 上一个项目",
@@ -60,6 +65,7 @@ const chrome = {
     moreArtwork: "艺术作品",
     experienceCategories: "体验设计分类",
     artworkCategories: "艺术作品分类",
+    aiPracticeCategories: "AI 实践分类",
   },
 } as const;
 

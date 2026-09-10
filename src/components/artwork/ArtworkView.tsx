@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { ListingScrollGuide } from "@/components/ui/ListingScrollGuide";
 import { PageTabs } from "@/components/ui/PageTabs";
 import { WorkListingItem } from "@/components/ui/WorkListingItem";
-import { artworkSections, type ArtworkSectionId } from "@/data/artworks";
+import { artworkListingSections, type ArtworkSectionId } from "@/data/artworks";
 import { artworkPageCopy } from "@/data/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { localize } from "@/i18n/localize";
@@ -13,7 +14,6 @@ import { ui } from "@/i18n/ui";
 function artworkHref(section: ArtworkSectionId, id: string) {
   if (
     section === "illustration" ||
-    section === "visual-design" ||
     id === "resounding-nature" ||
     id === "present-and-absent"
   ) {
@@ -26,16 +26,24 @@ function tabHref(id: ArtworkSectionId) {
   return id === "installation" ? "/artwork" : `/artwork?tab=${id}`;
 }
 
-export function ArtworkView({ activeTab }: { activeTab: ArtworkSectionId }) {
+export function ArtworkView({
+  activeTab,
+}: {
+  activeTab: Exclude<ArtworkSectionId, "visual-design">;
+}) {
   const router = useRouter();
   const { locale } = useLocale();
   const pageCopy = localize(artworkPageCopy, locale);
-  const sections = localize(artworkSections, locale);
+  const sections = localize(artworkListingSections, locale);
   const copy = ui(locale);
   const section =
     sections.find((entry) => entry.id === activeTab) ?? sections[0];
 
   const onSelect = (id: ArtworkSectionId) => {
+    if (id === "visual-design") {
+      router.replace("/ai-practice?tab=visual-design", { scroll: false });
+      return;
+    }
     router.replace(tabHref(id), { scroll: false });
   };
 
@@ -58,6 +66,8 @@ export function ArtworkView({ activeTab }: { activeTab: ArtworkSectionId }) {
         ariaLabel={copy.artworkCategories}
         onSelect={onSelect}
       />
+
+      <ListingScrollGuide itemCount={section.items.length} />
 
       <ul
         className="work-list"

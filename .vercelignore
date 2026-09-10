@@ -1,10 +1,7 @@
 **/_source/
 *.ARW
+# Over Vercel's ~100MB per-file static limit — play via Bilibili on production.
 /public/videos/2-Present&Absent.mp4
 /public/videos/3-Nushu.mp4
-/public/videos/5-Reimagination of Little Red Riding Hood.mp4
-/public/videos/Other-Animation.mp4
-/public/videos/Other-Illustration.mp4
-/public/videos/dreamwhorl-final.mp4
 /public/videos/resounding/final.mp4
 /public/images/Frame 13-2.jpg

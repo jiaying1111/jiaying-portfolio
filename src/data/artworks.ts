@@ -197,9 +197,16 @@ export const artworkSections: ArtworkSection[] = [
   { id: "visual-design", label: "Visual Design", items: visualDesign },
 ];
 
+/** Listing page tabs for Visual Design & Artwork (excludes Visual Design). */
+export const artworkListingSections: ArtworkSection[] = artworkSections.filter(
+  (section) => section.id !== "visual-design",
+);
+
 export const artworks: Artwork[] = artworkSections.flatMap(
   (section) => section.items,
 );
+
+export const visualDesignArtworks: Artwork[] = visualDesign;
 
 export function getArtworkSection(id: ArtworkSectionId) {
   return artworkSections.find((section) => section.id === id);
@@ -207,4 +214,8 @@ export function getArtworkSection(id: ArtworkSectionId) {
 
 export function getArtworkById(id: string) {
   return artworks.find((artwork) => artwork.id === id);
+}
+
+export function isVisualDesignArtwork(id: string) {
+  return visualDesign.some((artwork) => artwork.id === id);
 }

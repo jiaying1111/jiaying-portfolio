@@ -26,7 +26,9 @@ export function MediaBlock({
   fullWidth = false,
   compact = false,
 }: MediaBlockProps) {
-  const cap = fullWidth || inPair || compact ? undefined : (media.displayWidth ?? media.width);
+  const hiRes = media.width >= 2000;
+  const wide = fullWidth || hiRes;
+  const cap = wide || inPair || compact ? undefined : (media.displayWidth ?? media.width);
   const rendered = Math.min(cap ?? 895, 895);
 
   return (
@@ -42,11 +44,11 @@ export function MediaBlock({
           alt={media.alt}
           width={media.width}
           height={media.height}
-          quality={fullWidth ? 90 : compact ? 85 : 75}
-          unoptimized={fullWidth && media.width >= 1600}
+          quality={wide ? 92 : compact ? 85 : 75}
+          unoptimized={hiRes || (fullWidth && media.width >= 1600)}
           sizes={
-            fullWidth
-              ? "100vw"
+            wide
+              ? "(max-width: 899px) 100vw, (max-width: 1439px) 90vw, 1200px"
               : compact
                 ? "(max-width: 899px) 42vw, 160px"
                 : inPair

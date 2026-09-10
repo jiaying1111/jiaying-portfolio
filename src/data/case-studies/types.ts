@@ -11,7 +11,7 @@ export type CaseStudyMedia = {
   poster?: string;
   /** Looping clips autoplay muted, like a compressed GIF. */
   loop?: boolean;
-  /** When set, the player embeds this YouTube film instead of a local file. */
+  /** External film page (Bilibili preferred). Used for “Video link”; local `src` plays on-page. */
   youtube?: string;
 };
 
@@ -143,6 +143,11 @@ export type CaseStudy = {
   kicker?: string;
   /** Short line sitting on the hero image. */
   heroIntro?: string;
+  /**
+   * When the hero is a dark full-bleed image, the overlay site header switches
+   * to white so logo, nav, and language stay legible.
+   */
+  heroTone?: "light" | "dark";
   category: string;
   year: string;
   summary: string;

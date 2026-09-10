@@ -42,6 +42,10 @@ yarn-error.log*
 # Design reference, not a production asset
 /public/images/Frame 13-2.jpg
 
+# Accidental local caches dropped into public/
+/public/images/home/experience-cards/.npm/
+/public/images/home/experience-cards/Library/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

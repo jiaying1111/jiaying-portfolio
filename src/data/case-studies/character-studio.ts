@@ -9,8 +9,8 @@ const shot = (
 ): CaseStudyMedia => ({
   src: `${root}/${path}`,
   alt,
-  width: 1440,
-  height: 900,
+  width: 3200,
+  height: 2000,
   ...extras,
 });
 
@@ -30,6 +30,7 @@ export const characterStudioCaseStudy: CaseStudy = {
     "hero/character-studio-ui.png",
     "Character Studio dialogue workspace with character sheet and drawing",
   ),
+  heroTone: "dark",
   metadata: [
     { label: "Role", value: "Experience Designer & Creative Technologist" },
     { label: "Focus", value: "AI interaction, workflow, prototyping" },
@@ -52,17 +53,6 @@ export const characterStudioCaseStudy: CaseStudy = {
       headline: "AI as a speculative partner, not a shortcut",
       lead: "Most generative tools jump from a sketch to polished output. Character Studio deliberately keeps productive distance: it surfaces clues, asks questions, organizes fragments, and gives the artist multiple places to intervene before anything becomes fixed.",
       modules: [
-        {
-          id: "at-a-glance",
-          title: "At a glance",
-          copy: "A complete studio loop for character development—built so authorship stays with the illustrator.",
-          metrics: [
-            { value: "6", label: "visible workflow stages" },
-            { value: "1", label: "infinite canvas for spatial thinking" },
-            { value: "API", label: "multimodal Anthropic interpretation" },
-            { value: "Live", label: "browser prototype you can try" },
-          ],
-        },
         {
           id: "design-question",
           title: "Design question",
@@ -93,174 +83,95 @@ export const characterStudioCaseStudy: CaseStudy = {
             },
           ],
         },
-        {
-          id: "studio-overview",
-          title: "The studio surface",
-          copy: "One persistent workspace keeps the source drawing, workflow rail, dialogue, and canvas in view together—so progress stays legible without forcing a rigid sequence.",
-          media: [
-            shot(
-              "ui/panel-05.png",
-              "Character Studio canvas with connected notes, questions, and sketches",
-            ),
-          ],
-        },
       ],
     },
     {
-      id: "workflow",
+      id: "pages",
       number: "02",
-      label: "Workflow",
-      title: "Six stages from sketch to selected direction",
-      headline: "Six stages from sketch to selected direction",
-      lead: "The workflow moves repeatedly between image, language, organization, and drawing. Each stage is visible in the sidebar so users can revisit assumptions instead of silently replacing them.",
+      label: "Pages",
+      title: "Six pages, one screen each",
+      headline: "Six pages, one screen each",
+      lead: "Upload → interpret → dialogue → narrative → canvas → selection. Each page appears once below, with a short action note and a high-resolution capture from the live prototype.",
       modules: [
         {
-          id: "six-stages",
-          title: "End-to-end process",
-          copy: "Upload → interpret → dialogue → narrative shaping → canvas → selection. The screens below follow the live tool.",
+          id: "six-pages",
+          title: "Interface pages",
+          copy: "Scroll the sequence in order. Jump into the live tool anytime to try the same gestures.",
           layout: "flow",
           entries: [
             {
-              id: "stage-upload",
-              title: "Upload an existing character",
+              id: "page-upload",
+              title: "Upload",
               role: "01",
-              copy: "Start with a finished design, a partial figure, or a rough but readable sketch. The drawing is the evidence base—not a text prompt alone.",
+              copy: "Drop or upload a character drawing. It becomes the evidence base and unlocks the rest of the studio.",
               gallery: [
-                shot("ui/panel-01.png", "Upload stage with character drawing and workflow rail"),
+                shot("ui/panel-01.png", "Upload page with character drawing in the main viewport"),
               ],
             },
             {
-              id: "stage-interpret",
-              title: "AI interprets, artist corrects",
+              id: "page-interpret",
+              title: "AI Interpretation",
               role: "02",
-              copy: "The model reads clothing, posture, expression, objects, and atmosphere, then proposes an editable setup for identity, role, world, and must-know facts.",
+              copy: "Edit the provisional reading—identity, role, world, must-know facts—before anything is treated as settled.",
               gallery: [
                 shot(
                   "ui/panel-02.png",
-                  "Editable AI interpretation and provisional character setup",
+                  "AI Interpretation page with editable provisional character setup",
                 ),
               ],
             },
             {
-              id: "stage-dialogue",
-              title: "Dialogue as correction",
+              id: "page-dialogue",
+              title: "Dialogue",
               role: "03",
-              copy: "Talk with the provisional character immediately. Useful exchanges become traits, memories, conflicts, questions, or notes the artist can keep or discard.",
+              copy: "Ask in chat, then rewrite the sheet. Useful replies become traits, world notes, conflict, or other facts you keep.",
               gallery: [
                 shot(
                   "ui/panel-03.png",
-                  "Character dialogue with structured traits, world, and conflict notes",
+                  "Dialogue page with chat, character sheet, and source drawing",
                 ),
               ],
             },
             {
-              id: "stage-narrative",
-              title: "Shape the narrative arc",
+              id: "page-narrative",
+              title: "Narrative",
               role: "04",
-              copy: "Intensity and timing controls let the artist bend the emerging story without asking AI to invent a finished plot.",
+              copy: "Drag curve points for intensity and timing. The curve steers tone—it does not invent a finished plot.",
               gallery: [
-                shot("ui/panel-04.png", "Narrative shaping with story curve and controls"),
+                shot("ui/panel-04.png", "Narrative page with interactive intensity curve"),
               ],
             },
             {
-              id: "stage-canvas",
-              title: "Think on an infinite canvas",
+              id: "page-canvas",
+              title: "Canvas",
               role: "05",
-              copy: "Dialogue fragments become draggable cards. Group ideas, draw links, add notes, and place new sketches beside unresolved questions.",
+              copy: "Turn fragments into cards. Mark, connect, sketch, and arrange ideas in space before choosing a direction.",
               gallery: [
                 shot(
                   "ui/panel-05.png",
-                  "Infinite canvas with connected notes, questions, keywords, and sketches",
+                  "Canvas page with connected notes, questions, and sketch cards",
                 ),
               ],
             },
             {
-              id: "stage-select",
-              title: "Select a direction",
+              id: "page-selection",
+              title: "Selection",
               role: "06",
-              copy: "Compare which cards best fit the character and hold the strongest visual potential. Finalization records a direction without pretending the work is complete.",
+              copy: "Click cards into the final set, meet the answer minimum, then Finalize Board to record a direction.",
               gallery: [
                 shot(
                   "ui/panel-06.png",
-                  "Selection mode with chosen canvas cards and finalization controls",
+                  "Selection page with chosen cards and Finalize Board control",
                 ),
               ],
             },
-          ],
-        },
-      ],
-    },
-    {
-      id: "interactions",
-      number: "03",
-      label: "Interactions",
-      title: "Four moments where judgment stays with the artist",
-      headline: "Four moments where judgment stays with the artist",
-      lead: "The product centers the decisions that matter: setting the source, correcting interpretation, developing material spatially, and choosing what continues into illustration.",
-      modules: [
-        {
-          id: "upload-interpret",
-          title: "01 · Upload and interpret",
-          copy: "The user begins with their own drawing. AI identifies visual cues and proposes an editable setup before dialogue starts—always labeled as provisional.",
-          layout: "gallery",
-          pair: true,
-          media: [
-            shot("workflow/upload.png", "Upload stage with the artist’s drawing and workflow steps"),
-            shot("ui/panel-02.png", "Editable AI interpretation and provisional character setup"),
-          ],
-        },
-        {
-          id: "dialogue",
-          title: "02 · Dialogue as correction",
-          copy: "Conversation gives the character a voice, but every assumption can be challenged. The sheet merges typed facts instead of treating them as conflicts.",
-          media: [
-            shot(
-              "workflow/dialogue.png",
-              "Character dialogue with structured traits, world, and conflict notes",
-            ),
-          ],
-        },
-        {
-          id: "canvas-thinking",
-          title: "03 · Think spatially",
-          copy: "The infinite canvas turns language into movable material. Sketches and text live side by side so visual and narrative directions can be compared.",
-          media: [
-            shot(
-              "workflow/canvas.png",
-              "Infinite canvas with connected notes, questions, keywords, and sketches",
-            ),
-          ],
-        },
-        {
-          id: "selection",
-          title: "04 · Select a direction",
-          copy: "Selection mode asks which version best fits the character, holds the strongest visual potential, and supports the worldbuilding. The chosen path becomes the basis for further illustration.",
-          media: [
-            shot(
-              "workflow/selection.png",
-              "Selection mode with chosen canvas cards and finalization controls",
-            ),
-          ],
-        },
-        {
-          id: "walkthrough",
-          title: "Interface walkthrough",
-          copy: "All six primary system states, from source image to selected direction.",
-          layout: "carousel",
-          media: [
-            shot("ui/panel-01.png", "01 Upload: character drawing and workflow rail"),
-            shot("ui/panel-02.png", "02 AI interpretation: editable setup and character reading"),
-            shot("ui/panel-03.png", "03 Dialogue: conversation and character sheet"),
-            shot("ui/panel-04.png", "04 Narrative shaping: story curve and controls"),
-            shot("ui/panel-05.png", "05 Canvas: connected notes, questions, and sketches"),
-            shot("ui/panel-06.png", "06 Selection: chosen cards and finalization controls"),
           ],
         },
       ],
     },
     {
       id: "system",
-      number: "04",
+      number: "03",
       label: "System",
       title: "A working prototype with visible AI boundaries",
       headline: "A working prototype with visible AI boundaries",
@@ -319,7 +230,7 @@ export const characterStudioCaseStudy: CaseStudy = {
     },
     {
       id: "outcome",
-      number: "05",
+      number: "04",
       label: "Outcome",
       title: "A complete tool and a clear position on authorship",
       headline: "A complete tool and a clear position on authorship",
@@ -336,7 +247,7 @@ export const characterStudioCaseStudy: CaseStudy = {
             },
             {
               term: "Documented workflow",
-              detail: "Interface screenshots record every major product state.",
+              detail: "One high-resolution screen per product page.",
             },
             {
               term: "Public statement",

@@ -24,7 +24,7 @@ const extrasBySlug: Record<string, IllustrationExtras> = {
       src: "/videos/Other-Illustration.mp4",
       width: 1016,
       height: 720,
-      youtube: "https://youtu.be/jkLcmsXiURE",
+      youtube: "https://www.bilibili.com/video/BV1KrYh6HEWV",
     },
   },
   "your-destination": {
@@ -32,7 +32,7 @@ const extrasBySlug: Record<string, IllustrationExtras> = {
       src: "/videos/Other-Animation.mp4",
       width: 960,
       height: 720,
-      youtube: "https://youtu.be/MBwVtRZANLI",
+      youtube: "https://www.bilibili.com/video/BV1TrYh6HEPa",
     },
   },
   "imaginary-beings": {
@@ -73,7 +73,7 @@ function toCaseStudy(study: IllustrationStudy): CaseStudy {
   const summaryParts = study.summary;
   const summary = summaryParts.join(" ");
   const links: CaseStudyLink[] | undefined = extras?.film?.youtube
-    ? [{ label: "Video link", href: extras.film.youtube }]
+    ? [{ label: "Watch on Bilibili", href: extras.film.youtube }]
     : undefined;
 
   return {
@@ -129,7 +129,7 @@ function toCaseStudy(study: IllustrationStudy): CaseStudy {
                   copy: "A walkthrough of the finished work.",
                   media: [
                     {
-                      src: extras.film.youtube ?? extras.film.src,
+                      src: extras.film.src,
                       youtube: extras.film.youtube,
                       alt: `Film of ${study.title}`,
                       width: extras.film.width,

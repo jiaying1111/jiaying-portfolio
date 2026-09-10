@@ -32,7 +32,7 @@ export const dreamwhorlCaseStudy: CaseStudy = {
       "value": "Shell interface, mobile app, circular display"
     }
   ],
-  "links": [{ "label": "Video link", "href": "https://youtu.be/UtzZnKh94Ow" }],
+  "links": [{ "label": "Watch on Bilibili", "href": "https://www.bilibili.com/video/BV11kYh6DEoq" }],
   "chapters": [
     {
       "id": "idea",
@@ -573,13 +573,13 @@ export const dreamwhorlCaseStudy: CaseStudy = {
           "media": [
             {
               "kind": "video",
-              "src": "https://youtu.be/UtzZnKh94Ow",
-              "youtube": "https://youtu.be/UtzZnKh94Ow",
+              "src": "/videos/dreamwhorl-final.mp4",
+              "youtube": "https://www.bilibili.com/video/BV11kYh6DEoq",
               "poster": "/images/projects/dreamwhorl/refresh/hero.jpg",
               "alt": "DreamWhorl in use",
               "caption": "Speaking, drawing, turning, shaking, and saving become equally meaningful parts of co-creation.",
-              "width": 960,
-              "height": 540
+              "width": 1920,
+              "height": 1080
             }
           ]
         },

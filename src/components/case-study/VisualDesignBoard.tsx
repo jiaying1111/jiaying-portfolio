@@ -278,14 +278,14 @@ export function VisualDesignBoard({
               key={item.src}
               media={item}
               priority={priority && index === 0}
-              sizes="(max-width: 900px) 22vw, 12vw"
+              sizes="(max-width: 900px) 28vw, 12vw"
             />
           ))}
         </div>
         {cities.length ? (
           <div className="vd-board__city-col">
             {cities.map((item) => (
-              <Figure key={item.src} media={item} sizes="140px" />
+              <Figure key={item.src} media={item} sizes="120px" />
             ))}
           </div>
         ) : null}
@@ -298,19 +298,24 @@ export function VisualDesignBoard({
     const pages = media.filter((item) => item !== cover);
     return (
       <div className="vd-board vd-board--passport">
-        <div className="vd-board__passport-pages">
-          {pages.map((item) => (
-            <Figure key={item.src} media={item} sizes="(max-width: 900px) 18vw, 7vw" />
-          ))}
-        </div>
         {cover ? (
           <Figure
             media={cover}
             className="vd-board__passport-cover"
             priority={priority}
-            sizes="(max-width: 900px) 42vw, 22vw"
+            sizes="(max-width: 900px) 42vw, 200px"
           />
         ) : null}
+        <div className="vd-board__passport-pages">
+          {pages.map((item) => (
+            <Figure
+              key={item.src}
+              media={item}
+              className="vd-board__passport-page"
+              sizes="(max-width: 900px) 22vw, 110px"
+            />
+          ))}
+        </div>
       </div>
     );
   }
@@ -323,7 +328,7 @@ export function VisualDesignBoard({
             key={item.src}
             media={item}
             priority={priority && index === 0}
-            sizes="(max-width: 900px) 32vw, 14vw"
+            sizes="(max-width: 900px) 42vw, 16vw"
           />
         ))}
       </div>

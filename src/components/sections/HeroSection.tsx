@@ -13,7 +13,7 @@ import { socialIcons } from "@/data/assets";
 import { heroSlides, socialControls } from "@/data/site";
 import { HERO_AUTOPLAY_MS, HERO_SLIDE_MS } from "@/lib/motion";
 import { useLocale } from "@/i18n/LocaleProvider";
-import { localize } from "@/i18n/localize";
+import { localize, t } from "@/i18n/localize";
 import { slideStatus, ui, viewNamed } from "@/i18n/ui";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
@@ -47,7 +47,7 @@ export function HeroSection() {
   const isIntro = index === 0;
   const projectHref = heroSlides[index].href;
   const imageLabel = isIntro
-    ? viewNamed(locale, "Re:Sounding Nature")
+    ? viewNamed(locale, t("Re:Sounding Nature", locale))
     : viewNamed(locale, slide.display);
 
   const goTo = useCallback((step: 1 | -1) => {

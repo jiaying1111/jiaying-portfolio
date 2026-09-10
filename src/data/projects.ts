@@ -5,7 +5,7 @@ import {
   type HoverLoopSet,
 } from "@/data/assets";
 
-export type ProjectListingGroup = "projects" | "practice";
+export type ProjectListingGroup = "projects" | "practice" | "vibe-coding";
 
 export type Project = {
   slug: string;
@@ -62,32 +62,6 @@ export const projects: Project[] = [
     card: homepageCardAssets["hxr-digital-map"],
   },
   {
-    slug: "character-studio",
-    title: "Character Studio",
-    category: "AI Tool · Interaction Design",
-    year: "2026",
-    summary:
-      "An AI-assisted tool for illustrators and world-builders that supports character development through dialogue, note-taking, sketching, and visual organization—without replacing authorship or drawing.",
-    type: "Collaboration Project",
-    tools: "HTML, CSS, JavaScript, Anthropic API",
-    listingGroup: "practice",
-    listingMedia: experienceListingMedia["character-studio"],
-    card: homepageCardAssets["character-studio"],
-  },
-  {
-    slug: "little-red-riding-hood",
-    title: "Little Red Riding Hood",
-    category: "Interactive Installation",
-    year: "2025",
-    summary:
-      "This project reimagines Little Red Riding Hood as an open, non-linear story that challenges inherited ideas of morality, gender, and control over nature through a generative website and physical interactive installation.",
-    type: "Independent Project",
-    tools: "Vibe Coding, 3D Printing, Laser Cut",
-    listingGroup: "practice",
-    listingMedia: experienceListingMedia["little-red-riding-hood"],
-    card: homepageCardAssets["little-red-riding-hood"],
-  },
-  {
     slug: "nushu",
     title: "Nushu",
     category: "VR Experience",
@@ -100,6 +74,32 @@ export const projects: Project[] = [
     listingMedia: experienceListingMedia.nushu,
     card: homepageCardAssets.nushu,
   },
+  {
+    slug: "character-studio",
+    title: "Character Studio",
+    category: "AI Tool · Interaction Design",
+    year: "2026",
+    summary:
+      "An AI-assisted tool for illustrators and world-builders that supports character development through dialogue, note-taking, sketching, and visual organization—without replacing authorship or drawing.",
+    type: "Collaboration Project",
+    tools: "HTML, CSS, JavaScript, Anthropic API",
+    listingGroup: "vibe-coding",
+    listingMedia: experienceListingMedia["character-studio"],
+    card: homepageCardAssets["character-studio"],
+  },
+  {
+    slug: "little-red-riding-hood",
+    title: "Little Red Riding Hood",
+    category: "Interactive Installation",
+    year: "2025",
+    summary:
+      "This project reimagines Little Red Riding Hood as an open, non-linear story that challenges inherited ideas of morality, gender, and control over nature through a generative website and physical interactive installation.",
+    type: "Independent Project",
+    tools: "Vibe Coding, 3D Printing, Laser Cut",
+    listingGroup: "vibe-coding",
+    listingMedia: experienceListingMedia["little-red-riding-hood"],
+    card: homepageCardAssets["little-red-riding-hood"],
+  },
 ];
 
 export function getProjectBySlug(slug: string) {
@@ -108,4 +108,16 @@ export function getProjectBySlug(slug: string) {
 
 export function getProjectsByGroup(group: ProjectListingGroup) {
   return projects.filter((project) => project.listingGroup === group);
+}
+
+/** Experience Design listing neighbors (Projects + Practice only). */
+export function getExperienceProjects() {
+  return projects.filter(
+    (project) =>
+      project.listingGroup === "projects" || project.listingGroup === "practice",
+  );
+}
+
+export function getVibeCodingProjects() {
+  return getProjectsByGroup("vibe-coding");
 }

@@ -18,6 +18,8 @@ import {
 type LocaleContextValue = {
   locale: Locale;
   setLocale: (locale: Locale) => void;
+  /** False until the visitor has chosen (or restored) a language preference. */
+  languageReady: boolean;
 };
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
@@ -31,19 +33,27 @@ function persistLocale(locale: Locale) {
 
 export function LocaleProvider({
   initialLocale = DEFAULT_LOCALE,
+  initialHasPreference = false,
   children,
 }: {
   initialLocale?: Locale;
+  /** True when a locale cookie already exists from a prior visit. */
+  initialHasPreference?: boolean;
   children: ReactNode;
 }) {
   const [locale, setLocaleState] = useState<Locale>(initialLocale);
+  const [languageReady, setLanguageReady] = useState(initialHasPreference);
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next);
     persistLocale(next);
+    setLanguageReady(true);
   }, []);
 
-  const value = useMemo(() => ({ locale, setLocale }), [locale, setLocale]);
+  const value = useMemo(
+    () => ({ locale, setLocale, languageReady }),
+    [locale, setLocale, languageReady],
+  );
 
   return (
     <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>

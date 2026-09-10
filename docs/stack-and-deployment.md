@@ -34,6 +34,18 @@ cp .env.example .env.local
 npm run dev
 ```
 
+## 2a. China mirror (Tencent Cloud Lighthouse)
+
+For stable access inside mainland China, run a second production copy on
+Tencent Cloud Lighthouse with ICP filing. Step-by-step checklist, nginx/pm2
+configs, and sync script:
+
+- `docs/china-deploy-tencent.md`
+- `deploy/`
+
+Keep Vercel as the international deployment. Do not point an unfiled China
+domain at a mainland IP for public use.
+
 ## 2. Connect and deploy with Vercel
 
 1. Push this folder to a GitHub repository.

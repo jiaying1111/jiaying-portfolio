@@ -170,9 +170,9 @@ export const homepageCardAssets = {
     "Little Red Riding Hood",
     { width: 522, height: 438 },
     [
-      { ext: "svg", width: 623, height: 420 },
-      { ext: "jpg", width: 1600, height: 1067 },
-      { ext: "jpg", width: 1600, height: 1067 },
+      { ext: "png", width: 623, height: 420 },
+      { ext: "png", width: 623, height: 420 },
+      { ext: "png", width: 623, height: 420 },
     ],
   ),
   nushu: homepageCardMedia(
@@ -346,11 +346,11 @@ export const experienceListingMedia = {
     "experience-little-red-riding-hood",
     "/images/experience/little-red-riding-hood",
     [
-      { index: 1, ext: "svg" },
-      { index: 2, ext: "jpg" },
-      { index: 3, ext: "jpg" },
+      { index: 1, ext: "png" },
+      { index: 2, ext: "png" },
+      { index: 3, ext: "png" },
     ],
-    "Little Red Riding Hood — a hand releasing translucent printed fragments",
+    "Little Red Riding Hood — generative website drawing interface",
   ),
   nushu: hoverLoopSet(
     "experience-nushu",
