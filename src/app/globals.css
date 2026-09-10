@@ -7060,32 +7060,6 @@ body:has(.case--illustration) .reading-progress {
   --project-muted: #5c4f4f;
 }
 
-/* Overlay nav turns white on any dark full-bleed case hero. */
-body:has(.case--dark-hero) .site-header--overlay {
-  color: #fff;
-  border-bottom-color: rgb(255 255 255 / 62%);
-}
-
-body:has(.case--dark-hero) .site-header--overlay .site-lang__button,
-body:has(.case--dark-hero) .site-header--overlay .site-lang__rule {
-  color: rgb(255 255 255 / 48%);
-}
-
-body:has(.case--dark-hero) .site-header--overlay .site-lang__button.is-active {
-  color: #fff;
-}
-
-body:has(.case--dark-hero) .site-header--overlay .site-lang__button:focus-visible,
-body:has(.case--dark-hero) .site-header--overlay .site-nav__link:focus-visible,
-body:has(.case--dark-hero) .site-header--overlay .site-logo:focus-visible {
-  outline-color: #fff;
-}
-
-body:has(.case--dark-hero) .site-header--overlay .site-header__menu {
-  border-color: #fff;
-  color: #fff;
-}
-
 .case.case--present-and-absent .case-hero {
   background: #0a0808;
 }
