@@ -52,7 +52,6 @@ export const presentAndAbsentCaseStudy: CaseStudy = {
     1920,
     1080,
   ),
-  heroTone: "dark",
   metadata: [
     { label: "Role", value: "Artist & Performer" },
     { label: "Methods", value: "Motion capture, 3D character design" },

@@ -154,6 +154,18 @@ const illustration: Artwork[] = [
 
 const visualDesign: Artwork[] = [
   {
+    id: "future-reality",
+    section: "visual-design",
+    title: "Future Reality",
+    category: "Brand Identity",
+    year: "2026",
+    summary:
+      "Visual identity and brand manual for Future Reality, an AI film festival premiering at Regal Union Square, New York — wordmark, type, colour, main poster, social posters, and the festival website.",
+    type: "Design & Publicity Lead · Future Reality AI Film Festival",
+    tools: "Figma, generative image tools, Web",
+    listingMedia: artworkListingMedia["future-reality"],
+  },
+  {
     id: "explore-the-future",
     section: "visual-design",
     title: "探索未来",

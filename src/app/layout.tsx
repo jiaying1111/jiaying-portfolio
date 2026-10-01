@@ -5,6 +5,7 @@ import { SiteShell } from "@/components/layout/SiteShell";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import { isLocale, localeLang, type Locale } from "@/i18n/locale";
 import "./globals.css";
+import "./brand-manual.css";
 
 const inter = Inter({
   subsets: ["latin"],

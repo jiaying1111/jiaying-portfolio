@@ -35,7 +35,6 @@ export const hxrDigitalMapCaseStudy: CaseStudy = {
     width: 1440,
     height: 810,
   },
-  heroTone: "dark",
   metadata: [
     { label: "Role", value: "Product Manager & UX Designer" },
     { label: "Team", value: "Chloe Ni · UI Designer · Wenxin Li · Backend" },

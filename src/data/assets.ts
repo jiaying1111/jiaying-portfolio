@@ -505,6 +505,16 @@ export const artworkListingMedia = {
     ],
     "探索未来 — Lenovo sustainability event visual system",
   ),
+  "future-reality": hoverLoopSet(
+    "artwork-future-reality",
+    "/images/visual-design/future-reality/listing",
+    [
+      { index: 1, ext: "jpg" },
+      { index: 2, ext: "jpg" },
+      { index: 3, ext: "jpg" },
+    ],
+    "Future Reality — main festival poster on film stock",
+  ),
   "gift-shop-launch": hoverLoopSet(
     "artwork-gift-shop-launch",
     "/images/artwork/gift-shop-launch",

@@ -30,7 +30,6 @@ export const characterStudioCaseStudy: CaseStudy = {
     "hero/character-studio-ui.png",
     "Character Studio dialogue workspace with character sheet and drawing",
   ),
-  heroTone: "dark",
   metadata: [
     { label: "Role", value: "Experience Designer & Creative Technologist" },
     { label: "Focus", value: "AI interaction, workflow, prototyping" },

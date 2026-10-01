@@ -1,6 +1,7 @@
 import { characterStudioCaseStudy } from "@/data/case-studies/character-studio";
 import { digitalNoMoreMadCaseStudy } from "@/data/case-studies/digital-no-more-mad";
 import { dreamwhorlCaseStudy } from "@/data/case-studies/dreamwhorl";
+import { futureRealityCaseStudy } from "@/data/case-studies/future-reality";
 import { hxrDigitalMapCaseStudy } from "@/data/case-studies/hxr-digital-map";
 import { illustrationCaseStudiesBySlug } from "@/data/case-studies/illustrations";
 import { littleRedRidingHoodCaseStudy } from "@/data/case-studies/little-red-riding-hood";
@@ -14,6 +15,7 @@ export const caseStudiesBySlug: Record<string, CaseStudy> = {
   [characterStudioCaseStudy.slug]: characterStudioCaseStudy,
   [digitalNoMoreMadCaseStudy.slug]: digitalNoMoreMadCaseStudy,
   [dreamwhorlCaseStudy.slug]: dreamwhorlCaseStudy,
+  [futureRealityCaseStudy.slug]: futureRealityCaseStudy,
   [hxrDigitalMapCaseStudy.slug]: hxrDigitalMapCaseStudy,
   [littleRedRidingHoodCaseStudy.slug]: littleRedRidingHoodCaseStudy,
   [nushuCaseStudy.slug]: nushuCaseStudy,

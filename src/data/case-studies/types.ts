@@ -49,7 +49,70 @@ export type CaseStudyModuleLayout =
   | "vd-stamps"
   | "vd-passport"
   | "vd-extensions"
-  | "vd-gift-ext";
+  | "vd-gift-ext"
+  | "brand-logo"
+  | "brand-type"
+  | "brand-color"
+  | "brand-imagery"
+  | "brand-grid"
+  | "brand-apps";
+
+export type BrandFace = "anton" | "roboto-serif" | "mulish";
+
+export type BrandTypeface = {
+  face: BrandFace;
+  family: string;
+  role: string;
+  weights: string;
+  sample: string;
+  uppercase?: boolean;
+};
+
+export type BrandTypeRow = {
+  role: string;
+  face: BrandFace;
+  family: string;
+  size: number;
+  detail: string;
+  hex: string;
+  uppercase?: boolean;
+};
+
+export type BrandSwatchGroup = {
+  title: string;
+  note?: string;
+  swatches: { hex: string; name: string; usage: string }[];
+};
+
+export type BrandZone = {
+  label: string;
+  spec: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  round?: boolean;
+};
+
+export type BrandGallery = {
+  title: string;
+  copy?: string;
+  columns: 1 | 2 | 3 | 4;
+  items: CaseStudyMedia[];
+};
+
+export type BrandSpec = {
+  typefaces?: BrandTypeface[];
+  typeScale?: BrandTypeRow[];
+  swatchGroups?: BrandSwatchGroup[];
+  grid?: {
+    artboard: { width: number; height: number };
+    media: CaseStudyMedia;
+    zones: BrandZone[];
+  };
+  galleries?: BrandGallery[];
+  rules?: { do: string[]; avoid: string[] };
+};
 
 export type CaseStudyFlow = {
   id: string;
@@ -75,6 +138,7 @@ export type CaseStudyModule = {
   pair?: boolean;
   metrics?: { value: string; label: string }[];
   layout?: CaseStudyModuleLayout;
+  brand?: BrandSpec;
   /** Labeled connections for an interactive system map. */
   flows?: CaseStudyFlow[];
   /** A related image sequence kept inside the same content module. */
@@ -133,7 +197,10 @@ export type CaseStudyLink = {
 
 export type CaseStudy = {
   slug: string;
-  /** Controls the contrast of the overlaid global navigation on the hero. */
+  /**
+   * When the hero is a dark full-bleed image, the overlay site header switches
+   * to white so logo, nav, and language stay legible.
+   */
   heroTone?: "light" | "dark";
   /** Optional editorial title used on the detail page when it differs from the listing title. */
   title?: string;
@@ -143,11 +210,6 @@ export type CaseStudy = {
   kicker?: string;
   /** Short line sitting on the hero image. */
   heroIntro?: string;
-  /**
-   * When the hero is a dark full-bleed image, the overlay site header switches
-   * to white so logo, nav, and language stay legible.
-   */
-  heroTone?: "light" | "dark";
   category: string;
   year: string;
   summary: string;

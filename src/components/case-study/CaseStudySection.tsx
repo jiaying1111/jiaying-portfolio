@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { BrandManualBoard, isBrandLayout } from "@/components/case-study/BrandManualBoard";
 import { CaseArchitectureDiagram } from "@/components/case-study/CaseArchitectureDiagram";
 import { CaseStudyCarousel } from "@/components/case-study/CaseStudyCarousel";
 import { CaseExplainBoard, CaseSwatchBoard } from "@/components/case-study/CaseExplainBoard";
@@ -172,6 +173,21 @@ function Module({
 
   const hideHeading = plain && module.id === "stills";
   const vdLayout = isVisualDesignLayout(module.layout);
+
+  if (isBrandLayout(module.layout)) {
+    return (
+      <section
+        className={`case-module case-module--brand case-module--${module.id}`}
+        aria-labelledby={`${module.id}-title`}
+      >
+        <h3 className="case-module__title" id={`${module.id}-title`}>
+          {module.title}
+        </h3>
+        {module.copy ? <p className="case-module__copy">{module.copy}</p> : null}
+        <BrandManualBoard module={module} priority={priorityMedia} />
+      </section>
+    );
+  }
 
   return (
     <section
