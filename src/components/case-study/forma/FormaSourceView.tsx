@@ -11,6 +11,7 @@ import { ProjectMetadata } from "../ProjectMetadata";
 import { Diagram, Fragment, OriginalAsset, diagramTree, sourceNode, useWords } from "./FormaSourceGraphic";
 import { Competitors, Needs, Positioning, Journey, ProjectBrief, Invitation } from "./FormaRevision";
 import { Wireframes, ScreenGallery, ArtworkSchedule, Dates, FormaChapterNav, FeatureIndex } from "./FormaReading";
+import { FormaInterface } from "./FormaInterface";
 import { FormaRefinement } from "./FormaRefinement";
 import { FormaFeatureReader } from "./FormaFeatureReader";
 import { FormaWorkflow } from "./FormaWorkflow";
@@ -204,13 +205,19 @@ export function FormaSourceView({ previous, next }: { previous?: { slug: string 
 
   return <main className="case case--forma forma-web-page">
     <section id="forma-1" className="case-hero forma-cover" aria-labelledby="forma-cover-title" data-figma-frame={intro.id}>
-      <OriginalAsset id="781:6868" className="forma-cover__monitor"
-        sizes="(max-width: 899px) 94vw, (max-width: 1640px) 66vw, 1080px"
-        alt={t("Forma 工作台，画布旁显示项目排期和反馈", "The Forma workbench with project scheduling and feedback beside the canvas")} priority />
-      <div className="case-hero__copy">
-        <p className="case-hero__kicker">{t("产品设计 · AI 工作流 · 2026", "Product Design · AI Workflow · 2026")}</p>
-        <h1 className="case-hero__title" id="forma-cover-title">Forma</h1>
-        <p className="case-hero__intro">{t(intro.lead, intro.leadEn)}</p>
+      <div className="forma-cover__layout">
+        <div className="case-hero__copy">
+          <p className="case-hero__kicker">{t("产品设计 · AI 工作流 · 2026", "Product Design · AI Workflow · 2026")}</p>
+          <h1 className="case-hero__title" id="forma-cover-title">Forma</h1>
+          <p className="case-hero__intro">{t(intro.lead, intro.leadEn)}</p>
+        </div>
+        <div className="forma-cover__screen">
+          <FormaInterface
+            src={`/images/projects/forma/handoff/pear-designer-schedule-${locale}.webp`}
+            label={t("设计师画布中的横版稿件与项目排期", "Landscape artwork and project schedule in the designer’s canvas")}
+            loading="eager"
+          />
+        </div>
       </div>
       <a className="case-hero__scroll" href="#forma-overview">{ui(locale).scrollToExplore} <span aria-hidden="true">↓</span></a>
     </section>

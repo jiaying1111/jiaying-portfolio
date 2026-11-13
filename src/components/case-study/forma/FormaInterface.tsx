@@ -7,9 +7,10 @@ import { useWords } from "./FormaSourceGraphic";
 const width = 2880;
 const height = 1920;
 
-export function FormaInterface({ src, label, preview, toggleMotion, overlay, dialogControls }: {
+export function FormaInterface({ src, label, preview, toggleMotion, overlay, dialogControls, loading }: {
   src: string;
   label: string;
+  loading?: "lazy" | "eager";
   preview?: { active: boolean; desktop: string; phone: string; still: string };
   toggleMotion?: () => void;
   overlay?: ReactNode;
@@ -59,7 +60,7 @@ export function FormaInterface({ src, label, preview, toggleMotion, overlay, dia
       <picture>
         {preview && animatePreview && <source media="(max-width: 640px)" srcSet={preview.phone} />}
         <Image src={preview ? (animatePreview ? preview.desktop : preview.still) : src}
-          alt={label} width={width} height={height} unoptimized />
+          alt={label} width={width} height={height} unoptimized loading={loading} />
       </picture>
       {overlay}
       <span className="forma-interface-enlarge" aria-hidden="true">⤢</span>
