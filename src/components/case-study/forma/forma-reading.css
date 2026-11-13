@@ -23,7 +23,33 @@
   margin: 0;
 }
 .forma-cover__screen .forma-interface-preview {
-  box-shadow: 0 16px 50px rgb(46 32 68 / 12%);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.forma-monitor {
+  position: relative;
+  display: block;
+  container-type: inline-size;
+  aspect-ratio: 3 / 2;
+}
+.forma-monitor__mask,
+.forma-monitor__glass { position: absolute; inset: 0; }
+.forma-monitor__glass { overflow: hidden; }
+/* Project the four corners of the full screenshot onto the original glass.
+   Perspective scales with the mockup, including between mobile breakpoints. */
+.case--forma .forma-monitor__glass .forma-monitor__workspace {
+  position: absolute;
+  inset: 17.33398% auto auto 25.61849%;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+  transform: perspective(100cqw) matrix3d(
+     .55690378, -.07529309, .18556202, 0,
+    -.07091455,  .63657107, .08355329, 0,
+     0,          0,         1,         0,
+     0,          0,         0,         1
+  );
 }
 .case--forma .forma-cover__screen img { position: static; }
 .case--forma .forma-cover .case-hero__kicker { color: var(--forma-accent); }

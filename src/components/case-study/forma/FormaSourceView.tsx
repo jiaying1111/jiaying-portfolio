@@ -11,7 +11,7 @@ import { ProjectMetadata } from "../ProjectMetadata";
 import { Diagram, Fragment, OriginalAsset, diagramTree, sourceNode, useWords } from "./FormaSourceGraphic";
 import { Competitors, Needs, Positioning, Journey, ProjectBrief, Invitation } from "./FormaRevision";
 import { Wireframes, ScreenGallery, ArtworkSchedule, Dates, FormaChapterNav, FeatureIndex } from "./FormaReading";
-import { FormaInterface } from "./FormaInterface";
+import { FormaCoverMonitor } from "./FormaCoverMonitor";
 import { FormaRefinement } from "./FormaRefinement";
 import { FormaFeatureReader } from "./FormaFeatureReader";
 import { FormaWorkflow } from "./FormaWorkflow";
@@ -212,10 +212,9 @@ export function FormaSourceView({ previous, next }: { previous?: { slug: string 
           <p className="case-hero__intro">{t(intro.lead, intro.leadEn)}</p>
         </div>
         <div className="forma-cover__screen">
-          <FormaInterface
+          <FormaCoverMonitor
             src={`/images/projects/forma/handoff/pear-designer-schedule-${locale}.webp`}
             label={t("设计师画布中的横版稿件与项目排期", "Landscape artwork and project schedule in the designer’s canvas")}
-            loading="eager"
           />
         </div>
       </div>

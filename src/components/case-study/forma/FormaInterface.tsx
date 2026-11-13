@@ -7,9 +7,10 @@ import { useWords } from "./FormaSourceGraphic";
 const width = 2880;
 const height = 1920;
 
-export function FormaInterface({ src, label, preview, toggleMotion, overlay, dialogControls, loading }: {
+export function FormaInterface({ src, label, preview, previewContent, toggleMotion, overlay, dialogControls, loading }: {
   src: string;
   label: string;
+  previewContent?: ReactNode;
   loading?: "lazy" | "eager";
   preview?: { active: boolean; desktop: string; phone: string; still: string };
   toggleMotion?: () => void;
@@ -57,11 +58,11 @@ export function FormaInterface({ src, label, preview, toggleMotion, overlay, dia
     <button type="button" ref={trigger} className="forma-interface-preview" aria-haspopup="dialog"
       aria-label={`${t("放大完整界面", "Enlarge full interface")} · ${label}`}
       onClick={() => { setNativeWidth(null); setOpen(true); }}>
-      <picture>
+      {previewContent ?? <picture>
         {preview && animatePreview && <source media="(max-width: 640px)" srcSet={preview.phone} />}
         <Image src={preview ? (animatePreview ? preview.desktop : preview.still) : src}
           alt={label} width={width} height={height} unoptimized loading={loading} />
-      </picture>
+      </picture>}
       {overlay}
       <span className="forma-interface-enlarge" aria-hidden="true">⤢</span>
     </button>
