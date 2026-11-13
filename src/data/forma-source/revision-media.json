@@ -1,0 +1,138 @@
+{
+  "architecture-zh.svg": {
+    "width": 1695,
+    "height": 822
+  },
+  "architecture-en.svg": {
+    "width": 1737,
+    "height": 852
+  },
+  "join-en.png": {
+    "width": 480,
+    "height": 328
+  },
+  "join-zh.png": {
+    "width": 960,
+    "height": 616
+  },
+  "code-en.png": {
+    "width": 526,
+    "height": 108
+  },
+  "share-zh.png": {
+    "width": 708,
+    "height": 768
+  },
+  "code-zh.png": {
+    "width": 1160,
+    "height": 362
+  },
+  "share-en.png": {
+    "width": 354,
+    "height": 570
+  },
+  "brief-en.png": {
+    "width": 708,
+    "height": 1140
+  },
+  "brief-zh.png": {
+    "width": 708,
+    "height": 1140
+  },
+  "brand-en.png": {
+    "width": 708,
+    "height": 1140
+  },
+  "brand-zh.png": {
+    "width": 708,
+    "height": 1140
+  },
+  "fonts-zh.png": {
+    "width": 708,
+    "height": 1140
+  },
+  "fonts-en.png": {
+    "width": 708,
+    "height": 1140
+  },
+  "palette-zh.png": {
+    "width": 708,
+    "height": 1140
+  },
+  "palette-en.png": {
+    "width": 708,
+    "height": 1140
+  },
+  "client-history-zh.png": {
+    "width": 2160,
+    "height": 1350
+  },
+  "client-settings-en.png": {
+    "width": 2160,
+    "height": 1350
+  },
+  "client-new-en.png": {
+    "width": 2160,
+    "height": 1350
+  },
+  "client-new-zh.png": {
+    "width": 2160,
+    "height": 1350
+  },
+  "client-settings-zh.png": {
+    "width": 2160,
+    "height": 1350
+  },
+  "client-history-en.png": {
+    "width": 2160,
+    "height": 1350
+  },
+  "branding/brief-zh.png": {
+    "width": 1416,
+    "height": 2560
+  },
+  "branding/fonts-zh.png": {
+    "width": 1416,
+    "height": 2560
+  },
+  "branding/logo-zh.png": {
+    "width": 1272,
+    "height": 800
+  },
+  "branding/palette-zh.png": {
+    "width": 1176,
+    "height": 1248
+  },
+  "branding/scope-zh.png": {
+    "width": 1440,
+    "height": 2427
+  },
+  "client-zh.png": {
+    "width": 2880,
+    "height": 1800
+  },
+  "branding/brief-en.png": {
+    "width": 531,
+    "height": 692
+  },
+  "branding/fonts-en.png": {
+    "width": 531,
+    "height": 692
+  },
+  "branding/logo-en.png": {
+    "width": 477,
+    "height": 423
+  },
+  "branding/palette-en.png": {
+    "width": 441,
+    "height": 468
+  },
+  "branding/scope-en.png": {
+    "width": 720,
+    "height": 1263
+  },
+  "client-en.png": {
+    "width": 2160,
+    "height": 1350
+  }
+}

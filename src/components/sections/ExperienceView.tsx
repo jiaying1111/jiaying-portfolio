@@ -1,5 +1,6 @@
 "use client";
 
+import { FormaListingCover } from "@/components/case-study/forma/FormaListingCover";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ListingScrollGuide } from "@/components/ui/ListingScrollGuide";
@@ -68,6 +69,7 @@ export function ExperienceView({
             type={project.type}
             tools={project.tools}
             media={project.listingMedia}
+            mediaContent={project.slug === "forma" ? <FormaListingCover /> : undefined}
             href={`/projects/${project.slug}`}
             priority={index === 0}
           />

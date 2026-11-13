@@ -1,4 +1,5 @@
 import { characterStudioCaseStudy } from "@/data/case-studies/character-studio";
+import { formaCaseStudy } from "@/data/case-studies/forma";
 import { digitalNoMoreMadCaseStudy } from "@/data/case-studies/digital-no-more-mad";
 import { dreamwhorlCaseStudy } from "@/data/case-studies/dreamwhorl";
 import { futureRealityCaseStudy } from "@/data/case-studies/future-reality";
@@ -13,6 +14,7 @@ import type { CaseStudy } from "@/data/case-studies/types";
 
 export const caseStudiesBySlug: Record<string, CaseStudy> = {
   [characterStudioCaseStudy.slug]: characterStudioCaseStudy,
+  [formaCaseStudy.slug]: formaCaseStudy,
   [digitalNoMoreMadCaseStudy.slug]: digitalNoMoreMadCaseStudy,
   [dreamwhorlCaseStudy.slug]: dreamwhorlCaseStudy,
   [futureRealityCaseStudy.slug]: futureRealityCaseStudy,

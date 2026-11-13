@@ -1,4 +1,7 @@
 export const zhDictionary: Record<string, string> = {
+  "Forma connects the brief, creative canvas, versions, deadlines, and client feedback in one AI-assisted project workspace for professional graphic designers. Designers direct the work; clients review the corresponding submission in the same project.": "Forma 是面向专业平面设计师的 AI 项目工作台，将需求、创作画布、版本、排期与反馈连接在同一项目中。设计师决定创作方向，需求方审阅对应的提交版本。",
+  "Product Design · AI Workflow": "产品设计 · AI 工作流",
+  "Product Design Project": "产品设计项目",
   "Discover, capture, collect, and share": "发现、拍摄、收集与分享",
   "The stamp and camera are one continuous interaction. Attendees discover a track identity, take a photo inside the branded frame, unlock the matching passport stamp, then save or share the result as a keepsake.": "印章与相机是一段连续的互动。参会者先认识每条主题轨道的视觉标识，再用品牌相框拍照、解锁护照中的对应印章，最后保存或分享这份纪念。",
   "01 · Eight tracks, eight identities": "01 · 八条主题轨道，八种视觉标识",

@@ -1,0 +1,182 @@
+[
+  {
+    "label": [
+      "工作区设置",
+      "Settings"
+    ],
+    "nodes": [
+      {
+        "label": [
+          "身份选择",
+          "Role"
+        ],
+        "copy": [
+          "以设计师或需求方身份进入工作区。",
+          "Enter as a designer or a client."
+        ]
+      },
+      {
+        "label": [
+          "工作偏好",
+          "Preferences"
+        ],
+        "copy": [
+          "设置默认模型与历史版本保存间隔。",
+          "Set the default model and snapshot interval."
+        ]
+      },
+      {
+        "label": [
+          "项目备份",
+          "Backup"
+        ],
+        "copy": [
+          "导出或载入已有项目备份。",
+          "Export or import a project backup."
+        ]
+      }
+    ]
+  },
+  {
+    "label": [
+      "项目管理",
+      "Projects"
+    ],
+    "nodes": [
+      {
+        "label": [
+          "全部项目",
+          "All projects"
+        ],
+        "copy": [
+          "查看项目列表，进入项目画布。",
+          "Browse projects and open a project canvas."
+        ]
+      },
+      {
+        "label": [
+          "已归档",
+          "Archived"
+        ],
+        "copy": [
+          "查找已归档的项目。",
+          "Find archived projects."
+        ]
+      },
+      {
+        "label": [
+          "最近删除",
+          "Deleted"
+        ],
+        "copy": [
+          "查看近期删除的项目。",
+          "Recently deleted."
+        ]
+      }
+    ]
+  },
+  {
+    "label": [
+      "需求与排期",
+      "Requests & schedule"
+    ],
+    "nodes": [
+      {
+        "label": [
+          "项目排期",
+          "Schedule"
+        ],
+        "copy": [
+          "在画布中核对项目交付时间。",
+          "Check project deadlines on the canvas."
+        ]
+      },
+      {
+        "label": [
+          "跨项目日历",
+          "All deadlines"
+        ],
+        "copy": [
+          "按日期查看各项目的待交付任务。",
+          "See upcoming deliverables across projects by date."
+        ]
+      }
+    ]
+  },
+  {
+    "label": [
+      "AI 协作画布",
+      "AI canvas"
+    ],
+    "nodes": [
+      {
+        "label": [
+          "方向分组",
+          "Directions"
+        ],
+        "copy": [
+          "按创作方向归集候选稿件。",
+          "Group drafts by creative direction."
+        ]
+      },
+      {
+        "label": [
+          "稿件编辑",
+          "Editing"
+        ],
+        "copy": [
+          "修改局部画面，延展其他尺寸。",
+          "Refine selected areas; adapt to other formats."
+        ]
+      },
+      {
+        "label": [
+          "版本管理",
+          "Versions"
+        ],
+        "copy": [
+          "比较候选稿，预览或恢复旧版。",
+          "Compare drafts; preview or restore earlier versions."
+        ]
+      }
+    ]
+  },
+  {
+    "label": [
+      "需求与反馈",
+      "Requests & feedback"
+    ],
+    "nodes": [
+      {
+        "label": [
+          "需求列表",
+          "Request list"
+        ],
+        "copy": [
+          "查看需求、截止日和关联稿件。",
+          "View requests, deadlines and linked artwork."
+        ]
+      },
+      {
+        "label": [
+          "稿件审阅",
+          "Review"
+        ],
+        "copy": [
+          "审阅提交版本，留下修改意见。",
+          "Review submitted versions and request changes."
+        ]
+      },
+      {
+        "label": [
+          "交付确认",
+          "Approval"
+        ],
+        "copy": [
+          "确认当前稿件可以交付。",
+          "Approve the artwork for delivery."
+        ]
+      }
+    ]
+  }
+]

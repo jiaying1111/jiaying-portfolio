@@ -1,3 +1,4 @@
+import { formaListingCards, formaListingMedia } from "@/data/forma-listing-media";
 import {
   experienceListingMedia,
   homepageCardAssets,
@@ -60,6 +61,18 @@ export const projects: Project[] = [
     listingGroup: "projects",
     listingMedia: experienceListingMedia["hxr-digital-map"],
     card: homepageCardAssets["hxr-digital-map"],
+  },
+  {
+    "slug": "forma",
+    "title": "Forma",
+    "category": "Product Design · AI Workflow",
+    "year": "2026",
+    "summary": "Forma connects the brief, creative canvas, versions, deadlines, and client feedback in one AI-assisted project workspace for professional graphic designers. Designers direct the work; clients review the corresponding submission in the same project.",
+    "type": "Product Design Project",
+    "tools": "Figma, HTML, CSS, JavaScript",
+    "listingGroup": "projects",
+    "listingMedia": formaListingMedia.forma,
+    "card": formaListingCards.forma
   },
   {
     slug: "nushu",

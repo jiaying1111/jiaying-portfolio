@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import type { ReactNode } from "react";
 import { HoverLoopMedia } from "@/components/ui/HoverLoopMedia";
 import type { HoverLoopSet } from "@/data/assets";
 import { useLocale } from "@/i18n/LocaleProvider";
@@ -28,6 +29,7 @@ function ArrowRight() {
 }
 
 type WorkListingItemProps = {
+  mediaContent?: ReactNode;
   title: string;
   category: string;
   year: string;
@@ -40,6 +42,7 @@ type WorkListingItemProps = {
 };
 
 export function WorkListingItem({
+  mediaContent,
   title,
   category,
   year,
@@ -55,7 +58,7 @@ export function WorkListingItem({
   const copy = ui(locale);
 
   const mediaBlock = (
-    <HoverLoopMedia media={media} priority={priority} active={active} />
+    mediaContent ?? <HoverLoopMedia media={media} priority={priority} active={active} />
   );
 
   return (

@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { CaseStudySection } from "@/components/case-study/CaseStudySection";
@@ -11,6 +12,8 @@ import { useLocale } from "@/i18n/LocaleProvider";
 import { localize, t } from "@/i18n/localize";
 import { backToLabel, ui } from "@/i18n/ui";
 import { joinClassNames } from "@/lib/utils";
+
+const FormaSourceView = dynamic(() => import("@/components/case-study/forma/FormaSourceView").then(module => module.FormaSourceView));
 
 type CaseStudyViewProps = {
   project: Pick<Project, "title">;
@@ -46,6 +49,10 @@ export function CaseStudyView({
   const kicker = galleryTheme
     ? `${study.category} · ${study.year}`
     : study.kicker;
+
+  if (caseStudy.slug === "forma") {
+    return <FormaSourceView previous={previous} next={next} />;
+  }
 
   return (
     <main
