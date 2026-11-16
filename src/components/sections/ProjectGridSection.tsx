@@ -6,10 +6,11 @@ import { projects } from "@/data/projects";
 import { homepageCopy } from "@/data/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { localize } from "@/i18n/localize";
+import { localizeProjects } from "@/i18n/localize-projects";
 import { ui } from "@/i18n/ui";
 
-/** Homepage Experience grid keeps the four featured projects only. */
 const homepageProjectSlugs = new Set([
+  "forma",
   "digital-nomad",
   "dreamwhorl",
   "little-red-riding-hood",
@@ -19,7 +20,7 @@ const homepageProjectSlugs = new Set([
 export function ProjectGridSection() {
   const { locale } = useLocale();
   const copy = localize(homepageCopy, locale);
-  const items = localize(
+  const items = localizeProjects(
     projects.filter((project) => homepageProjectSlugs.has(project.slug)),
     locale,
   );

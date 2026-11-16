@@ -1,6 +1,5 @@
 "use client";
 
-import { FormaListingCover } from "@/components/case-study/forma/FormaListingCover";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ListingScrollGuide } from "@/components/ui/ListingScrollGuide";
@@ -11,6 +10,7 @@ import type { ExperienceListingGroup } from "@/data/ai-practice";
 import { experiencePageCopy } from "@/data/site";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { localize } from "@/i18n/localize";
+import { localizeProjects } from "@/i18n/localize-projects";
 import { ui } from "@/i18n/ui";
 
 export function ExperienceView({
@@ -21,7 +21,7 @@ export function ExperienceView({
   const router = useRouter();
   const { locale } = useLocale();
   const pageCopy = localize(experiencePageCopy, locale);
-  const items = localize(getProjectsByGroup(activeTab), locale);
+  const items = localizeProjects(getProjectsByGroup(activeTab), locale);
   const copy = ui(locale);
 
   const onSelect = (id: ExperienceListingGroup) => {
@@ -69,7 +69,6 @@ export function ExperienceView({
             type={project.type}
             tools={project.tools}
             media={project.listingMedia}
-            mediaContent={project.slug === "forma" ? <FormaListingCover /> : undefined}
             href={`/projects/${project.slug}`}
             priority={index === 0}
           />

@@ -100,7 +100,7 @@ export const heroSlideImages = {
   },
 } as const satisfies Record<string, MediaAsset>;
 
-const homepageCardOverlay: MediaAsset = {
+export const homepageCardOverlay: MediaAsset = {
   id: "home-card-overlay",
   src: "/images/home/experience-cards/shared-hover-overlay.png",
   width: 521,
